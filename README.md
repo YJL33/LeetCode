@@ -5,6 +5,13 @@ Solutions of LeetCode
 Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
 The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
 
+83. Remove Duplicates from Sorted List
+Given a sorted linked list, delete all duplicates such that each element appear only once.
+
+For example,
+Given 1->1->2, return 1->2.
+Given 1->1->2->3->3, return 1->2->3. 
+
 136 Single Number
 Given an array of integers, every element appears twice except for one. Find that single one.
 Note:

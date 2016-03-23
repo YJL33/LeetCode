@@ -11,6 +11,28 @@ Examples:
     pattern = "abba", str = "dog dog dog dog" should return false.
 
 Notes:
-You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
-"""
+You may assume pattern contains only lowercase letters,
+and str contains lowercase letters separated by a single space.
 
+Reference:
+http://goo.gl/djJsy1
+"""
+class Solution(object):
+    def wordPattern(self, pattern, str):
+        """
+        :type pattern: str
+        :type str: str
+        :rtype: bool
+        """
+        words = str.split()
+        if len(pattern) != len(words):
+            return False
+        ptnDict, wordDict = {}, {}      # To record the mirrors of pattern and word
+        for ptn, word in zip(pattern, words):
+            if ptn not in ptnDict:      # If never seen this pattern
+                ptnDict[ptn] = word     # Add it into dictionary as key, with value = word
+            if word not in wordDict:    # If never seen this word
+                wordDict[word] = ptn    # Add it into dictionary as key, with value = pattern
+            if wordDict[word] != ptn or ptnDict[ptn] != word:   # Check the mirror
+                return False
+        return True

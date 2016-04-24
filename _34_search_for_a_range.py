@@ -18,25 +18,26 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        def getstart(low, high):
+            while low < high:
+                mid = (low + high) / 2
+                if nums[mid] < target:
+                    low = mid+1
+                else:
+                    high = mid
+            return low
+
+        def getend(left, right):
+            while left < right:
+                m = ((left + right) / 2) +1
+                if nums[m] <= target:
+                    left = m
+                else:
+                    right = m-1
+            return left
+
         if target < nums[0] or target > nums[-1]: return [-1, -1]
-
-        low, high = 0, len(nums)-1
-        while low < high:
-            mid = (low + high) / 2
-            #print "show:", low, mid, high
-            if nums[mid] < target:
-                low = mid+1
-            else:
-                high = mid
-
-        left, right = low, len(nums)-1
-        while left < right:
-            m = ((left + right) / 2) +1
-            #print "checker:", left, m, right
-            if nums[m] <= target:
-                left = m
-            else:
-                right = m-1
-
-        if nums[low] == target and nums[left] == target: return [low, left]
-        else: return [-1, -1]
+        start = getstart(0, len(nums)-1)
+        if nums[start] != target: return [-1, -1]
+        end = getend(start, len(nums)-1)
+        if nums[end] == target: return [start, end]

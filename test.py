@@ -5,7 +5,8 @@ import sys
 #import _264_ugly_numbers_2 as mod
 #import _137_single_number_2 as mod137
 #import _36_valid_sudoku as mod36
-import _30_substring_with_concatenation_of_all_words as mod30
+#import _30_substring_with_concatenation_of_all_words as mod30
+import _34_search_for_a_range as mod34
 
 #sol137 = mod137.Solution()
 #quest = [3, 3, 3, 1]
@@ -18,12 +19,12 @@ import _30_substring_with_concatenation_of_all_words as mod30
 #print mod36.Solution.isValidSudoku(sol36, board)
 #print board
 
-sol30 = mod30.Solution()
-s = "barfoothefoofoobarman"
-words = ["foo","bar","the","foo"]
-print s
-print words
-print mod30.Solution.findSubstring(sol30, s, words)
+#sol30 = mod30.Solution()
+#s = "barfoothefoofoobarman"
+#words = ["foo","bar","the","foo"]
+#print s
+#print words
+#print mod30.Solution.findSubstring(sol30, s, words)
 
 """
 print board2[0]
@@ -36,3 +37,8 @@ print board2[6]
 print board2[7]
 print board2[8]
 """
+
+sol34 = mod34.Solution()
+K = [[5,7,7,8,8,10],[8],[8,8],[3,4,4,5,5,6,7,7,7,8,8,9,10,11]]
+for i in K:
+    print mod34.Solution.searchRange(sol34, i, 8)

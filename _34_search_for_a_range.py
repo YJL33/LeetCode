@@ -34,7 +34,7 @@ class Solution(object):
                     left = m
                 else:
                     right = m-1
-            return left
+            return right
 
         if target < nums[0] or target > nums[-1]: return [-1, -1]
         start = getstart(0, len(nums)-1)

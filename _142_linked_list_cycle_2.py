@@ -30,6 +30,7 @@ class Solution(object):
             # Here slow = fast = meeting point (M)
             # Use two pointers each begin at head and M, they will meet at entry.
             entry = head
+            slow = slow.next
             while slow is not entry:
                 slow = slow.next
                 entry = entry.next

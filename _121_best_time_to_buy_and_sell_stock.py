@@ -12,10 +12,13 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        import sys
-        min_price = sys.maxsize         # the minimum price so far
+        if prices == []: return 0
+        min_price = prices[0]           # the minimum price so far
         max_profit = 0                  # the maximum profit so far
         for p in prices:
-            min_price = min(min_price, p)               # update the minimum price
-            max_profit = max(max_profit, p-min_price)   # update the maximum profit
+            if p < min_price:
+                min_price = p                       # update the minimum price
+            else:
+                if p - min_price > max_profit:
+                    max_profit = p - min_price      # update the maximum profit
         return max_profit

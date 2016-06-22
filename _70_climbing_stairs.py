@@ -14,9 +14,9 @@ class Solution(object):
         :rtype: int
         """
         if n <= 0: return 0
-        if n == 1: return 1
-        if n == 2: return 2
-        if n >= 3:
+        elif n == 1: return 1
+        elif n == 2: return 2
+        elif n >= 3:
             one_step = 2        # number of distinct ways for n = n-1
             two_steps = 1       # number of distinct ways for n = n-2
             res = 0

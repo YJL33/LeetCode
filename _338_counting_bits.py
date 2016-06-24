@@ -31,8 +31,6 @@ class Solution(object):
         """
         from math import log
         res = [0]
-        if num == 0:
-            return res
 
         if num >= 1:
             for i in xrange(1, num+1):

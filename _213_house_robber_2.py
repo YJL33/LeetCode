@@ -18,3 +18,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        def check(nums):
+            res = 0
+            prev = 0
+            if not nums:
+                return res
+            for i in nums:
+                res, prev = max(prev+i, res), res
+            return res
+        if len(nums) == 1:
+            return nums[0]
+        else:
+            return max(check(nums[1:]), check(nums[:-1]))
+
+

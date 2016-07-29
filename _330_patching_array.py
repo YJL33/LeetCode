@@ -46,5 +46,3 @@ class Solution(object):
                 added += 1
 
         return added
-
-

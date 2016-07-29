@@ -20,6 +20,8 @@ class Solution(object):
         :rtype: bool
         """
         reach = 0
+        i = 0
+
         while i <= reach and i < len(nums):
             reach = max(i+nums[i], reach)
             i += 1

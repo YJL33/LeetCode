@@ -27,9 +27,11 @@ class Solution(object):
         right = 1
         left = 1
 
+        # multiply twice, from left to right
         for i in xrange(lens):
             output[i] = left
             left *= nums[i]
+        # and right to left
         for j in xrange(lens-1, -1, -1):
             output[j] *= right
             right *= nums[j]

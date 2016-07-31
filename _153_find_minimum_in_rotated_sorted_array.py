@@ -19,6 +19,7 @@ class Solution(object):
         end = len(nums)-1
 
         while nums[start] > nums[end]:
+            # Binary search:
             # There's a pivot inside, check whether it's in 1st half or 2nd half
             midpoint = start + (end-start)/2
             if nums[start] > nums[midpoint]:        # In the 1st half

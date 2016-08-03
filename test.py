@@ -8,7 +8,8 @@ import sys
 #import _30_substring_with_concatenation_of_all_words as mod30
 #import _34_search_for_a_range as mod34
 #import _287_find_the_duplicate_number as mod287
-import _153_find_minimum_in_rotated_sorted_array as mod153
+#import _153_find_minimum_in_rotated_sorted_array as mod153
+import _295_find_median_from_data_stream as mod295
 
 #sol137 = mod137.Solution()
 #quest = [3, 3, 3, 1]
@@ -50,6 +51,17 @@ print board2[8]
 #print mod287.Solution.findDuplicate(sol287, S)
 #print S[12983], S[20531]
 
-sol153 = mod153.Solution()
-S = [5,6,7,8,1]
-print mod153.Solution.findMin(sol153, S)
+#sol153 = mod153.Solution()
+#S = [5,6,7,8,1]
+#print mod153.Solution.findMin(sol153, S)
+
+# Your MedianFinder object will be instantiated and called as such:
+# mf = MedianFinder()
+# mf.addNum(1)
+# mf.findMedian()
+sol295 = mod295.MedianFinder()
+sol295.addNum(1)
+sol295.addNum(2)
+print sol295.findMedian()
+sol295.addNum(3)
+print sol295.findMedian()

@@ -32,7 +32,7 @@ class Solution(object):
         for key, value in dct.iteritems():
             res.append((value, key))
             
-        # Heapify the list => O(n)
+        # Heapify the list => O(logn)
         heapq.heapify(res)
 
         # Get the top K items => O(1)*k

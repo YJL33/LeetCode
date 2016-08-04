@@ -9,7 +9,8 @@ import sys
 #import _34_search_for_a_range as mod34
 #import _287_find_the_duplicate_number as mod287
 #import _153_find_minimum_in_rotated_sorted_array as mod153
-import _295_find_median_from_data_stream as mod295
+#import _295_find_median_from_data_stream as mod295
+import _26_remove_duplicates_from_sorted_array as mod26
 
 #sol137 = mod137.Solution()
 #quest = [3, 3, 3, 1]
@@ -59,9 +60,13 @@ print board2[8]
 # mf = MedianFinder()
 # mf.addNum(1)
 # mf.findMedian()
-sol295 = mod295.MedianFinder()
-sol295.addNum(1)
-sol295.addNum(2)
-print sol295.findMedian()
-sol295.addNum(3)
-print sol295.findMedian()
+#sol295 = mod295.MedianFinder()
+#sol295.addNum(1)
+#sol295.addNum(2)
+#print sol295.findMedian()
+#sol295.addNum(3)
+#print sol295.findMedian()
+
+sol26 = mod26.Solution()
+K = [1,1,2,3,4]
+print mod26.Solution.removeDuplicates(sol26, K)

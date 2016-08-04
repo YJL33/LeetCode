@@ -17,6 +17,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # Use property of XOR: checking parity
         res = L = len(nums)
 
         for i in xrange(L):

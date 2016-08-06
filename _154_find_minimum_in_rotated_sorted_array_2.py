@@ -29,6 +29,8 @@ class Solution(object):
             midpoint = start + (end-start)/2
             if nums[end] == nums[midpoint]:     # duplicate
                 end -= 1
+                if nums[end] > nums[end+1]:     # Don't miss the pivot
+                    return nums[end+1]
             elif nums[end] < nums[midpoint]:    # In the 2nd half
                 start = midpoint + 1
             elif nums[end] > nums[midpoint]:    # In the 1st half

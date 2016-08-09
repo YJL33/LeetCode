@@ -24,6 +24,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # time complexity = O(L*2^L)
         res = []
         L = len(nums)
         nums.sort()

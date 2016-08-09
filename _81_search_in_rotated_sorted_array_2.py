@@ -27,7 +27,6 @@ class Solution(object):
                     tail = mid
                 else:                               # Pivot in the 2nd half
                     head = mid + 1
-            print "pivot at:", head
             return head
 
         def helper_2(start, end):

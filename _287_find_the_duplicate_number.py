@@ -26,6 +26,7 @@ class Solution(object):
             # Here slow = fast = meeting point (M)
             # Use two pointers each begin at head and M, they will meet at entry.
             # print "fast", fast, "slow", slow
+            # refer to: http://codingfreak.blogspot.com/2012/12/detecting-first-node-in-a-loop.html
             entry = 0
             while slow is not entry:
                 slow = nums[slow]

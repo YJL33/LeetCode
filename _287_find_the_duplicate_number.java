@@ -22,6 +22,7 @@ public class Solution {
         } while(slow != fast);
         int find = 0;
         // Find the entry of loop
+        // can refer to http://codingfreak.blogspot.com/2012/12/detecting-first-node-in-a-loop.html
         while (find != slow) {
             slow = nums[slow];
             find = nums[find];

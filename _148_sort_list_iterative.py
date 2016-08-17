@@ -11,23 +11,21 @@ class ListNode(object):
 
 class Solution(object):
     # implement mergesort (iterative):
-    # mergesort => mergesort the 2nd half => merge together
+    # mergesort sublist length = 1 => 2 => 4 => 8 ....
     def sorter(self, node, prev, width):
         # according to the width, sort two sublists.
         cursor = prev
         h1 = node
-        t1, c1 = self.goNext(node, width-1, True)
+        t1 = self.goNext(node, width-1)
         h2 = self.goNext(node, width)
-        t2, c2 = self.goNext(node, width*2-1, True)
-        tail, c3 = self.goNext(node, width*2, True)
-        #print h1.val, t1.val, h2.val, t2.val
+        t2 = self.goNext(node, width*2-1)
+        tail, counter = self.goNext(node, width*2, True)
+
         if t1: t1.next = None
         if t2: t2.next = None
-        counter = max(c1, c2, c3)
         #print "counter: ", counter
         
         while h1 and h2 or counter:
-            #print "sorting...", h1.val, h2.val
             counter -= 1
             if not h1:
                 cursor.next, cursor, h2 = h2, h2, h2.next
@@ -44,11 +42,11 @@ class Solution(object):
 
     def goNext(self, node, n, getLen=False):
         # go next for n steps, if meet None => return None.
-        #print "n: ", n
         counter = 0
-        while n > counter and node:
-            counter += 1 
+        for i in xrange(n):
+            if not node: break
             node = node.next
+            counter += 1
 
         if getLen:
             if counter != n: return None, counter
@@ -87,3 +85,5 @@ class Solution(object):
             #print "width: ", width
 
         return dummy.next
+        # T: O(nlogn) but slower than recursion version
+        # record next layer's node should be faster, but break the Space: O(1) rule

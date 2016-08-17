@@ -10,6 +10,8 @@ Sort a linked list in O(n log n) time using constant space complexity.
 #         self.next = None
 
 class Solution(object):
+    # implement mergesort (recursion):
+    # cut to half => mergesort the 1st half => mergesort the 2nd half => merge together
     def merger(self, h1, h2):
         # merge two list
         dummy = ListNode(0)
@@ -27,8 +29,6 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        # implement mergesort:
-        # cut to half => sort the 1st half => sort the 2nd half => merge together
         if not head or not head.next:
             return head
         prev, slow, fast = None, head, head
@@ -37,5 +37,5 @@ class Solution(object):
         prev.next = None
         # Now we have two small list, init by head and slow
 
-        return self.merger(*map(self.sortList, (head, slow)))       # most delicate part
+        return self.merger(self.sortList(head), self.sortList(slow))
         # Recursion => Time: O(n), Space: O(logn)

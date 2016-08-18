@@ -25,6 +25,8 @@ F = mod148.ListNode(3)
 G = mod148.ListNode(8)
 H = mod148.ListNode(6)
 A = mod148.ListNode(9)
+P = mod148.ListNode(6)
+Q = mod148.ListNode(9)
 A.next = B
 B.next = C
 C.next = D
@@ -33,8 +35,10 @@ E.next = F
 F.next = G
 G.next = H
 H.next = I
+P.next = Q
 
-print mod148.Solution.sortList(sol148, A)
+#print mod148.Solution.sortList(sol148, A)
+print mod148.Solution.sortList(sol148, P)
 
 #sol137 = mod137.Solution()
 #quest = [3, 3, 3, 1]

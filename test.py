@@ -13,8 +13,27 @@ import sys
 #import _26_remove_duplicates_from_sorted_array as mod26
 #import _154_find_minimum_in_rotated_sorted_array_2 as mod154
 #import _81_search_in_rotated_sorted_array_2 as mod81
-import _148_sort_list_iterative as mod148
+#import _148_sort_list_iterative as mod148
+import _386_lexicographical_numbers as mod386
+import _387_first_unique_character_in_a_string as mod387
+import _388_longest_absolute_file_path as mod388
 
+sol388 = mod388.Solution()
+S = "dir\n\tpppppppppppppppppppppppppppppppppppppppppppppp.png\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+#S = 'root\n\tl1\n\t\tl2\n\t\t\tl3\n\t\t\t\tl4\n\ts\n\t\ts\n\t\t\ts\n\t\t\t\tveryveryveryveryveryverylongname\n\t\t\tppp.exe'
+print mod388.Solution.lengthLongestPath(sol388, S)
+
+#sol386 = mod386.Solution()
+#S = 49999
+#print mod386.Solution.lexicalOrder(sol386, S)
+#print mod386.Solution.lexicalOrder2(sol386, S)
+
+
+#sol387 = mod387.Solution()
+#S = 'ccddeeffieejj'
+#print mod387.Solution.firstUniqChar(sol387, S)
+
+"""
 sol148 = mod148.Solution()
 I = mod148.ListNode(1)
 B = mod148.ListNode(2)
@@ -36,9 +55,10 @@ F.next = G
 G.next = H
 H.next = I
 P.next = Q
+"""
 
 #print mod148.Solution.sortList(sol148, A)
-print mod148.Solution.sortList(sol148, P)
+#print mod148.Solution.sortList(sol148, P)
 
 #sol137 = mod137.Solution()
 #quest = [3, 3, 3, 1]

@@ -56,27 +56,25 @@ class Solution(object):
         # First scan all structure and record folder depth/position/range and file position
 
         length = len(log)
-        separator = [-1]
+        separator = [-1]                        # equal to add '\n' in front of log
 
         for i in xrange(length):
             if log[i] == '\n':                  # something in between!
                 separator.append(i)
 
-        separator.append(length)
+        separator.append(length)                # equal to add '\n' in the end of log
 
         files = []                              # file and folders are represented as triple
         folders = []                            # e.g. 'root' (layer = 0, index = 0, sublength = 4)
         for j in xrange(len(separator)-1):
             head, tail = separator[j], separator[j+1]
-            sublen = tail-head-1                # not including backslash
-            index = head+1
-            layer = 0
+            layer, index, sublen = 0, head+1, tail-head-1       # sublen is not including backslash
             isFile = False
             for k in xrange(head+1, tail):
                 if log[k] == '\t':
-                    sublen -= 1
-                    index += 1
                     layer += 1
+                    index += 1
+                    sublen -= 1
                 elif log[k] == '.':
                     isFile = True
             if isFile:
@@ -93,9 +91,7 @@ class Solution(object):
     def findFilePath(self, f, folders):
         # Find this file's directory and return it's path length
         #print f,
-        file_layer = f[0]
-        pos = f[1]
-        pathlen = f[2]
+        file_layer, pos, pathlen = f[0], f[1], f[2]
 
         for fo in folders[::-1]:
             if fo[0] < file_layer and fo[1] < pos:

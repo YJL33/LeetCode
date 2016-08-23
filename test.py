@@ -14,14 +14,14 @@ import sys
 #import _154_find_minimum_in_rotated_sorted_array_2 as mod154
 #import _81_search_in_rotated_sorted_array_2 as mod81
 #import _148_sort_list_iterative as mod148
-import _386_lexicographical_numbers as mod386
-import _387_first_unique_character_in_a_string as mod387
-import _388_longest_absolute_file_path as mod388
+#import _386_lexicographical_numbers as mod386
+#import _387_first_unique_character_in_a_string as mod387
+#import _388_longest_absolute_file_path as mod388
 
-sol388 = mod388.Solution()
-S = "dir\n\tpppppppppppppppppppppppppppppppppppppppppppppp.png\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+#sol388 = mod388.Solution()
+#S = "dir\n\tpppppppppppppppppppppppppppppppppppppppppppppp.png\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
 #S = 'root\n\tl1\n\t\tl2\n\t\t\tl3\n\t\t\t\tl4\n\ts\n\t\ts\n\t\t\ts\n\t\t\t\tveryveryveryveryveryverylongname\n\t\t\tppp.exe'
-print mod388.Solution.lengthLongestPath(sol388, S)
+#print mod388.Solution.lengthLongestPath(sol388, S)
 
 #sol386 = mod386.Solution()
 #S = 49999

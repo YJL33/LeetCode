@@ -17,10 +17,46 @@ import sys
 #import _386_lexicographical_numbers as mod386
 #import _387_first_unique_character_in_a_string as mod387
 #import _388_longest_absolute_file_path as mod388
+#import _151_reverse_words_in_a_string as mod151
+import _43_multiply_strings as mod43
+
+sol43 = mod43.Solution()
+S1 = "9999"
+S2 = "2"
+S3 = "0"
+S4 = "140"
+S5 = "721"
+S6 = "123456789"
+S7 = "987654321"
+print mod43.Solution.multiply(sol43, S1, S2) == str(int(S1)*int(S2))
+print mod43.Solution.multiply(sol43, S2, S3) == str(int(S2)*int(S3))
+print mod43.Solution.multiply(sol43, S3, S4) == str(int(S3)*int(S4))
+print mod43.Solution.multiply(sol43, S4, S5) == str(int(S4)*int(S5))
+print mod43.Solution.multiply(sol43, S5, S6) == str(int(S5)*int(S6))
+print mod43.Solution.multiply(sol43, S6, S7) == str(int(S6)*int(S7))
+
+
+"""
+sol151 = mod151.Solution()
+S1 = "    isnt it crazy Rooney10   "
+S2 = "     12345    "
+S3 = ""
+S4 = "1 2 3"
+S5 = " a b c d e f g h i "
+S6 = "1234567      7654321"
+S7 = "BRAVO       Tevez32"
+print mod151.Solution.reverseWords(sol151, S1)
+print mod151.Solution.reverseWords(sol151, S2)
+print mod151.Solution.reverseWords(sol151, S3)
+print mod151.Solution.reverseWords(sol151, S4)
+print mod151.Solution.reverseWords(sol151, S5)
+print mod151.Solution.reverseWords(sol151, S6)
+print mod151.Solution.reverseWords(sol151, S7)
+"""
 
 #sol388 = mod388.Solution()
 #S = "dir\n\tpppppppppppppppppppppppppppppppppppppppppppppp.png\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
-#S = 'root\n\tl1\n\t\tl2\n\t\t\tl3\n\t\t\t\tl4\n\ts\n\t\ts\n\t\t\ts\n\t\t\t\tveryveryveryveryveryverylongname\n\t\t\tppp.exe'
+#S = "root\n\tl1\n\t\tl2\n\t\t\tl3\n\t\t\t\tl4\n\ts\n\t\ts\n\t\t\ts\n\t\t\t\tveryveryveryveryveryverylongname\n\t\t\tppp.exe"
 #print mod388.Solution.lengthLongestPath(sol388, S)
 
 #sol386 = mod386.Solution()
@@ -30,7 +66,7 @@ import sys
 
 
 #sol387 = mod387.Solution()
-#S = 'ccddeeffieejj'
+#S = "ccddeeffieejj"
 #print mod387.Solution.firstUniqChar(sol387, S)
 
 """

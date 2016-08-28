@@ -26,9 +26,10 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
-        k = s+t
         res = 0
-        for c in k:
-            res ^= ord(c)
+        for i in s:
+            res ^= ord(i)
+        for j in t:
+            res ^= ord(j)
 
         return chr(res)

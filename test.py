@@ -21,7 +21,7 @@ import sys
 #import _43_multiply_strings as mod43
 #import _389_find_the_difference as mod389
 #import _390_elimination_game as mod390
-#import _391_perfect_rectangle as mod391
+import _391_perfect_rectangle as mod391
 
 """
 sol389 = mod389.Solution()
@@ -42,34 +42,32 @@ print mod389.Solution.findTheDifference(sol389, S4, T4)
 
 """
 sol390 = mod390.Solution()
-sol3902 = mod390.Solution()
-P1 = 5
-P2 = 6
-P3 = 7
-P4 = 8
-P5 = 9
-P6 = 10
-P7 = 11
-P8 = 12
-P9 = 13
-P10 = 14
-P11 = 15
-P12 = 16
-print mod390.Solution.lastRemaining(sol390, P1), mod390.Solution.lastRemaining3(sol390, P1)
-print mod390.Solution.lastRemaining(sol390, P2), mod390.Solution.lastRemaining3(sol390, P2)
-print mod390.Solution.lastRemaining(sol390, P3), mod390.Solution.lastRemaining3(sol390, P3)
-print mod390.Solution.lastRemaining(sol390, P4), mod390.Solution.lastRemaining3(sol390, P4)
-print mod390.Solution.lastRemaining(sol390, P5), mod390.Solution.lastRemaining3(sol390, P5)
-print mod390.Solution.lastRemaining(sol390, P6), mod390.Solution.lastRemaining3(sol390, P6)
-print mod390.Solution.lastRemaining(sol390, P7), mod390.Solution.lastRemaining3(sol390, P7)
-print mod390.Solution.lastRemaining(sol390, P8), mod390.Solution.lastRemaining3(sol390, P8)
-print mod390.Solution.lastRemaining(sol390, P9), mod390.Solution.lastRemaining3(sol390, P9)
-print mod390.Solution.lastRemaining(sol390, P10), mod390.Solution.lastRemaining3(sol390, P10)
-print mod390.Solution.lastRemaining(sol390, P11), mod390.Solution.lastRemaining3(sol390, P11)
-print mod390.Solution.lastRemaining(sol390, P12), mod390.Solution.lastRemaining3(sol390, P12)
+P1 = 25
+P2 = 26
+P3 = 27
+P4 = 28
+P5 = 29
+P6 = 30
+P7 = 31
+P8 = 7777777
+P9 = 8888888
+P10 = 999999
+P11 = 1000000
+P12 = 10000000
+print mod390.Solution.lastRemaining(sol390, P1), mod390.Solution.lastRemaining1(sol390, P1)
+print mod390.Solution.lastRemaining(sol390, P2), mod390.Solution.lastRemaining1(sol390, P2)
+print mod390.Solution.lastRemaining(sol390, P3), mod390.Solution.lastRemaining1(sol390, P3)
+print mod390.Solution.lastRemaining(sol390, P4), mod390.Solution.lastRemaining1(sol390, P4)
+print mod390.Solution.lastRemaining(sol390, P5), mod390.Solution.lastRemaining1(sol390, P5)
+print mod390.Solution.lastRemaining(sol390, P6), mod390.Solution.lastRemaining1(sol390, P6)
+print mod390.Solution.lastRemaining(sol390, P7), mod390.Solution.lastRemaining1(sol390, P7)
+print mod390.Solution.lastRemaining(sol390, P8), mod390.Solution.lastRemaining1(sol390, P8)
+print mod390.Solution.lastRemaining(sol390, P9), mod390.Solution.lastRemaining1(sol390, P9)
+print mod390.Solution.lastRemaining(sol390, P10), mod390.Solution.lastRemaining1(sol390, P10)
+print mod390.Solution.lastRemaining(sol390, P11), mod390.Solution.lastRemaining1(sol390, P11)
+print mod390.Solution.lastRemaining(sol390, P12), mod390.Solution.lastRemaining1(sol390, P12)
 """
 
-"""
 sol391 = mod391.Solution()
 Q1 = [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]
 Q2 = [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]]
@@ -83,7 +81,7 @@ print mod391.Solution.isRectangleCover(sol391, Q3)
 print mod391.Solution.isRectangleCover(sol391, Q4)
 print mod391.Solution.isRectangleCover(sol391, Q5)
 print mod391.Solution.isRectangleCover(sol391, Q6)
-"""
+
 #sol43 = mod43.Solution()
 #S1 = "9999"
 #S2 = "2"

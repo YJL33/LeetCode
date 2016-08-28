@@ -29,9 +29,24 @@ Output:
 6
 """
 class Solution(object):
+    def lastRemaining(self, n):
+        return self.helper(n)
+
+    def helper(self, n, left=True):
+        # recursion w/o using much memory
+        if n <= 1:
+            return 1
+        if left:
+            return 2*self.helper(n/2, False)
+        else:
+            if n&1:
+                return 2*self.helper(n/2, True)
+            else:
+                return 2*self.helper(n/2, True)-1
+
     def lastRemaining3(self, n):
         # use flag
-        # Memory Exceed Limit (L35)
+        # Memory Exceed Limit (L50)
         flag = [True]*n
         lvl, remain, start, end, left = 0, n, 0, n-1, True
         while remain > 1:
@@ -51,7 +66,7 @@ class Solution(object):
 
     def lastRemaining2(self, n):
         # implement iterative version
-        # Memory Exceed Limit (L55)
+        # Memory Exceed Limit (70)
         res = range(1,n+1)
         left = True
         while len(res) > 1:
@@ -63,19 +78,17 @@ class Solution(object):
 
         return res[0]
 
-    def lastRemaining(self, n):
+    def lastRemaining1(self, n):
         # implement recursion (no need to check n <= 0)
-        # Memory Exceed Limit (L71)
-        if n == 10000000: return 6150102
-        if n == 100000000: return 32896342
-        return self.helper(range(1,n+1))
+        # Memory Exceed Limit (L84)
+        return self.helper1(range(1,n+1))
 
-    def helper(self, res, left=True):
+    def helper1(self, res, left=True):
         #print "\nhelper: ", res
         if len(res) == 1: return res[0]
         if left:
             res = res[1::2]
-            return self.helper(res, not left)
+            return self.helper1(res, not left)
         else:
             res = res[-2::-2][::-1]
-            return self.helper(res, not left)
+            return self.helper1(res, not left)

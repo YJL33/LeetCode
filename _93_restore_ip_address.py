@@ -15,16 +15,14 @@ class Solution(object):
         :type s: str
         :rtype: List[str]
         """
+        import itertools
         ip = []
         length = len(s)
-        for a in xrange(1,4):
-            for b in xrange(1,4):
-                for c in xrange(1,4):
-                    for d in xrange(1,4):
-                        if sum([a,b,c,d]) == length:
-                            A, B, C, D = s[:a], s[a:a+b], s[a+b:a+b+c], s[-d:]
-                            if self.helper(A) and self.helper(B) and self.helper(C) and self.helper(D):
-                                ip.append(s[:a]+'.'+s[a:a+b]+'.'+s[a+b:a+b+c]+'.'+s[-d:])
+        for a,b,c,d in itertools.product([1,2,3], repeat=4):
+            if sum([a,b,c,d]) == length:
+                A, B, C, D = s[:a], s[a:a+b], s[a+b:a+b+c], s[-d:]
+                if self.helper(A) and self.helper(B) and self.helper(C) and self.helper(D):
+                    ip.append(s[:a]+'.'+s[a:a+b]+'.'+s[a+b:a+b+c]+'.'+s[-d:])
 
         return ip
 

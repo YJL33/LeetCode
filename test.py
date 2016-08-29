@@ -21,7 +21,13 @@ import sys
 #import _43_multiply_strings as mod43
 #import _389_find_the_difference as mod389
 #import _390_elimination_game as mod390
-import _391_perfect_rectangle as mod391
+#import _391_perfect_rectangle as mod391
+import _299_bulls_and_cows as mod299
+
+sol299 = mod299.Solution()
+S = '3210'
+G = '6150'
+print sol299.getHint(S, G)
 
 """
 sol389 = mod389.Solution()
@@ -68,6 +74,7 @@ print mod390.Solution.lastRemaining(sol390, P11), mod390.Solution.lastRemaining1
 print mod390.Solution.lastRemaining(sol390, P12), mod390.Solution.lastRemaining1(sol390, P12)
 """
 
+"""
 sol391 = mod391.Solution()
 Q1 = [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]
 Q2 = [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]]
@@ -81,6 +88,7 @@ print mod391.Solution.isRectangleCover(sol391, Q3)
 print mod391.Solution.isRectangleCover(sol391, Q4)
 print mod391.Solution.isRectangleCover(sol391, Q5)
 print mod391.Solution.isRectangleCover(sol391, Q6)
+"""
 
 #sol43 = mod43.Solution()
 #S1 = "9999"

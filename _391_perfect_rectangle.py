@@ -14,30 +14,32 @@ class Solution(object):
         :type rectangles: List[List[int]]
         :rtype: bool
         """
-        if rectangles[:7] == [[218,104,222,112],[5,157,8,164],[105,93,111,99],[98,53,103,63],[137,55,143,60],[42,67,50,70],[112,91,118,94]]: return False
+        def recordCorner(point):
+            if point in corners:
+                corners[point] += 1
+            else:
+                corners[point] = 1
 
-        A, B, C, D = float('inf'), float('inf'), 0, 0
+        # check area and corner, each should appear even times (except 4 courners of big rectangle)
+        corners = {}
+        L, B, R, T, area = float('inf'), float('inf'), 0, 0, 0
+
         for sub in rectangles:
-            A, B = min(A, sub[0]), min(B, sub[1])
-            C, D = max(C, sub[2]), max(D, sub[3])
+            L, B, R, T = min(L, sub[0]), min(B, sub[1]), max(R, sub[2]), max(T, sub[3])
+            ax, ay, bx, by = sub[:]
+            area += (bx-ax)*(by-ay)
+            map(recordCorner, [(ax, ay), (bx, by), (ax, by), (bx, ay)])
 
-        #print "area: ", (C-A)*(D-B), A, B, C, D
+        if area != (T-B)*(R-L): return False
 
-        ##array = [[False for i in xrange(C-A)] for j in xrange(D-B)]
-        
-        area = 0
-        for sub in rectangles:
-            #print sub,
-            area += (sub[-1]-sub[1])*(sub[2]-sub[0])
-            
-            #for i in xrange(sub[0], sub[2]):
-            #    for j in xrange(sub[1], sub[3]):
-            #        if not array[j-B][i-A]:
-            #            array[j-B][i-A] = True
-            #        else:
-            #            return False
+        big_four = [(L,B),(R,T),(L,T),(R,B)]
 
+        for bf in big_four:                         # check corners of big rectangle
+            if bf not in corners or corners[bf] != 1:
+                return False
 
-        #print "verify: ", area
+        for key in corners:                         # check existing "inner" points
+            if corners[key]%2 and key not in big_four:
+                return False
 
-        return (C-A)*(D-B) == area
+        return True

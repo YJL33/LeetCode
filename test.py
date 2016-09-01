@@ -21,13 +21,51 @@ import sys
 #import _43_multiply_strings as mod43
 #import _389_find_the_difference as mod389
 #import _390_elimination_game as mod390
-import _391_perfect_rectangle as mod391
+#import _391_perfect_rectangle as mod391
 #import _299_bulls_and_cows as mod299
+#import _52_n_queens_2_bitwise as mod52b
+#import _52_n_queens_2 as mod52
+#import _131_palindrome_partitioning as mod131
+#import _60_permutation_sequence as mod60
+import _355_design_twitter as mod355
+
+tw = mod355.Twitter()
+K = ["postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"]
+V = [[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]
+
+for k, v in zip(K, V):
+    print k, v
+    methodToCall = getattr(tw, k)
+    methodToCall(tw, v)
+
+#sol60 = mod60.Solution()
+#n, k = 3, 6
+#print sol60.getPermutation(n, k)
+
+#sol131 = mod131.Solution()
+#S = 'aaab'
+#print sol131.partition(S)
+
+"""
+sol52b = mod52b.Solution()
+sol52 = mod52.Solution()
+m = 4
+n = 5
+o = 6
+p = 7
+print sol52b.totalNQueens(m)
+print sol52.totalNQueens(m)
+print sol52b.totalNQueens(n)
+print sol52.totalNQueens(n)
+print sol52b.totalNQueens(o)
+print sol52.totalNQueens(o)
+print sol52b.totalNQueens(p)
 
 #sol299 = mod299.Solution()
 #S = '3210'
 #G = '6150'
 #print sol299.getHint(S, G)
+"""
 
 """
 sol389 = mod389.Solution()
@@ -74,7 +112,7 @@ print mod390.Solution.lastRemaining(sol390, P11), mod390.Solution.lastRemaining1
 print mod390.Solution.lastRemaining(sol390, P12), mod390.Solution.lastRemaining1(sol390, P12)
 """
 
-
+"""
 sol391 = mod391.Solution()
 Q1 = [[1,1,3,3],[3,1,4,2],[3,2,4,4],[1,3,2,4],[2,3,3,4]]
 Q2 = [[1,1,2,3],[1,3,2,4],[3,1,4,2],[3,2,4,4]]
@@ -91,7 +129,7 @@ print mod391.Solution.isRectangleCover(sol391, Q3)
 print mod391.Solution.isRectangleCover(sol391, Q4)
 print mod391.Solution.isRectangleCover(sol391, Q5)
 print mod391.Solution.isRectangleCover(sol391, Q6)
-
+"""
 
 #sol43 = mod43.Solution()
 #S1 = "9999"

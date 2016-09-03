@@ -21,3 +21,7 @@ class Solution(object):
         while not num%4:
             num = num>>2
         return num==1
+
+    def isPowerOfFour2(self, num):
+        # one liner, check it's 2n and xand with int(1010101010101010101010101010101, 2)
+        return num != 0 and num&(num-1) == 0 and num & 1431655765== num

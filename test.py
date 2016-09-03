@@ -27,16 +27,36 @@ import sys
 #import _52_n_queens_2 as mod52
 #import _131_palindrome_partitioning as mod131
 #import _60_permutation_sequence as mod60
-import _355_design_twitter as mod355
+#import _355_design_twitter as mod355
+#import _191_number_of_1_bits as mod191
+#import _201_bitwise_AND_of_numbers_range as mod201
+#import _190_reverse_bits as mod190
+#import _241_different_ways_to_add_parentheses as mod241
 
-tw = mod355.Twitter()
-K = ["postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"]
-V = [[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]
+#sol241 = mod241.Solution()
+#test = ["2-1-1*8-6"]
+#print map(sol241.diffWaysToCompute, test)
 
-for k, v in zip(K, V):
-    print k, v
-    methodToCall = getattr(tw, k)
-    methodToCall(tw, v)
+#sol190 = mod190.Solution()
+#test = [43261596, 1024, 1, 4294967295]
+#print map(sol190.reverseBits2, test)
+
+#sol201 = mod201.Solution()
+#test = [600000000,2147483645,536870931,1073741823,536870917,536870919,1,1]
+#print map(sol201.rangeBitwiseAnd, test[::2], test[1::2])
+
+#sol191 = mod191.Solution()
+#test = [1, 16, 31, 1021, 1024]
+#print map(sol191.hammingWeight, test)
+
+#tw = mod355.Twitter()
+#K = ["postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"]
+#V = [[1,5],[1],[1,2],[2,6],[1],[1,2],[1]]
+
+#for k, v in zip(K, V):
+#    print k, v
+#    methodToCall = getattr(tw, k)
+#    methodToCall(tw, v)
 
 #sol60 = mod60.Solution()
 #n, k = 3, 6

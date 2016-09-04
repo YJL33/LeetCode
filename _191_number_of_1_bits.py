@@ -18,3 +18,11 @@ class Solution(object):
             count, n = count+(n&1), n>>1
 
         return count
+
+    def hammingWeight2(self, n):
+        if n < 0: return bin(n).count('1')
+        cnt = 0 
+        while n > 0:
+            cnt, n = cnt+(n&1), n>>1
+
+        return cnt

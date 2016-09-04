@@ -35,8 +35,8 @@ class Solution(object):
         for k in xrange(2, n):                                  # span (from left to right)
             for left in xrange(0, n-k):
                 right = left + k
-                for i in xrange(left+1,right):
-                    dp[left][right] = max(dp[left][right],
+                for i in xrange(left+1,right):                  # according to span, check i times
+                    dp[left][right] = max(dp[left][right],      # to seek maximum value
                         nums[left]*nums[i]*nums[right]+dp[left][i]+dp[i][right])
         return dp[0][n-1]
 

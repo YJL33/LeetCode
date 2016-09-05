@@ -28,10 +28,29 @@ import sys
 #import _131_palindrome_partitioning as mod131
 #import _60_permutation_sequence as mod60
 #import _355_design_twitter as mod355
-import _191_number_of_1_bits as mod191
+#import _191_number_of_1_bits as mod191
 #import _201_bitwise_AND_of_numbers_range as mod201
 #import _190_reverse_bits as mod190
 #import _241_different_ways_to_add_parentheses as mod241
+#import _392_is_subsequence as mod392
+#import _394_decode_string as mod394
+import _395_longest_substring_with_at_least_k_repeating_characters as mod395
+
+sol395 = mod395.Solution()
+test = ["aaabb", 3, "ababbc", 2]
+print map(sol395.longestSubstring, test[::2], test[1::2])
+
+#sol394 = mod394.Solution()
+#test = ["10[a]", "1[a1[b1[c]]]", "1[1[c]]", "3[a]2[bc]","3[a2[c]]","2[abc]3[cd]ef"]
+#test2 = ["bbb1[a]", "1[a1[b1[c]n]p]r", "1[1[c]]", "1[a]1[bc]","3[a2[c]]","2[abc]3[cd]ef"]
+#"aaabcbc"
+#"accaccacc"
+#"abcabccdcdcdef"
+#print map(sol394.decodeString, test2)
+
+#sol392 = mod392.Solution()
+#test = ["mmm","ieurpqwieurpimqerqupwoeuqwpoeirqioweurqupriweupruqiwuepriqpwierum"]
+#print map(sol392.isSubsequence, test[::2], test[1::2])
 
 
 #sol241 = mod241.Solution()
@@ -46,9 +65,9 @@ import _191_number_of_1_bits as mod191
 #test = [600000000,2147483645,536870931,1073741823,536870917,536870919,1,1]
 #print map(sol201.rangeBitwiseAnd, test[::2], test[1::2])
 
-sol191 = mod191.Solution()
-test = [1, 16, 31, 1021, 1024, -16]
-print map(sol191.hammingWeight2, test)
+#sol191 = mod191.Solution()
+#test = [1, 16, 31, 1021, 1024, -16]
+#print map(sol191.hammingWeight2, test)
 
 #tw = mod355.Twitter()
 #K = ["postTweet","getNewsFeed","follow","postTweet","getNewsFeed","unfollow","getNewsFeed"]

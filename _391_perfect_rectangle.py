@@ -22,7 +22,7 @@ class Solution(object):
 
         # check area and corner, each should appear even times (except 4 courners of big rectangle)
         corners = {}
-        L, B, R, T, area = float('inf'), float('inf'), 0, 0, 0
+        L, B, R, T, area = float('inf'), float('inf'), -float('inf'), -float('inf'), 0
 
         for sub in rectangles:
             L, B, R, T = min(L, sub[0]), min(B, sub[1]), max(R, sub[2]), max(T, sub[3])

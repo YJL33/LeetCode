@@ -21,7 +21,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        res, sign, cur, jumper = 0, 1, 0, False
+        res, sign, cur = 0, 1, 0
 
         while cur < len(s):
             if s[cur] == ' ':

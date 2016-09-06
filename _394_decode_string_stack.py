@@ -25,31 +25,17 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        def findRight(i):
-            l, r = 1, 0
-            while i < len(s):
-                if s[i] == "[":
-                    l += 1
-                elif s[i] == "]":
-                    r += 1
-                    if r == l:
-                        return i
-                i += 1
-
-        if not s: return ""
-
-        res, cur, k = "", 0, 0
-
-        while cur < len(s):
-            if s[cur] not in "[]" and (ord(s[cur]) < 48 or ord(s[cur]) > 57):
-                res = res+s[cur]
-            elif ord(s[cur]) >= 48 and ord(s[cur]) <= 57:
-                k = 10*k+ord(s[cur])-48
-            if s[cur] == "[":
-                right = findRight(cur+1)
-                res, k = res+k*(self.decodeString(s[cur+1:right])), 0
-                cur = right
-
-            cur += 1
-
-        return res
+        # implement stack, each item in stack: ["sub-string to be repeated", repeat-time]
+        stack, num = [["", 1]], ""
+        for ch in s:
+            if ch.isdigit():
+              num += ch
+            elif ch == '[':
+                stack += ["", int(num)],
+                num = ""
+            elif ch == ']':
+                st, k = stack.pop()
+                stack[-1][0] += st*k
+            else:
+                stack[-1][0] += ch
+        return stack[0][0]

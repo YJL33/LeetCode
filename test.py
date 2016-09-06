@@ -33,12 +33,17 @@ import sys
 #import _190_reverse_bits as mod190
 #import _241_different_ways_to_add_parentheses as mod241
 #import _392_is_subsequence as mod392
-#import _394_decode_string as mod394
-import _395_longest_substring_with_at_least_k_repeating_characters as mod395
+#import _394_decode_string_stack as mod394
+#import _395_longest_substring_with_at_least_k_repeating_characters as mod395
+import _331_verify_preorder_serialization_of_a_binary_tree as mod331
 
-sol395 = mod395.Solution()
-test = ["aaabb", 3, "ababbc", 2]
-print map(sol395.longestSubstring, test[::2], test[1::2])
+sol331 = mod331.Solution()
+test = ["9,3,4,#,#,1,#,#,2,#,6,#,#", "1,#", "9,#,#,1"]
+print map(sol331.isValidSerialization, test)
+
+#sol395 = mod395.Solution()
+#test = ["aaabb", 3, "ababbc", 2]
+#print map(sol395.longestSubstring, test[::2], test[1::2])
 
 #sol394 = mod394.Solution()
 #test = ["10[a]", "1[a1[b1[c]]]", "1[1[c]]", "3[a]2[bc]","3[a2[c]]","2[abc]3[cd]ef"]

@@ -19,37 +19,14 @@ s = "3[a]2[bc]", return "aaabcbc".
 s = "3[a2[c]]", return "accaccacc".
 s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 """
+import re
 class Solution(object):
     def decodeString(self, s):
         """
         :type s: str
         :rtype: str
         """
-        def findRight(i):
-            l, r = 1, 0
-            while i < len(s):
-                if s[i] == "[":
-                    l += 1
-                elif s[i] == "]":
-                    r += 1
-                    if r == l:
-                        return i
-                i += 1
-
-        if not s: return ""
-
-        res, cur, k = "", 0, 0
-
-        while cur < len(s):
-            if s[cur] not in "[]" and (ord(s[cur]) < 48 or ord(s[cur]) > 57):
-                res = res+s[cur]
-            elif ord(s[cur]) >= 48 and ord(s[cur]) <= 57:
-                k = 10*k+ord(s[cur])-48
-            if s[cur] == "[":
-                right = findRight(cur+1)
-                res, k = res+k*(self.decodeString(s[cur+1:right])), 0
-                cur = right
-
-            cur += 1
-
-        return res
+        # implement Regular Expression, the pattern will only meet the most inner part
+        while '[' in s:
+            s = re.sub(r'(\d+)\[([a-z]*)\]', lambda x: int(x.group(1))*x.group(2), s)
+        return s

@@ -36,7 +36,6 @@ class Solution(object):
         if not A: return 0
         maxres = tmp = sum([i*A[i] for i in xrange(len(A))])
         tot, index = sum(A), -1
-        for shift in xrange(len(A)-1):
-        	index, tmp = index-1, tmp+tot-(len(A)*A[index])
-        	maxres = max(maxres, tmp)
+        for index in xrange(-1, -len(A)-1, -1):
+            maxres, tmp = max(maxres, tmp), tmp+tot-(len(A)*A[index])
         return maxres

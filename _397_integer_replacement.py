@@ -14,13 +14,6 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        # the minimum distance b/w 2^n
-        return self.helper(n)
-
-    def helper(self, n, counter=0):
-    	if n == 1:
-    		return counter
-    	if not n%2:
-    		return self.helper(n/2, counter+1)
-    	else:
-    		return min(self.helper(n+1, counter+1), self.helper(n-1, counter+1))
+        if n == 1: return 0
+        if n % 2: return 1 + min(self.integerReplacement(n+1), self.integerReplacement(n-1))
+        else: return 1 + self.integerReplacement(n/2)

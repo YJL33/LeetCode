@@ -45,11 +45,44 @@ import sys
 #import _399_evaluate_division as mod399
 #import _266_palindrome_permutation as mod266
 #import _280_wiggle_sort as mod280
-import _296_best_meeting_point as mod296
+#import _296_best_meeting_point as mod296
+#import _124_binary_tree_maximum_path_sum as mod124
+#import _5_longest_palindromic_substring as mod5
+#import _139_word_break as mod139
+import _23_merge_k_sorted_lists as mod23
 
-test = [ [[1,0,0,0,1],[0,0,0,0,0],[0,0,1,0,0]], [[0,0,1,0,0],[1,1,1,1,1],[0,0,1,0,0]], [[0,0,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,1,0],[1,1,0,0,0,0,1,0,0],[0,0,0,1,1,1,0,0,0]]]
+test = [[1,3,5], [2,4,6], [7,8,9]]
+lnode = []
+for l in test:
+    dummy = temp = mod23.ListNode(-1)
+    for i in l:
+        temp.next = mod23.ListNode(i)
+        temp = temp.next
+    lnode.append(dummy.next)
 
-print map(mod296.Solution().minTotalDistance, test)
+head = mod23.Solution().mergeKLists(lnode)
+head2 = mod23.Solution().mergeKLists2(lnode)
+while head:
+    print head.val,
+    head = head.next
+print ""
+while head2:
+    print head2.val,
+    head2 = head2.next
+
+
+#strs = ["leetcode", "helloworld", "howdoyoudo", "a", "cars"]
+#sets = [["leet","code"], ["hello", "world"], ["how", "doing"], ["b"], ["car","ca","rs"]]
+#print map(mod139.Solution().wordBreak, strs, sets)
+
+#test = ["a", "oupfyybajdkieurhsdfjoibmmakkfodkfjasnkdfjahhglkjhgfdsaasdfghjklporiweurwieruqnkdl", "fjapsodipubiappemprowjofipoaisudbrrrrrrrrrroemmmeorrrrrrrrrrttttasfabsdfaeragsdfabafapsdfipoavismdaojfopdalabkkdkfjalsdjfhhgiidfiffaspobmamosidfoamodfojoairupqoeiurpqpmvqoosdijpjqvmpsqsdfjqpndvaqpuprqwpqfdunvucvzoxucyvzxcvzzdasplaofpaifiodsouiaousfdiausdyfiuqhihiquerhiquwyeiqhidfhjsahkjhcvxiuyiuaiuafyahzjkhxkjhkjzxhckvzjhxbyutzyxtcvuyuuyquwygerqjhwefhgrqfhwdehrqwertyuiopasdfghjklzxcvbnmnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnmnbvcxzlkjhgfdsapoiuytrewqdfhuqyiuyeifasjdhfkahksdviaousidfqhirqoierqe"]
+#print map(mod5.Solution().longestPalindrome, test)
+
+#test = [[1,2,3,4000,5000,4,5,null,null,null,null,6,7,8,9,10,11,12,13,14,15,16,17], [-3], [1,2,3]]
+#print map(mod124.Solution().maxPathSum, test)
+
+#test = [ [[1,0,0,0,1],[0,0,0,0,0],[0,0,1,0,0]], [[0,0,1,0,0],[1,1,1,1,1],[0,0,1,0,0]], [[0,0,0,0,0,0,0,0,0],[0,0,0,0,1,0,0,1,0],[1,1,0,0,0,0,1,0,0],[0,0,0,1,1,1,0,0,0]]]
+#print map(mod296.Solution().minTotalDistance, test)
 
 #test = [[3,5,2,1,6,4], [1,7,4,9,2,5], [6,1,4,2,8,5,7,3,9], [1,17,5,10,13,15,10,5,16,8], [1,1,1,1,2,2,2,2,3,3,4,4,5,5,6,6,6,6,6,6], [1,2,3,4,5,6,7,8,9], [9,8,7,2,3,4,1,5,6] ]
 #map(mod280.Solution().wiggleSort, test)

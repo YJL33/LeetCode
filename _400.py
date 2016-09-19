@@ -13,6 +13,7 @@ Note:
 n is positive and will fit within the range of a 32-bit signed integer (n < 2^31).
 
 """
+
 class Solution(object):
     def findNthDigit(self, n):
         """
@@ -20,20 +21,14 @@ class Solution(object):
         :rtype: int
         """
         if n <= 9: return n
-        tmp, dgt = n, 0             # it's a "dgd"-digit number
+        startpos, tmp, dgt = 0, n, 0             # it's a "dgt"-digit number
         while tmp > 0:
-            tmp -= (dgt+1)*9*(10**dgt)
-            dgt += 1
+            span = (dgt+1)*9*(10**dgt)
+            tmp, startpos, dgt = tmp-span, startpos+span, dgt+1
 
         dgt -= 1
-        cnt, start, startpos = 0, 10**(dgt), 0
-        while cnt < dgt:
-            startpos += (cnt+1)*9*(10**cnt)
-            cnt += 1
+        startpos, start = startpos-span, 10**(dgt)
 
-        print "n", n, " =>", dgt+1, start, startpos
-        tgt = ((n-startpos)/(dgt+1))+start
-        rmd = (n-startpos)%(dgt+1)
-        print tgt, rmd
-        if rmd == 0: tgt -= 1
-        return int(str(tgt)[rmd-1])
+        tgt, rmd = ((n-startpos)/(dgt+1))+start, (n-startpos)%(dgt+1)
+
+        return int(str(tgt)[rmd-1]) if rmd != 0 else int(str(tgt-1)[rmd-1])

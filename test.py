@@ -56,15 +56,27 @@ import sys
 #import _402_remove_k_digits as mod402
 #import _163_missing_ranges as mod163
 #import _150_evaluate_reverse_polish_notation as mod150
-import _56_merge_intervals as mod56
+#import _56_merge_intervals as mod56
+import _127_word_ladder as mod127
 
-inp, arg1, arg2 = [[8,10],[1,3],[2,6],[2,3],[15,18], [20,30], [25,26]], [], []
-for a in inp:
-    arg1 += a[0],
-    arg2 += a[1],
-test2 = map(mod56.Interval, arg1, arg2)
-res = mod56.Solution().merge(test2)
-for r in res: print [r.start, r.end],
+test = set(["hot","dot","dog","lot","log"])
+beginWord = "hit"
+endWord = "cog"
+
+print mod127.Solution().ladderLength(beginWord, endWord, test)
+print mod127.Solution().ladderLength("a", "c", set(["a","b","c"]))
+print mod127.Solution().ladderLength("hot", "dog", set(["hot","dog"]))
+print mod127.Solution().ladderLength("hot", "dog", set(["hot","dog","dot"]))
+print mod127.Solution().ladderLength("hot","dog", set(["hot","dog","cog","pot","dot"]))
+print mod127.Solution().ladderLength("qa", "sq", set(["si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"]))
+
+#inp, arg1, arg2 = [[8,10],[1,3],[2,6],[2,3],[15,18], [20,30], [25,26]], [], []
+#for a in inp:
+#    arg1 += a[0],
+#    arg2 += a[1],
+#test2 = map(mod56.Interval, arg1, arg2)
+#res = mod56.Solution().merge(test2)
+#for r in res: print [r.start, r.end],
 
 
 #test = [["2", "1", "+", "3", "*"],["-4", "13", "5", "/", "+"]]

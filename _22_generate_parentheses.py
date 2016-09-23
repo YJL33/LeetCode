@@ -20,8 +20,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        res = []
-        temp = ''
+        res, temp = [], ''
         self.dfs(n, n, temp, res)
         return res
 
@@ -30,5 +29,5 @@ class Solution(object):
             res.append(temp)
         if left > 0:
             self.dfs(left-1, right, temp+'(', res)
-        if right > left and right > 0:
+        if right > left:
             self.dfs(left, right-1, temp+')', res)

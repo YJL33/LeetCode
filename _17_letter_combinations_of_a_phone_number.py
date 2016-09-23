@@ -36,7 +36,7 @@ class Solution(object):
         if len(digits) == 1:
             return [ch for ch in dct[digits[0]]]
 
-        prev = self.letterCombinations(digits[:-1])
-        new = dct[digits[-1]]
+        nextNums = self.letterCombinations(digits[1:])
+        thisNum = dct[digits[0]]
 
-        return [p+n for p in prev for n in new]
+        return [t+n for t in thisNum for n in nextNums]

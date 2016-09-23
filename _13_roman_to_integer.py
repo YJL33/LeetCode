@@ -28,3 +28,5 @@ class Solution(object):
                 tot -= res[i]
             else:
                 tot += res[i]
+
+        return tot

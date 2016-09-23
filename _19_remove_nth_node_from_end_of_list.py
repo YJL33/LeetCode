@@ -24,20 +24,15 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        prev = self
-        cur = head                              # cursor
-        tail = self.isThisNodeNone(cur, n)      # n nodes away from cursor
+        dummy = ListNode(0)
+        prev, dummy.next = dummy, head
+        tail = self.isThisNodeNone(head, n)     # n nodes away from head
 
-        while tail:                             # if it's not None
-            prev = cur                          # ... everyone move one step forward
-            cur = cur.next
-            tail = tail.next
-        
-        if cur == head:                         # if cursor is at head
-            return head.next                    # ... just remove head
-        else:
-            prev.next = cur.next                # remove the cursor regularly
-            return head                         # return head
+        while tail:                             # while it's not None ...
+            prev, head, tail = head, head.next, tail.next      # everyone move one step forward
+
+        prev.next = head.next                   # remove the head
+        return dummy.next                       # return dmy.next
 
     def isThisNodeNone(self, node, n):
         while n > 0:

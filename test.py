@@ -60,20 +60,26 @@ import sys
 #import _127_word_ladder as mod127
 #import _8_string_to_integer_atoi as mod8
 #import _10_regular_expression_matching as mod10
-import _25_reverse_nodes_in_k_group as mod25
+#import _25_reverse_nodes_in_k_group as mod25
+import _32_longest_valid_parentheses as mod32
 
-test = [[1,2,3,4,5,6,7,8], [1,2,3,4], [1,2,3,4,5,6,7,8]]
-lnode = []
-for l in test:
-    dummy = temp = mod25.ListNode(-1)
-    for i in l:
-        temp.next = mod25.ListNode(i)
-        temp = temp.next
-    lnode.append(dummy.next)
-head = mod25.Solution().reverseKGroup(lnode[1], 2)
-while head:
-    print head.val
-    head = head.next
+test =  [")()()())", "()()()()", ")(()())()()(", ")))))((((()(((()(((((())()((((","", "((()))", ")()()())()()("]
+print map(mod32.Solution().longestValidParentheses, test)
+print [6,8,10,6,0,6,6]
+
+
+#test = [[1,2,3,4,5,6,7,8], [1,2,3,4], [1,2,3,4,5,6,7,8]]
+#lnode = []
+#for l in test:
+#    dummy = temp = mod25.ListNode(-1)
+#    for i in l:
+#        temp.next = mod25.ListNode(i)
+#        temp = temp.next
+#    lnode.append(dummy.next)
+#head = mod25.Solution().reverseKGroup(lnode[1], 2)
+#while head:
+#    print head.val
+#    head = head.next
 
 #print mod10.Solution().isMatch("aa", ".*")
 #print mod10.Solution().isMatch("aa", "a")

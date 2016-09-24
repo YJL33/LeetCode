@@ -58,10 +58,28 @@ import sys
 #import _150_evaluate_reverse_polish_notation as mod150
 #import _56_merge_intervals as mod56
 #import _127_word_ladder as mod127
-import _8_string_to_integer_atoi as mod8
+#import _8_string_to_integer_atoi as mod8
+#import _10_regular_expression_matching as mod10
+import _25_reverse_nodes_in_k_group as mod25
 
-test = ["55   ", " 12   ", "999", "105", "999A", "A105", "-105", "000032","1432999999889999989999999999219","1"]
-print map(mod8.Solution().myAtoi, test)
+test = [[1,2,3,4,5,6,7,8], [1,2,3,4], [1,2,3,4,5,6,7,8]]
+lnode = []
+for l in test:
+    dummy = temp = mod25.ListNode(-1)
+    for i in l:
+        temp.next = mod25.ListNode(i)
+        temp = temp.next
+    lnode.append(dummy.next)
+head = mod25.Solution().reverseKGroup(lnode[1], 2)
+while head:
+    print head.val
+    head = head.next
+
+#print mod10.Solution().isMatch("aa", ".*")
+#print mod10.Solution().isMatch("aa", "a")
+
+#test = ["55   ", " 12   ", "999", "105", "999A", "A105", "-105", "000032","1432999999889999989999999999219","1"]
+#print map(mod8.Solution().myAtoi, test)
 
 #test = set(["hot","dot","dog","lot","log"])
 #beginWord = "hit"

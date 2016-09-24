@@ -24,9 +24,9 @@ class Solution(object):
             """
             primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101]
             ord_a = ord('a')
-            hash = 1
-            for c in s: hash *= primes[ ord(c) - ord_a ]
-            return hash
+            hashval = 1
+            for c in s: hashval *= primes[ ord(c) - ord_a ]
+            return hashval
 
         worddict = {}
         for s in strs:

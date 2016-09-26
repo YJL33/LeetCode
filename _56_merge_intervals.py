@@ -27,6 +27,8 @@ class Solution(object):
         ans, i = [], 0
 
         intervals = self.sorter(intervals)
+        for itv in intervals:
+            print itv.start, itv.end
 
         while i < len(intervals):
             start, end, j = intervals[i].start, intervals[i].end, i+1

@@ -27,8 +27,8 @@ class Solution(object):
         :rtype: void Do not return anything, modify nums in-place instead.
         """
 
-        i = 0
-        j = 0
+        i, j = 0, 0
+
         while i+j < len(nums):
             n = nums[i]
             if nums[i] == 1:

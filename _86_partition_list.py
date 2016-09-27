@@ -26,10 +26,10 @@ class Solution(object):
         # seek through all linklist, if small => connect to 1st half, else => connect to 2nd half
         # analysis: n nodes => 3n + 6 (operations)
 
-        newhead = ListNode(0)
-        secondhalf = ListNode(0)
+        dummy1 = ListNode(0)
+        dummy2 = ListNode(0)
 
-        first, second = newhead, secondhalf
+        first, second = dummy1, dummy2
 
         while head:
             if head.val < x:
@@ -42,9 +42,5 @@ class Solution(object):
 
         # Here merge two part
         second.next = None      # this is important
-        first.next = secondhalf.next
-        return newhead.next
-
-
-
-
+        first.next = dummy2.next
+        return dummy1.next

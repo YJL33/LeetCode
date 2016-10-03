@@ -33,17 +33,17 @@ class Solution(object):
         :rtype: bool
         """
         # Need to consider negative value
-        if root == None:
+        if not root:
             return False
 
         # Below this line root == True
         temp = target - root.val
 
-        if root.left == None and root.right == None:            # Here's the leaf
+        if not root.left and not root.right:    # Here's the leaf
             if temp == 0:
                 return True                 # Here's the solution!
             else:
                 return False                # Wrong path!
-        
+
         else:            # this node is not leaf, must keep seeking
             return self.hasPathSum(root.left, temp) or self.hasPathSum(root.right, temp)

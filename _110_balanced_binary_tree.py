@@ -20,7 +20,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        # Recursive method would lead to Time Exceed Limit (refer to submission 1)
+        # To avoid TLE: if invalid in somewhere => whole tree is invalid.
         return self.findDepth(root) != -1
 
     def findDepth(self, node):
@@ -30,7 +30,7 @@ class Solution(object):
         if node has no children:    return 1
         if this tree is not balanced:   return -1
         """
-        if node == None: return 0                           # this node is Null, return 0
+        if not node: return 0                               # this node is Null, return 0
         if node.left or node.right:     # At least one of children isn't None, check the validity
             left_depth = self.findDepth(node.left)
             if left_depth == -1: return -1                  # left tree is invalid, return -1
@@ -41,6 +41,3 @@ class Solution(object):
             return depth                                    # both tree is valid, return the depth
         else:
             return 1                                        # this node has no children, return 1
-
-
-

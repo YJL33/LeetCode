@@ -30,15 +30,15 @@ class Solution(object):
         # Inorder: Left => Root => Right
 
         def helper(root, res):
-            if root.left != None:
+            if root.left:
                 helper(root.left, res)
             res += root.val,
-            if root.right != None:
+            if root.right:
                 helper(root.right, res)
             return
 
 
-        if root == None:
+        if not root:
             return []
 
         res = []

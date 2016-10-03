@@ -1,7 +1,7 @@
 """
 108. Convert Sorted Array to Binary Search Tree
 
-Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
+Given an array where elements are sorted in ascending order,convert it to a height balanced BST.
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -17,7 +17,7 @@ class Solution(object):
         :rtype: TreeNode
         """
         # Ascending array => nums[0] is the smallest, nums[-1] is the biggest
-        # BST: root.left > root > root.right
+        # BST: root.left < root < root.right
         if nums:
             mid = len(nums)//2
 

@@ -30,7 +30,7 @@ Return 6.
 #         self.right = None
 
 class Solution(object):
-    maxVal = -float('inf')
+    maxVal = -float('inf')          # Global maximum
     def maxPathSum(self, root):
         """
         :type root: TreeNode
@@ -44,9 +44,9 @@ class Solution(object):
         :type root:TreeNode
         :rtype :int
         """
-        if root == None:
+        if root is None:
             return 0
         lsum = self.maxSum(root.left)
         rsum = self.maxSum(root.right)
         self.maxVal = max(self.maxVal, root.val+lsum+rsum, root.val+lsum, root.val+rsum, root.val)
-        return max(lsum+root.val, rsum+root.val, root.val)
+        return max(lsum+root.val, rsum+root.val, root.val)      # local maximum

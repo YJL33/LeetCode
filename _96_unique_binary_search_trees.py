@@ -19,6 +19,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # For a BST(size=3), pick each node as root,
+        # the possible number of each root will be BST(size of left)*BST(size of right):
+        # F(3) = F(0)*F(2) + F(1)*F(1) + F(2)*F(0)
+        # Therefore, F(n) = sum of F(i-1)*F(n-i), for i = 1~n
         res = [1]
         for i in xrange(1,n+1):
             res += 0,

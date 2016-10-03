@@ -33,7 +33,7 @@ import sys
 #import _191_number_of_1_bits as mod191
 #import _201_bitwise_AND_of_numbers_range as mod201
 #import _190_reverse_bits as mod190
-#import _241_different_ways_to_add_parentheses as mod241
+#import _241_different_ways_to_add_parentheses a40s mod241
 #import _392_is_subsequence as mod392
 #import _394_decode_string_stack as mod394
 #import _395_longest_substring_with_at_least_k_repeating_characters as mod395
@@ -66,11 +66,32 @@ import sys
 #import _404 as mod404
 #import _405 as mod405
 #import _406 as mod406
-import _407_2 as mod407
+#import _407_2 as mod407
+#import _72_edit_distance as mod72
+#import _186_reverse_words_in_a_string_2 as mod186
+#import _408 as mod408
+#import _409 as mod409
 
-test = [ [[78,16,94,36],[87,93,50,22],[63,28,91,60],[64,27,41,27],[73,37,12,69],[68,30,83,31],[63,24,68,36]], [[5,8,7,7],[5,2,1,5],[7,1,7,1],[8,9,6,9],[9,8,9,9]] ,[[11,21,31],[81,9,41],[17,61,51]], [[5,5,5,1],[5,1,1,5],[5,1,5,5],[5,2,5,8]], [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]], [[12,13,1,12,12],[13,4,13,11,12],[13,8,10,11,12],[12,13,12,12,12],[13,13,13,13,12]]]
-print map(mod407.Solution().trapRainWater,test)
-print [44, 12, 12, 3, 4, 16]
+#test = ["a", "abccccdd", "abbccddA", "AAAbbbCCC"]
+#print map(mod409.Solution().longestPalindrome, test)
+
+#test = ['word', "internationalization", "apple", "abbreviation"]
+#abbr = ["1ord", "i12iz4n", "a2e", "a10n"]
+#abbr2 = ["word", "1ord", "w1rd", "wo1d", "wor1", "2rd", "w2d", "wo2", "1o1d", "1or1", "w1r1", "1o2", "2r1", "3d", "w3", "4", "5", "w4", "w2", "3"]
+#test2 = ['word']*len(abbr2)
+#print map(mod408.Solution().validWordAbbreviation, test, abbr)
+#print map(mod408.Solution().validWordAbbreviation, test2, abbr2)
+
+#test = [['h','e','l','l','o'], ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]]
+#print map(mod186.Solution().reverseWords, test)
+
+#test = ["abc", "abc", "abc"]
+#test2 = ["adc", "aaa", "abcd"]
+#print map(mod72.Solution().minDistance, test, test2)
+
+#test = [ [[78,16,94,36],[87,93,50,22],[63,28,91,60],[64,27,41,27],[73,37,12,69],[68,30,83,31],[63,24,68,36]], [[5,8,7,7],[5,2,1,5],[7,1,7,1],[8,9,6,9],[9,8,9,9]] ,[[11,21,31],[81,9,41],[17,61,51]], [[5,5,5,1],[5,1,1,5],[5,1,5,5],[5,2,5,8]], [[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]], [[12,13,1,12,12],[13,4,13,11,12],[13,8,10,11,12],[12,13,12,12,12],[13,13,13,13,12]]]
+#print map(mod407.Solution().trapRainWater,test)
+#print [44, 12, 12, 3, 4, 16]
 
 #test = [ [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]], [], [[8,2],[4,1],[0,3],[3,2],[8,1],[4,0],[7,0],[6,2],[8,0],[4,7]]]
 #print map(mod406.Solution().reconstructQueue, test)

@@ -27,10 +27,10 @@ class Solution(object):
             return 0                        # else, return 0
     def getDepth(self, node, depth, res):
         if node is None:
-            return 0
-        if res and depth+1 >= min(res):     # if current depth is deeper than existing one
-            return 0                        # stop seeking
-        if node.left is None and node.right is None:
+            return
+        elif res and depth+1 >= min(res):   # if current depth is deeper than existing one
+            return                          # stop seeking
+        elif node.left is None and node.right is None:
             res.append(depth+1)
         else:
             self.getDepth(node.left, depth+1, res)

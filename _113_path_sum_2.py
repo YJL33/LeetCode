@@ -34,9 +34,8 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
-        temp = []
-        if root == None:
+        res, temp = [], []
+        if root is None:
             return res
         self.findPath(root, target, temp, res)
         return res
@@ -62,7 +61,7 @@ class Solution(object):
                 current_path_array_2.append(nd)
             self.findPath(node.left, current_sum, current_path_array, output)
             self.findPath(node.right, current_sum, current_path_array_2, output)
-        if node.left == None and node.right == None:        # Here's the leaf, do step 3
+        if node.left is None and node.right is None:        # Here's the leaf, do step 3
             if current_sum == 0:
                 output.append(current_path_array)
 

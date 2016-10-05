@@ -71,6 +71,12 @@ import sys
 #import _186_reverse_words_in_a_string_2 as mod186
 #import _408 as mod408
 #import _409 as mod409
+import _130_surrounded_regions as mod130
+
+test = [["OXXOX"],["XOOXO"],["XOXOX"],["OXOOO"],["XXOXO"]]
+print test
+mod130.Solution().solve(test)
+print test
 
 #test = ["a", "abccccdd", "abbccddA", "AAAbbbCCC"]
 #print map(mod409.Solution().longestPalindrome, test)

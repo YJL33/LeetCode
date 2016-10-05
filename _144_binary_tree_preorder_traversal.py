@@ -38,7 +38,7 @@ class Solution(object):
             return
 
 
-        if root == None:
+        if root is None:
             return []
 
         res = []

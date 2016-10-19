@@ -15,6 +15,7 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
+        # maintain the stack as increasing
         heights.append(0)   # (1)
         stack = [-1]        # (2) ... Most skillful part in this problem
         ans = 0

@@ -58,23 +58,16 @@ class Solution(object):
         :type expression: str
         :rtype: str
         """
-        q = []
-        for i in xrange(len(expression)):
-            if expression[i] == '?':
-                q += i,
-
+        i = len(expression)-1
         # begin with the last question, and the first colon after it.
-        while q:
-            pos = q.pop()
-            checker = expression[pos-1]
-            colon = pos+2
-            if checker == 'T':
-                tmp = expression[pos+1]
-            else:
-                tmp = expression[pos+3]
-            expression = expression[:pos-1] + tmp + expression[pos+4]
+        while len(expression) != 1:
+
+            while expression[i] != '?': i -= 1
+            checker = expression[i-1]
+
+            tmp = expression[i+1] if checker == 'T' else expression[i+3]
+
+            expression = expression[:i-1] + tmp + expression[i+4:]
+            i = i-2
 
         return expression
-
-
-

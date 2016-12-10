@@ -26,38 +26,32 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        length, repeat, i, j, counter = len(s), [], 0, 1, [0]*4     # refer to classifier
+        length, repeat, types, i, j = len(s), [], [False]*4, 0, 1
 
         while i < length:
             while i+j < length and s[i+j] == s[i]: j += 1
-            if j >= 3: repeat += (j, s[i]),                         # get repeats
-            counter[self.classifier(s[i])] += j                     # count lower/upper/digit
+            if j >= 3: repeat += j,                     # get repeats
+            types[self.classifier(s[i])] = True         # check lower/upper/digit
             i, j = i+j, 1
 
-        insert, delete, replace, flag = 0, 0, 0, (6 <= length <= 20)
+        insert, delete, replace = 0, 0, 0
+        
+        if length < 6: insert = 6-length                # Case A.
+        
+        elif length > 20:   # Case B. Fix repeat by (replace+delete), should > all solve by replace
+            delete, allbydel = length-20, sum([r-2 for r in repeat])
+            if delete < allbydel:
+                replace = max(sum([r//3 for r in repeat])-delete, ((allbydel-delete)+2)//3)
 
-        while length < 6:                           # case A: (L<6)
-            length, insert = length+1, insert+1     # at least 1 insert => no need to fix repeat
-            counter[counter.index(min(counter[:-1]))] += 1      # NOTE: insert the missing one
+        else:               # Case C. fix repeat only by replace
+            for rp in repeat: replace += rp//3
 
-        if length > 20:                             # case B: (L>20) fix repeat by delete & replace
-            delete, candel = length-20, sum([r[0]-2 for r in repeat])
-            if delete < candel:                     # (replace + delete) MUST >= len(repeat)
-                replace = max(len(repeat)-delete, ((candel-delete)+2)//3)
-
-        while flag and repeat:                      # case C: (6<=L<=20) fix repeat only by replace
-            replace += repeat.pop()[0]//3
-                                                    # final check: if missing still > replace
-        if replace < counter[:-1].count(0): replace += counter[:-1].count(0)-replace
-
-        return replace+delete+insert
+        # final check: if replace less than missing
+        return insert+delete+max(replace, types[:-1].count(False)-insert)
 
     def classifier(self, c):
-        if c.islower():
-            return 0
-        elif c.isupper():
-            return 1
-        elif c.isdigit():
-            return 2
-        else:
-            return 3        # None of above
+        # types: 0 = lowercase, 1 = uppercase, 2 = digit, 3 = others (None of above)
+        if c.islower(): return 0
+        elif c.isupper(): return 1
+        elif c.isdigit(): return 2
+        else: return 3

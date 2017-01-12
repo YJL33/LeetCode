@@ -28,16 +28,12 @@ class Solution(object):
         """
         if matrix == [] or target is None: return False
 
-        m = len(matrix)
-        n = len(matrix[0])
-
-        low = 0
-        high = m*n-1
+        m, n = len(matrix), len(matrix[0])
+        low, high = 0, m*n-1
 
         while low <= high:
             mid = low + (high-low)/2
-            row = mid//n
-            col = (mid)%n
+            row, col = mid//n, (mid)%n
             if target == matrix[row][col]:
                 return True
             elif target < matrix[row][col]:   # target is at lower part

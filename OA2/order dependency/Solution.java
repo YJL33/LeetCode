@@ -12,11 +12,11 @@ public class Solution {
     {
         if (visit.get(x) == -1) return false;
         if (visit.get(x) == 1) return true;
-        visit.put(x, 1);
+        visit.put(x, 1);                    // mark it as 1
         for (String y: reqmap.get(x)) {
-            if (dfs(res, y)) return true;
+            if (dfs(res, y)) return true;   // if meet 1 again means there's a loop
         }
-        visit.put(x, -1);               // check PASSED
+        visit.put(x, -1);                   // check PASSED, remark all of them as -1
         res.add(new Order(x));
         return false;
     }
@@ -50,7 +50,7 @@ public class Solution {
         }
         // dfs
         for (String n: reqmap.keySet()) {
-            if (dfs(res, n)) return null;
+            if (dfs(res, n)) return null;       // true => there's a loop
         }
 
         return res;

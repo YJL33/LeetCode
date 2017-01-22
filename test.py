@@ -1,5 +1,5 @@
 """
-Operational testing model for LEETCODE
+testing model for LEETCODE
 """
 #import _146_LRU_cache as mod146
 #import _155_min_stack as mod155
@@ -23,9 +23,18 @@ Operational testing model for LEETCODE
 # import _301
 # import _327
 # import _448
-import _461
+# import _461
+# import _484
 
-print _461.Solution().hammingDistance(1, 4)
+
+print _494.Solution().findTargetSumWays([1], 1)
+print _494.Solution().findTargetSumWays2([1], 1)
+print _494.Solution().findTargetSumWays3([1], 1)
+
+# print _484.Solution().findPermutation("DDIIDI")
+# print _484.Solution().findPermutation2("DDIIDI")
+
+#print _461.Solution().hammingDistance(1, 4)
 
 # test = [4,3,2,7,8,2,3,1]
 # print _448.Solution().findDisappearedNumbers(test)

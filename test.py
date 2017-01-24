@@ -25,11 +25,15 @@ testing model for LEETCODE
 # import _448
 # import _461
 # import _484
+# from _1.python import _1_two_sum_redo as _1
+# from _3.python import _3_longest_substring_without_repeating_characters_redo as _3
 
+# test = ["abcabcbb","bbbbbbb","pwwppwwpwppwkew"]
+# print map(_3.Solution().lengthOfLongestSubstring, test)
 
-print _494.Solution().findTargetSumWays([1], 1)
-print _494.Solution().findTargetSumWays2([1], 1)
-print _494.Solution().findTargetSumWays3([1], 1)
+# print _494.Solution().findTargetSumWays([1], 1)
+# print _494.Solution().findTargetSumWays2([1], 1)
+# print _494.Solution().findTargetSumWays3([1], 1)
 
 # print _484.Solution().findPermutation("DDIIDI")
 # print _484.Solution().findPermutation2("DDIIDI")

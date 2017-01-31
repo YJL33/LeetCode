@@ -22,18 +22,12 @@ class Solution(object):
         :rtype: ListNode
         """
         dmy = ListNode(0)
-        cur, carry = dmy, 0
+        cur, s = dmy, 0
 
-        while l1 and l2:
-            cur.next = ListNode((l1.val+l2.val+carry)%10)
-            carry = 1 if (l1.val+l2.val+carry) > 9 else 0
-            l1, l2, cur = l1.next, l2.next, cur.next
+        while l1 or l2:
+            s += (l1.val if l1 else 0) + (l2.val if l2 else 0)
+            cur.next, s = ListNode(s%10), s/10
+            l1, l2, cur = l1.next if l1 else l1, l2.next if l2 else l2, cur.next
 
-        remain = l1 if (not l2) else l2
-        while remain:
-            cur.next = ListNode((remain.val+carry)%10)
-            carry = 1 if (remain.val+carry) > 9 else 0
-            remain, cur = remain.next, cur.next
-
-        if carry != 0: cur.next = ListNode(carry)
+        if s != 0: cur.next = ListNode(s)
         return dmy.next

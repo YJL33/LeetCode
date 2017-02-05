@@ -30,5 +30,8 @@ class Solution(object):
             while height[right] <= h and right > left: right -= 1
         return water
 
-if __name__ == '__name__':
-    return Solution().maxArea([])
+def main():
+    print Solution().maxArea([1,5,9,8,7,3,4,5,8,1,4,2,1,7,1])
+
+if __name__ == '__main__':
+    main()

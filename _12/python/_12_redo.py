@@ -36,7 +36,10 @@ class Solution(object):
         return ''.join(res)
 
 def main():
-    print Solution().intToRoman(3999)
+    print Solution().intToRoman(488)
+    print Solution().intToRoman(300)
+    print Solution().intToRoman(737)
+    print Solution().intToRoman(1024)
 
 if __name__ == '__main__':
     main()

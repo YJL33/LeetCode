@@ -29,7 +29,7 @@ class Solution(object):
         """
         print "input: \n{}\n{}".format(nums1, nums2)
         def kth(nums1, nums2, k, s1, e1, s2, e2):
-            print "now: {} {} {} {} {}".format(k, s1, e1, s2, e2)
+            # print "now: {} {} {} {} {}".format(k, s1, e1, s2, e2)
             if s1 >= e1:
                 return nums2[s2+k]
             if s2 >= e2:

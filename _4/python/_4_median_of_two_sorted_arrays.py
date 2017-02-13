@@ -27,7 +27,7 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
-        print "input: \n{}\n{}".format(nums1, nums2)
+        # print "input: \n{}\n{}".format(nums1, nums2)
         def kth(nums1, nums2, k, s1, e1, s2, e2):
             # print "now: {} {} {} {} {}".format(k, s1, e1, s2, e2)
             if s1 >= e1:
@@ -37,19 +37,19 @@ class Solution(object):
             if k == 0:
                 return min(nums1[s1], nums2[s2])
             
-            m = (e1+s1)/2
-            n = (e2+s2)/2
+            m1 = (e1+s1)/2
+            m2 = (e2+s2)/2
             
-            if (m-s1)+(n-s2) < k:
-                if nums1[m] < nums2[n]:
-                    return kth(nums1, nums2, k-(m-s1)-1, m+1, e1, s2, e2)
+            if (m1-s1)+(m2-s2) < k:
+                if nums1[m1] < nums2[m2]:
+                    return kth(nums1, nums2, k-(m1-s1)-1, m1+1, e1, s2, e2)
                 else:
-                    return kth(nums1, nums2, k-(n-s2)-1, s1, e1, n+1, e2)
-            else: # m+n >= k, m+n cover k+1 element so we can reduce larger half
-                if nums1[m] < nums2[n]:
-                    return kth(nums1, nums2, k, s1, e1, s2, n)
+                    return kth(nums1, nums2, k-(m2-s2)-1, s1, e1, m2+1, e2)
+            else: # m1+m2 >= k, m1+m2 cover k+1 element so we can reduce larger half
+                if nums1[m1] < nums2[m2]:
+                    return kth(nums1, nums2, k, s1, e1, s2, m2)
                 else:
-                    return kth(nums1, nums2, k, s1, m, s2, e2)
+                    return kth(nums1, nums2, k, s1, m1, s2, e2)
     
         m = len(nums1)
         n = len(nums2)

@@ -28,6 +28,26 @@ testing model for LEETCODE
 # from _1.python import _1_two_sum_redo as _1
 # from _3.python import _3_longest_substring_without_repeating_characters_redo as _3
 
+from _4.python import _4_median_of_two_sorted_arrays as _4
+from _4.python import _4_redo as _4r
+
+test1a = [1]
+test1b = [2]
+test2a = [1,2]
+test2b = [3,4]
+test3a = [1,11,21,31,41,51,61]
+test3b = [30,40,50,60,70]
+test4a = [100,200,300,400,500,600,700,800,900,1000]
+test4b = [300,400,500,600,700,800]
+r1a, r1b = _4.Solution().findMedianSortedArrays(test1a, test1b), _4r.Solution().findMedianSortedArrays(test1a, test1b)
+r2a, r2b = _4.Solution().findMedianSortedArrays(test2a, test2b), _4r.Solution().findMedianSortedArrays(test2a, test2b)
+r3a, r3b = _4.Solution().findMedianSortedArrays(test3a, test3b), _4r.Solution().findMedianSortedArrays(test3a, test3b)
+r4a, r4b = _4.Solution().findMedianSortedArrays(test4a, test4b), _4r.Solution().findMedianSortedArrays(test4a, test4b)
+print "test-1", r1a == r1b, r1a, r1b
+print "test-2", r2a == r2b, r2a, r2b
+print "test-3", r3a == r3b, r3a, r3b
+print "test-4", r4a == r4b, r4a, r4b
+
 # test = ["abcabcbb","bbbbbbb","pwwppwwpwppwkew"]
 # print map(_3.Solution().lengthOfLongestSubstring, test)
 

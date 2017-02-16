@@ -4,8 +4,8 @@ Order dependency
 import java.util.*;
 public class Solution {
 
-    static Map<String, ArrayList<String>> reqmap = new HashMap<>();
-    static Map<String, Integer> visit = new HashMap<>();
+    static Map<String, ArrayList<String>> reqmap = new HashMap<>();     // records requisites of each element
+    static Map<String, Integer> visit = new HashMap<>();                // 0: unvisited, 1: visiting(loop), -1: visited
     static List<Order> res = new ArrayList<>();
 
     public static Boolean dfs(List<Order> result, String x)

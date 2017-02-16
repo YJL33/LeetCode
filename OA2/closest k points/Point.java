@@ -1,7 +1,7 @@
 // class of Point
 class Point
 {
-    double  x;
+    double x;
     double y;
     public Point(double x, double y)
     {

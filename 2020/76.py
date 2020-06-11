@@ -27,63 +27,29 @@ class Solution(object):
         """
         # use char dict
         charDict = {}       # required number of character
-        charIndex = {}      # save the index
         for c in t:
             if c in charDict:
                 charDict[c] += 1
             else:
                 charDict[c] = 1
-                charIndex[c] = []
 
-        for i in xrange(len(s)):
-            if s[i] in charIndex:
-                charIndex[s[i]] += i,
-
-        candidates = []
-        for c in charDict.keys():
-            # if there's no such window
-            if len(charIndex[c]) < charDict[c]:
-                return ""
-            candidates += charIndex[c]
-
-        # ... so there IS one ...
-        # manage 2 pointers
-        candidates.sort()
-        print candidates
-        left, right, minSize = 0, False, len(s)+1
-
-        # find best left
-        for i in xrange(len(candidates)-len(t)):
-
-            r = self.getMinWindowSize(s, t, candidates, charDict.copy(), i, minSize)
-            print "r: ", r
-
-            if r >= 0:
-                minSize = candidates[r]-candidates[i]+1
-                left, right = candidates[i], candidates[r]
-                print "index - l, r:", i, r
-                print "real - l, r:", left, right
-        
-        return s[left:right+1]
-
-    def getMinWindowSize(self, s, t, candidates, charDict, left, minSize):
-        # seek from left to right
-        # return r
         missing = len(t)
-        r = left
-        print "missing, r:", missing, r
-        while missing and r<len(candidates) and candidates[r] < candidates[left]+minSize+1:
-            char = s[candidates[r]]
-            missing -= (charDict[char] > 0)
-            charDict[char] -= 1
-            print "char(i), missing:", char, r, missing
-            if missing: r += 1
+        i, start, end = 0, 0, 0
 
-        print "l, r: ", left, r, missing
-        if not missing:
-            return r
-        else:
-            return -1
+        for j, c in enumerate(s, 1):
+            if c not in charDict:
+                charDict[c] = 0
+            missing -= (charDict[c] > 0)
+            charDict[c] -= 1
 
-# print Solution().minWindow("ADOBECODEBANC", "ABC")
+            if not missing:
+                while i < j and charDict[s[i]] < 0:
+                    charDict[s[i]] += 1
+                    i += 1
+                if not end or j - i <= end - start:
+                    start, end = i, j
+
+        return s[start:end]
+
+print Solution().minWindow("ADOBECODEBANC", "ABC")
 print Solution().minWindow("AA", "AA")

@@ -1,5 +1,7 @@
 """
 MinHeap
+
+Check the usage at #295
 """
 class MinHeap(object):
 
@@ -58,14 +60,14 @@ class MinHeap(object):
 
         # print mh.arr
 
-print MinHeap()
-mh = MinHeap()
-mh.push(5)
-mh.push(10)
-mh.push(3)
-mh.push(2)
-mh.push(1)
-print mh.arr
-print mh.pop()
-print mh.arr
+# print MinHeap()
+# mh = MinHeap()
+# mh.push(5)
+# mh.push(10)
+# mh.push(3)
+# mh.push(2)
+# mh.push(1)
+# print mh.arr
+# print mh.pop()
+# print mh.arr
 

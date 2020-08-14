@@ -35,32 +35,22 @@ class Solution(object):
         :rtype: bool
         """
         # naive approach
-        # maintain 2 cursors and one queue
+        # maintain 2 cursors and 1 stack
         # time: O(2n)
         # space: O(n)
 
-        i, j = 0, 0
-        prev = []
-        while i < len(pushed):
-            if pushed[i] != popped[j] and (prev == [] or popped[j] != prev[-1]):
-                # print "push:", pushed[i], prev
-                prev += pushed[i],
-                i += 1
-            elif prev != [] and popped[j] == prev[-1]:
+        # improve:
+        # maintain only 1 cursor and 1 stack
+
+        j = 0
+        stack = []
+        for x in pushed:
+            stack += x,
+            while stack and j < len(popped) and stack[-1] == popped[j]:
                 j += 1
-                prev.pop()
-            elif pushed[i] == popped[j]:
-                # print "push and pop:", popped[j]
-                i, j = i+1, j+1
-            else:
-                return False
+                stack.pop()
 
-        while j < len(popped) and prev != [] and popped[j] == prev[-1]:
-            # print "pop:", popped[j], prev[-1]
-            j += 1
-            prev.pop()
-
-        return (i == len(pushed) and j == len(popped))
+        return j == len(popped)
 
 print Solution().validateStackSequences([1,2,3,4,5], [4,5,3,2,1]), "T"
 print Solution().validateStackSequences([1,2,3,4,5], [4,3,5,1,2]), "F"

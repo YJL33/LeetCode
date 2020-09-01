@@ -75,14 +75,14 @@ class Solution(object):
         # the length before the insert position is the count
         # time comlexity: O(n*logn)
     def countSmaller(self, nums):
-        res = []
+        tmp = []
         ans = [0 for _ in nums]
         for i in range(len(nums)-1, -1, -1):
-            pos = bisect.bisect(res, nums[i])
-            res.insert(pos, nums[i])
+            pos = bisect.bisect(tmp, nums[i])
+            tmp.insert(pos, nums[i])
             # print(res)
-            while pos > 0 and s[pos] == s[pos-1]:
-                index -= 1
+            while pos > 0 and tmp[pos] == tmp[pos-1]:
+                pos -= 1
             ans[i] = pos
             # print(ans)
         return ans

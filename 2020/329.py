@@ -7,7 +7,9 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: int
         """
-        # dp from everypoint + dp
+        # dfs from everypoint
+        # time complexity: O(dfs*N)
+
         if not matrix or not matrix[0]: return 0
         h, w = len(matrix), len(matrix[0])
 

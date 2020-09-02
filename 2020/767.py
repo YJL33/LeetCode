@@ -19,6 +19,8 @@ Note:
 
 S will consist of lowercase letters and have length in range [1, 500].
 """
+import heapq
+
 class Solution(object):
     def reorganizeString(self, S):
         """
@@ -29,7 +31,7 @@ class Solution(object):
         # if the answer exists: organise the string to proper output
         # analysis
         # phase 1: O(n)
-        # phase 2: O(n)*2
+        # phase 2: O(n)+O(xlog(x)), where x = number of unique characters
         charDict = {}
         for c in S:
             if c not in charDict:
@@ -43,19 +45,26 @@ class Solution(object):
                 if charDict[c] > len(S)/2:
                     return ""
 
-        # validate twice: forward and backward
-        tmp = self.organise([c for c in S])
-        res = self.organise(tmp[::-1])
+        tmp = self.organize(charDict, len(S))
 
-        return ''.join(res)
+        return ''.join(tmp)
 
-    def organise(self, res):
-        for i in xrange(len(res)-1):
-            j = i+1
-            while res[i] == res[i+1] and j < len(res):
-                if res[j] != res[i]:
-                    res[i+1], res[j] = res[j], res[i+1]
-                j += 1
+    def organize(self, cd, n):
+        hp = []
+        for k in cd.keys():
+            heapq.heappush(hp, ((-1)*cd[k], k))
+        res = [0 for _ in range(n)]
+        cnt, char = heapq.heappop(hp)
+        index = [i for i in range(0, n, 2)] + [j for j in range(1, n, 2)]
+        for i in index:
+            # print char, cnt
+            if cnt < 0:
+                res[i] = char
+                cnt += 1
+            else:
+                cnt, char = heapq.heappop(hp)
+                res[i] = char
+                cnt += 1
         return res
 
 # print Solution().reorganizeString('aab')

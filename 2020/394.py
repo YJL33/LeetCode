@@ -34,7 +34,6 @@ class Solution(object):
         res = ""
         k = 0
         i = 0
-        toAdd = ""
 
         while i < len(s):
             if s[i] in "0123456789":

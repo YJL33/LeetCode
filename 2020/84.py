@@ -21,21 +21,27 @@ class Solution(object):
         # so on and so forth
         # time: O(n)
 
+        # most skillful part: add 0 at the end of heights
+        # check unit test L47, we'll find that answer is only calculated until we reach the end
         stack = [-1]
         heights += 0,
+
         ans = 0
         # print(heights)
         for i in range(len(heights)):
+            print("before:", stack, [heights[x] for x in stack])
             while heights[i] < heights[stack[-1]]:
-                # print("updating index:", i, "  value=", heights[i])
+                print("updating index:", i, "  value=", heights[i])
                 l = stack.pop()
                 w = i-stack[-1]-1
                 h = heights[l]
                 ans = max(h*w, ans)
-                # print("h:", h, "w:", w, ans)
+                print("l:", l, "h:", h, "w:", w, "ans:", ans)
             stack += i,
+            print("after:", stack, [heights[x] for x in stack])
 
         return ans
 
 
 print Solution().largestRectangleArea([2,1,5,6,2,3])
+print Solution().largestRectangleArea([1,2,3,4,5,6,7])

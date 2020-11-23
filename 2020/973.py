@@ -45,7 +45,8 @@ class Solution(object):
         # naive approach, sorting - time: O(NlogN)
         rank = []
         for i in xrange(len(points)):
-            rank += (sum([j**2 for j in points[i]]), i),
+            x, y = points[i]
+            rank += ((x**2)+(y**2), i),
         rank.sort()
         return [points[p[1]] for p in rank[:K]]
 

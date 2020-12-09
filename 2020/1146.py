@@ -45,9 +45,7 @@ class SnapshotArray(object):
         keys.sort()
         while l < r:
             m = (r+l)/2
-            if keys[m] == tgt:
-                return d[keys[m]]
-            elif keys[m] > tgt:        # m is too big
+            if keys[m] > tgt:        # m is too big
                 r = m
             else:
                 l = m+1

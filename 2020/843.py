@@ -10,12 +10,14 @@
 
 import collections
 import itertools
+from typing import List
+masterString = 'Master'
 class Solution:
     # sort the wordlist by how common characters appear in each spot
     # guess the most common one first
     # based on the output, shorten the list (by removing impossible words)
     # repeat
-    def findSecretWord(self, wordlist: List[str], master: 'Master') -> None:
+    def findSecretWord(self, wordlist: List[str], master: masterString) -> None:
         x = 0
         while x < 6:
             cnt = collections.Counter(w1 for w1, w2 in itertools.permutations(wordlist, 2) if self.match(w1, w2) == 0)

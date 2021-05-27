@@ -3,6 +3,7 @@
 """
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
+        # observation: n=143, k=1: remove 4, which is the first n[i]>n[i+1]
         # handle corner case: 0
         if k == len(num): return 0
         

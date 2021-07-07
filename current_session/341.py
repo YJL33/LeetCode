@@ -36,9 +36,9 @@ class NestedIterator(object):
         self.arr = self.helper(nestedList)
         self.cur = 0
 
-    def helper(self, ni):
+    def helper(self, nL):       # only take nestedList
         arr = []
-        for n in ni:
+        for n in nL:
             if n.isInteger():
                 arr += n.getInteger(),
             else:

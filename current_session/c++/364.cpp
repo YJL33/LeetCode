@@ -45,17 +45,15 @@ public:
         return levelSum;
     }
 private:
-    void dfs(vector<NestedInteger>& nl, int lv, vector<int> &res) {
+    void dfs(vector<NestedInteger> const &nl, int lv, vector<int> &res) {
         if (res.size()<lv+1) res.resize(lv+1);
         for (auto n : nl) {
             if (n.isInteger()) {
                 res[lv] += n.getInteger();
             } else {
-                vector<NestedInteger> x = n.getList();
-                dfs(x, lv+1, res);
+                dfs(n.getList(), lv+1, res);
             }
         }
-        cout<<"lv:"<<lv<<" res[lv]:"<<res[lv]<<endl;
         return;
     }
 };

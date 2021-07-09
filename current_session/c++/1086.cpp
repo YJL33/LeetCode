@@ -6,34 +6,34 @@
 using namespace std;
 class Solution {
 public:
-    vector<vector<int> > highFive(vector<vector<int> >& items) {
-        // put everything into a map: key=user, value=scores
-        map<int, vector<int> > userScoreMap;
-        for (int i=0; i < items.size(); i++) {
-            int user = items[i][0];
-            int score = (-1)*items[i][1];
-            userScoreMap[user].push_back(score);
-        }
-        vector<vector<int> > res;
-        // vector<vector<int> > res(userScoreMap.size());
-        // int i = 0;
-        // for each user, calculate his/her high five
-        for (auto it : userScoreMap) {
-            vector<int> v = it.second;
-            sort(v.begin(), v.end());
-            if (v.size() > 5) v.resize(5);
-            int sum=0, cnt=0;
-            for (int i=0; i<v.size(); i++) {
-                sum = sum + v[i];
-                cnt = cnt+1;
-            }
-            res.push_back({it.first, -1*sum/cnt});
-            // res[i].push_back(it.first);
-            // res[i].push_back(-1*sum/cnt);
-            // i++;
-        }
-        return res;
+  vector<vector<int> > highFive(vector<vector<int> >& items) {
+    // put everything into a map: key=user, value=scores
+    map<int, vector<int> > userScoreMap;
+    for (int i=0; i < items.size(); i++) {
+      int user = items[i][0];
+      int score = (-1)*items[i][1];
+      userScoreMap[user].push_back(score);
     }
+    vector<vector<int> > res;
+    // vector<vector<int> > res(userScoreMap.size());
+    // int i = 0;
+    // for each user, calculate his/her high five
+    for (auto it : userScoreMap) {
+      vector<int> v = it.second;
+      sort(v.begin(), v.end());
+      if (v.size() > 5) v.resize(5);
+      int sum=0, cnt=0;
+      for (int i=0; i<v.size(); i++) {
+        sum = sum + v[i];
+        cnt = cnt+1;
+      }
+      res.push_back({it.first, -1*sum/cnt});
+      // res[i].push_back(it.first);
+      // res[i].push_back(-1*sum/cnt);
+      // i++;
+    }
+    return res;
+  }
 };
 
 int main() {

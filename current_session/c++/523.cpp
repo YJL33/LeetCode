@@ -40,3 +40,17 @@ public:
     return false;
   }
 };
+
+int main() {
+  vector<int> numIn;
+  int n, x, k;
+  cin >> n;   // length of array
+  while (n>0) {
+    cin >> x; 
+    numIn.push_back(x);
+    --n;
+  }
+  cin >> k;
+  string res = Solution().checkSubarraySum(numIn, k) ? "TRUE" : "FALSE";
+  cout << res << endl;
+}

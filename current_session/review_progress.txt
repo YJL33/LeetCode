@@ -145,15 +145,14 @@
 71 Simplify Path     35.5% Medium 
 426 Convert Binary Search Tree to Sorted Doubly Linked List     62.4% Medium 
 1822 Sign of the Product of an Array     65.0% Easy 
-
-813 Largest Sum of Averages     51.7% Medium 
-410 Split Array Largest Sum     47.5% Hard 
-
-193 Valid Phone Numbers    25.4% Easy 
-236 Lowest Common Ancestor of a Binary Tree     51.2% Medium 
-32 Longest Valid Parentheses     30.3% Hard 
-151 Reverse Words in a String     25.1% Medium 
+# 813 Largest Sum of Averages     51.7% Medium 
+# 410 Split Array Largest Sum     47.5% Hard 
 344 Reverse String     71.5% Easy 
+151 Reverse Words in a String     25.1% Medium 
+32 Longest Valid Parentheses     30.3% Hard 
+236 Lowest Common Ancestor of a Binary Tree     51.2% Medium 
+193 Valid Phone Numbers    25.4% Easy 
+
 1192 Critical Connections in a Network     51.7% Hard 
 98 Validate Binary Search Tree     29.3% Medium 
 355 Design Twitter    32.6% Medium 

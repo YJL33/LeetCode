@@ -144,8 +144,8 @@
 149 Max Points on a Line     18.5% Hard 
 71 Simplify Path     35.5% Medium 
 426 Convert Binary Search Tree to Sorted Doubly Linked List     62.4% Medium 
-
 1822 Sign of the Product of an Array     65.0% Easy 
+
 813 Largest Sum of Averages     51.7% Medium 
 410 Split Array Largest Sum     47.5% Hard 
 193 Valid Phone Numbers    25.4% Easy 

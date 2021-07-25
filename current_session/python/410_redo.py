@@ -4,8 +4,33 @@
 from typing import List
 import collections
 class Solution:
-    def splitArray(self, A: List[int], m: int) -> int:
-
+    def splitArray(self, nums: List[int], m: int) -> int:
+        # use binary search, try res from range from max(nums) -> sum(nums)
+        # times of try: O(logM), M = range
+        # for each try, we need O(n) to find out whether x is valid
+        # we want to minimize x
+        # overall time complexity: O(nlogM)
+        if (m==1): return sum(nums)
+        l, r = max(nums), sum(nums)
+        while l <= r:
+            mid = (l + r)//2
+            if self.isValid(nums, m, mid):     # x could be too big
+                r = mid
+            else:
+                l = mid + 1
+        return l
+    def isValid(arr, m, target):
+        i, sumOfGroup = 0, 0
+        res = []
+        for i in range(len(arr)):
+            sumOfGroup += arr[i]
+            if sumOfGroup > target:
+                res += sumOfGroup-arr[i],
+                sumOfGroup = arr[i]
+        res += sumOfGroup,
+        return m >= len(res)
+        
+    def splitArrayTLE(self, A: List[int], m: int) -> int:
         # get all partial sum O(n^2)
         # sumMap[(i,j)] = sum of A[i:j]
         sumMap = collections.defaultdict(int)

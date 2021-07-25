@@ -152,8 +152,8 @@
 32 Longest Valid Parentheses     30.3% Hard 
 236 Lowest Common Ancestor of a Binary Tree     51.2% Medium 
 193 Valid Phone Numbers    25.4% Easy 
-
 1192 Critical Connections in a Network     51.7% Hard 
+
 98 Validate Binary Search Tree     29.3% Medium 
 355 Design Twitter    32.6% Medium 
 339 Nested List Weight Sum     77.6% Medium 

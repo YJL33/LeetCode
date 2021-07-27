@@ -157,8 +157,8 @@
 122 Best Time to Buy and Sell Stock II     59.5% Easy 
 724 Find Pivot Index     47.7% Easy 
 355 Design Twitter    32.6% Medium 
-
 339 Nested List Weight Sum     77.6% Medium 
+
 716 Max Stack     43.7% Easy 
 359 Logger Rate Limiter     73.3% Easy 
 242 Valid Anagram     59.5% Easy 

@@ -169,8 +169,8 @@
 974 Subarray Sums Divisible by K    51.8% Medium 
 735 Asteroid Collision     43.6% Medium 
 1091 Shortest Path in Binary Matrix     40.7% Medium 
-
 518 Coin Change 2     53.5% Medium 
+
 346 Moving Average from Data Stream     74.4% Easy 
 72 Edit Distance     48.1% Hard 
 8 String to Integer (atoi)    15.9% Medium 

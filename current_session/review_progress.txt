@@ -326,6 +326,7 @@
 900 RLE Iterator    56.5% Medium 
 59 Spiral Matrix II     59.2% Medium 
 658 Find K Closest Elements     43.3% Medium 
+26 Remove Duplicates from Sorted Array    47.4%	Easy
 1793 Maximum Score of a Good Subarray    48.5% Hard 
 285 Inorder Successor in BST     44.5% Medium 
 1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 

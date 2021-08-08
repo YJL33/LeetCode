@@ -170,12 +170,12 @@
 735 Asteroid Collision     43.6% Medium 
 1091 Shortest Path in Binary Matrix     40.7% Medium 
 518 Coin Change 2     53.5% Medium 
+45 Jump Game II     33.6% Medium 
 
 346 Moving Average from Data Stream     74.4% Easy 
 72 Edit Distance     48.1% Hard 
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
-45 Jump Game II     33.6% Medium 
 9 Palindrome Number     50.9% Easy 
 1344 Angle Between Hands of a Clock     61.6% Medium 
 211 Design Add and Search Words Data Structure     41.6% Medium 

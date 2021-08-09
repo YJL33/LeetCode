@@ -174,7 +174,12 @@
 346 Moving Average from Data Stream     74.4% Easy 
 329 Longest Increasing Path in a Matrix     47.3% Hard 
 211 Design Add and Search Words Data Structure     41.6% Medium 
+532 K-diff Pairs in an Array     36.2% Medium 
+1277 Count Square Submatrices with All Ones    73.2% Medium 
+198 House Robber     43.9% Medium 
+1244 Design A Leaderboard     67.0% Medium 
 
+1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
@@ -183,13 +188,8 @@
 498 Diagonal Traverse     51.8% Medium 
 356 Line Reflection    33.5% Medium 
 1647 Minimum Deletions to Make Character Frequencies Unique    55.9% Medium 
-1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 169 Majority Element     60.8% Easy 
-532 K-diff Pairs in an Array     36.2% Medium 
-1244 Design A Leaderboard     67.0% Medium 
 36 Valid Sudoku    51.7% Medium 
-1277 Count Square Submatrices with All Ones    73.2% Medium 
-198 House Robber     43.9% Medium 
 545 Boundary of Binary Tree     41.3% Medium 
 853 Car Fleet    45.0% Medium 
 417 Pacific Atlantic Water Flow     45.3% Medium 

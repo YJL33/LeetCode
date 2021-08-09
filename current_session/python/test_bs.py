@@ -8,7 +8,7 @@ class BS(object):
         cd = [0,2,3,4,5,6,7,12]
         # print("L, tgt", L, tgt)
 
-        l, r, m = 0, len(L), 0
+        l, r, m = 0, len(L)-1, 0
         cnt = 10
 
         while l < r and cnt > 0:

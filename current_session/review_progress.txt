@@ -178,6 +178,7 @@
 1277 Count Square Submatrices with All Ones    73.2% Medium 
 198 House Robber     43.9% Medium 
 1244 Design A Leaderboard     67.0% Medium 
+498 Diagonal Traverse     51.8% Medium 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -185,7 +186,6 @@
 909 Snakes and Ladders    39.3% Medium 
 9 Palindrome Number     50.9% Easy 
 1344 Angle Between Hands of a Clock     61.6% Medium 
-498 Diagonal Traverse     51.8% Medium 
 356 Line Reflection    33.5% Medium 
 1647 Minimum Deletions to Make Character Frequencies Unique    55.9% Medium 
 169 Majority Element     60.8% Easy 

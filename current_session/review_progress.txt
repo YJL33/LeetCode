@@ -179,6 +179,10 @@
 198 House Robber     43.9% Medium 
 1244 Design A Leaderboard     67.0% Medium 
 498 Diagonal Traverse     51.8% Medium 
+417 Pacific Atlantic Water Flow     45.3% Medium 
+74 Search a 2D Matrix     39.2% Medium 
+647 Palindromic Substrings     63.1% Medium 
+442 Find All Duplicates in an Array     69.9% Medium 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -192,15 +196,11 @@
 36 Valid Sudoku    51.7% Medium 
 545 Boundary of Binary Tree     41.3% Medium 
 853 Car Fleet    45.0% Medium 
-417 Pacific Atlantic Water Flow     45.3% Medium 
 723 Candy Crush     73.5% Medium 
-74 Search a 2D Matrix     39.2% Medium 
 489 Robot Room Cleaner     73.8% Hard 
-442 Find All Duplicates in an Array     69.9% Medium 
 6 ZigZag Conversion     39.1% Medium 
 226 Invert Binary Tree     68.4% Easy 
 493 Reverse Pairs    28.0% Hard 
-647 Palindromic Substrings     63.1% Medium 
 453 Minimum Moves to Equal Array Elements     51.8% Easy 
 29 Divide Two Integers     17.0% Medium 
 901 Online Stock Span    61.9% Medium 
@@ -221,6 +221,7 @@
 836 Rectangle Overlap     42.8% Easy 
 912 Sort an Array    63.6% Medium 
 105 Construct Binary Tree from Preorder and Inorder Traversal     54.2% Medium 
+
 503 Next Greater Element II     59.6% Medium 
 133 Clone Graph     41.5% Medium 
 1470 Shuffle the Array    88.1% Easy 

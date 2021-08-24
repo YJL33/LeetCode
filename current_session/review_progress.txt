@@ -221,7 +221,6 @@
 836 Rectangle Overlap     42.8% Easy 
 912 Sort an Array    63.6% Medium 
 105 Construct Binary Tree from Preorder and Inorder Traversal     54.2% Medium 
-
 503 Next Greater Element II     59.6% Medium 
 133 Clone Graph     41.5% Medium 
 1470 Shuffle the Array    88.1% Easy 
@@ -237,6 +236,7 @@
 1472 Design Browser History    72.8% Medium 
 983 Minimum Cost For Tickets     63.0% Medium 
 388 Longest Absolute File Path    43.8% Medium 
+
 304 Range Sum Query 2D - Immutable     44.1% Medium 
 875 Koko Eating Bananas     53.8% Medium 
 1610 Maximum Number of Visible Points    33.0% Hard 

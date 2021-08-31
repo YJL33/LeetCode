@@ -1,3 +1,6 @@
+"""
+DFS+TRIE (TLE!)
+"""
 import collections
 
 class TrieNode:
@@ -31,8 +34,10 @@ class Solution:
         
         # optimization: use Trie
         self.trie = Trie()
+        self.maxLen = 0
         for w in words:
             self.trie.insert(w)
+            self.maxLen = max(self.maxLen, len(w))
 
         node = self.trie.root
         for i in range(len(board)):
@@ -48,8 +53,7 @@ class Solution:
         
         if i < 0 or i == len(self.B) or j < 0 or j == len(self.B[0]):
             return
-        if self.B[i][j] not in node.children:
-            return
+        if not node.children.get(self.B[i][j]): return
 
         char = self.B[i][j]
         self.B[i][j] = "#"

@@ -183,6 +183,23 @@
 74 Search a 2D Matrix     39.2% Medium 
 647 Palindromic Substrings     63.1% Medium 
 442 Find All Duplicates in an Array     69.9% Medium 
+304 Range Sum Query 2D - Immutable     44.1% Medium 
+509 Fibonacci Number     67.8% Easy 
+698 Partition to K Equal Sum Subsets    45.1% Medium 
+542 01 Matrix     41.8% Medium 
+243 Shortest Word Distance     62.8% Easy 
+1499 Max Value of Equation    45.9% Hard 
+75 Sort Colors      51.0% Medium 
+1229 Meeting Scheduler     54.6% Medium 
+424 Longest Repeating Character Replacement    49.1% Medium 
+63 Unique Paths II     36.2% Medium 
+572 Subtree of Another Tree    44.7% Easy 
+823 Binary Trees With Factors     43.6% Medium 
+690 Employee Importance     60.3% Easy 
+785 Is Graph Bipartite?     49.2% Medium 
+354 Russian Doll Envelopes     38.5% Hard 
+209 Minimum Size Subarray Sum     40.6% Medium 
+101 Symmetric Tree     49.3% Easy 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -236,27 +253,10 @@
 1472 Design Browser History    72.8% Medium 
 983 Minimum Cost For Tickets     63.0% Medium 
 388 Longest Absolute File Path    43.8% Medium 
-
-304 Range Sum Query 2D - Immutable     44.1% Medium 
 875 Koko Eating Bananas     53.8% Medium 
 1610 Maximum Number of Visible Points    33.0% Hard 
 494 Target Sum     45.5% Medium 
-509 Fibonacci Number     67.8% Easy 
-698 Partition to K Equal Sum Subsets    45.1% Medium 
-542 01 Matrix     41.8% Medium 
-243 Shortest Word Distance     62.8% Easy 
-1499 Max Value of Equation    45.9% Hard 
-75 Sort Colors      51.0% Medium 
-1229 Meeting Scheduler     54.6% Medium 
-424 Longest Repeating Character Replacement    49.1% Medium 
-63 Unique Paths II     36.2% Medium 
-572 Subtree of Another Tree    44.7% Easy 
-823 Binary Trees With Factors     43.6% Medium 
-690 Employee Importance     60.3% Easy 
-785 Is Graph Bipartite?     49.2% Medium 
-354 Russian Doll Envelopes     38.5% Hard 
-209 Minimum Size Subarray Sum     40.6% Medium 
-101 Symmetric Tree     49.3% Easy 
+
 143 Reorder List     42.5% Medium 
 539 Minimum Time Difference    52.6% Medium 
 1143 Longest Common Subsequence     58.8% Medium 
@@ -357,4 +357,5 @@
 1471 The k Strongest Values in an Array    59.0% Medium 
 1544 Make The String Great    55.7% Easy 
 1519 Number of Nodes in the Sub-Tree With the Same Label    38.1% Medium 
-1520 Maximum Number of Non-Overlapping Substrings    
+1520 Maximum Number of Non-Overlapping Substrings   
+247	Strobogrammatic Number II    49.5%	Medium 

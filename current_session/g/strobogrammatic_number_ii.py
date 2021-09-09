@@ -1,13 +1,23 @@
+# strobogrammatic number
+# n = 1: 1, 8, 0
+# n = 2: 11, 88, 69, 96
+# f(n) = add (n=2) at the both end of f(n-2)
+
 from typing import List
 class Solution:
-    def findStrobogrammatic(self, n:int, zero=False)->List[str]:
-        # observation: 0,1,8<->0,1,8, 6<->9
-        if n == 1: return ["0","1","8"]
-        if n == 2: return ["11","69","88","96"]
-        
-            
+    def findStrobogrammatic(self, n: int, needZero=False) -> List[str]:
+        if n == 0: return [""]
+        if n == 1: return ["1", "0", "8"]
+        if n == 2: return ["11", "88", "69", "96"] if not needZero else ["11", "88", "69", "96", "00"]
+
+        res = []
+        base = self.findStrobogrammatic(n-2, True)
+        twos = self.findStrobogrammatic(2, needZero)
+        for x in base:
+            for two in twos:
+                res.append(two[0] + x + two[1])
+        return res
 
 print(Solution().findStrobogrammatic(1))
 print(Solution().findStrobogrammatic(2))
 print(Solution().findStrobogrammatic(3))
-print(Solution().findStrobogrammatic(4))

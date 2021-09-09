@@ -200,6 +200,13 @@
 354 Russian Doll Envelopes     38.5% Hard 
 209 Minimum Size Subarray Sum     40.6% Medium 
 101 Symmetric Tree     49.3% Easy 
+143 Reorder List     42.5% Medium 
+539 Minimum Time Difference    52.6% Medium 
+1143 Longest Common Subsequence     58.8% Medium 
+526 Beautiful Arrangement     62.5% Medium 
+1146 Snapshot Array    37.0% Medium 
+1481 Least Number of Unique Integers after K Removals    56.4% Medium 
+30 Substring with Concatenation of All Words    26.9% Hard 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -257,16 +264,10 @@
 1610 Maximum Number of Visible Points    33.0% Hard 
 494 Target Sum     45.5% Medium 
 
-143 Reorder List     42.5% Medium 
-539 Minimum Time Difference    52.6% Medium 
-1143 Longest Common Subsequence     58.8% Medium 
-526 Beautiful Arrangement     62.5% Medium 
-1146 Snapshot Array    37.0% Medium 
-1481 Least Number of Unique Integers after K Removals    56.4% Medium 
-30 Substring with Concatenation of All Words    26.9% Hard 
 1395 Count Number of Teams    71.9% Medium 
 416 Partition Equal Subset Sum     45.3% Medium 
 1153 String Transforms Into Another String    35.7% Hard 
+
 1487 Making File Names Unique    32.1% Medium 
 116 Populating Next Right Pointers in Each Node     51.1% Medium 
 708 Insert into a Sorted Circular Linked List     33.0% Medium 

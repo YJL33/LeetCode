@@ -215,6 +215,11 @@
 727 Minimum Window Subsequence    42.8% Hard 
 64 Minimum Path Sum     57.3% Medium 
 315 Count of Smaller Numbers After Self     42.0% Hard 
+256 Paint House     55.5% Medium 
+1328 Break a Palindrome    49.4% Medium 
+1110 Delete Nodes And Return Forest    68.3% Medium 
+266 Palindrome Permutation     63.4% Easy 
+409	Longest Palindrome    52.6%	Easy
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -273,11 +278,9 @@
 494 Target Sum     45.5% Medium 
 708 Insert into a Sorted Circular Linked List     33.0% Medium 
 241 Different Ways to Add Parentheses    58.4% Medium 
-
 240 Search a 2D Matrix II     46.1% Medium 
 1029 Two City Scheduling     58.7% Medium 
 1283 Find the Smallest Divisor Given a Threshold    51.0% Medium 
-
 402 Remove K Digits     28.8% Medium 
 1027 Longest Arithmetic Subsequence    49.1% Medium 
 946 Validate Stack Sequences     64.5% Medium 
@@ -286,13 +289,10 @@
 162 Find Peak Element     44.6% Medium 
 99 Recover Binary Search Tree     43.8% Medium 
 787 Cheapest Flights Within K Stops     38.0% Medium 
-256 Paint House     55.5% Medium 
 593 Valid Square     43.4% Medium 
 392 Is Subsequence     49.8% Easy 
-1328 Break a Palindrome    49.4% Medium 
 92 Reverse Linked List II     42.0% Medium 
-266 Palindrome Permutation     63.4% Easy 
-1110 Delete Nodes And Return Forest    68.3% Medium 
+
 300 Longest Increasing Subsequence     46.2% Medium 
 365 Water and Jug Problem    32.2% Medium 
 418 Sentence Screen Fitting    34.3% Medium 

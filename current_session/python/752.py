@@ -10,7 +10,7 @@ class Solution(object):
         :rtype: int
         """
         
-        # naive approach, use dfs and remember the previous state
+        # naive approach, use bfs and remember the previous state
         # maxStep: 9*4*2
 
         dd = {}

@@ -220,6 +220,12 @@
 1110 Delete Nodes And Return Forest    68.3% Medium 
 266 Palindrome Permutation     63.4% Easy 
 409	Longest Palindrome    52.6%	Easy
+165 Compare Version Numbers     31.3% Medium 
+118 Pascal's Triangle     57.9% Easy 
+119	Pascal's Triangle II    54.3%	Easy
+1631 Path With Minimum Effort     50.4% Medium 
+130 Surrounded Regions     30.7% Medium 
+652 Find Duplicate Subtrees    54.0% Medium 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -292,7 +298,6 @@
 593 Valid Square     43.4% Medium 
 392 Is Subsequence     49.8% Easy 
 92 Reverse Linked List II     42.0% Medium 
-
 300 Longest Increasing Subsequence     46.2% Medium 
 365 Water and Jug Problem    32.2% Medium 
 418 Sentence Screen Fitting    34.3% Medium 
@@ -303,11 +308,7 @@
 670 Maximum Swap    45.6% Medium 
 1060 Missing Element in Sorted Array     55.3% Medium 
 833 Find And Replace in String    52.0% Medium 
-165 Compare Version Numbers     31.3% Medium 
-118 Pascal's Triangle     57.9% Easy 
-1631 Path With Minimum Effort     50.4% Medium 
-130 Surrounded Regions     30.7% Medium 
-652 Find Duplicate Subtrees    54.0% Medium 
+
 471 Encode String with Shortest Length    50.1% Hard 
 393 UTF-8 Validation     38.5% Medium 
 279 Perfect Squares     49.9% Medium 

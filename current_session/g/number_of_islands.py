@@ -9,6 +9,7 @@ class Solution:
             for a, b in [(i+1,j), (i-1,j), (i,j+1), (i,j-1)]:
                 if 0<=a<H and 0<=b<W and grid[a][b] == '1':
                     dfs(a, b)
+            grid[i][j] = '2'
             return
 
         cnt = 0
@@ -18,4 +19,7 @@ class Solution:
                     dfs(i, j)
                     cnt += 1
         
+        print(grid)
         return cnt
+
+print(Solution().numIslands([['1','1','0','0'],['0','0','0','0'],['1','1','0','0'],['0','0','1','1']]))

@@ -226,6 +226,13 @@
 1631 Path With Minimum Effort     50.4% Medium 
 130 Surrounded Regions     30.7% Medium 
 652 Find Duplicate Subtrees    54.0% Medium 
+392 Is Subsequence     49.8% Easy 
+51	N-Queens    53.9%	Hard
+279 Perfect Squares     49.9% Medium 
+131 Palindrome Partitioning     54.2% Medium 
+947 Most Stones Removed with Same Row or Column    56.0% Medium 
+1477 Find Two Non-overlapping Sub-arrays Each With Target Sum    35.7% Medium 
+174 Dungeon Game     33.9% Hard 
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
@@ -296,7 +303,6 @@
 99 Recover Binary Search Tree     43.8% Medium 
 787 Cheapest Flights Within K Stops     38.0% Medium 
 593 Valid Square     43.4% Medium 
-392 Is Subsequence     49.8% Easy 
 92 Reverse Linked List II     42.0% Medium 
 300 Longest Increasing Subsequence     46.2% Medium 
 365 Water and Jug Problem    32.2% Medium 
@@ -308,17 +314,12 @@
 670 Maximum Swap    45.6% Medium 
 1060 Missing Element in Sorted Array     55.3% Medium 
 833 Find And Replace in String    52.0% Medium 
-
 471 Encode String with Shortest Length    50.1% Hard 
 393 UTF-8 Validation     38.5% Medium 
-279 Perfect Squares     49.9% Medium 
-131 Palindrome Partitioning     54.2% Medium 
 844 Backspace String Compare     47.2% Easy 
-947 Most Stones Removed with Same Row or Column    56.0% Medium 
-1477 Find Two Non-overlapping Sub-arrays Each With Target Sum    35.7% Medium 
-174 Dungeon Game     33.9% Hard 
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
+
 35 Search Insert Position     42.7% Easy 
 1219 Path with Maximum Gold    66.1% Medium 
 915 Partition Array into Disjoint Intervals     47.3% Medium 

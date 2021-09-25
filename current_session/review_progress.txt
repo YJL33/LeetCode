@@ -233,9 +233,17 @@
 947 Most Stones Removed with Same Row or Column    56.0% Medium 
 1477 Find Two Non-overlapping Sub-arrays Each With Target Sum    35.7% Medium 
 174 Dungeon Game     33.9% Hard 
+35 Search Insert Position     42.7% Easy 
+1219 Path with Maximum Gold    66.1% Medium 
+915 Partition Array into Disjoint Intervals     47.3% Medium 
+1138 Alphabet Board Path    51.7% Medium 
+117 Populating Next Right Pointers in Each Node II     43.3% Medium 
+718 Maximum Length of Repeated Subarray     51.0% Medium 
+
 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
 72 Edit Distance     48.1% Hard 
+
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
 9 Palindrome Number     50.9% Easy 
@@ -320,12 +328,6 @@
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
 
-35 Search Insert Position     42.7% Easy 
-1219 Path with Maximum Gold    66.1% Medium 
-915 Partition Array into Disjoint Intervals     47.3% Medium 
-1138 Alphabet Board Path    51.7% Medium 
-117 Populating Next Right Pointers in Each Node II     43.3% Medium 
-718 Maximum Length of Repeated Subarray     51.0% Medium 
 1504 Count Submatrices With All Ones    60.7% Medium 
 900 RLE Iterator    56.5% Medium 
 59 Spiral Matrix II     59.2% Medium 

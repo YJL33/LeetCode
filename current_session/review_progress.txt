@@ -240,6 +240,7 @@
 117 Populating Next Right Pointers in Each Node II     43.3% Medium 
 718 Maximum Length of Repeated Subarray     51.0% Medium 
 1353 Maximum Number of Events That Can Be Attended    30.6% Medium 
+26 Remove Duplicates from Sorted Array    47.4%	Easy
 
 72 Edit Distance     48.1% Hard 
 
@@ -327,11 +328,11 @@
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
 
+
 1504 Count Submatrices With All Ones    60.7% Medium 
 900 RLE Iterator    56.5% Medium 
 59 Spiral Matrix II     59.2% Medium 
 658 Find K Closest Elements     43.3% Medium 
-26 Remove Duplicates from Sorted Array    47.4%	Easy
 1793 Maximum Score of a Good Subarray    48.5% Hard 
 285 Inorder Successor in BST     44.5% Medium 
 1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
@@ -363,3 +364,4 @@
 1519 Number of Nodes in the Sub-Tree With the Same Label    38.1% Medium 
 1520 Maximum Number of Non-Overlapping Substrings   
 247	Strobogrammatic Number II    49.5%	Medium 
+828 Count Unique Characters of All Substrings of a Given String    47.2%	Hard

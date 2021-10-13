@@ -244,6 +244,7 @@
 1504 Count Submatrices With All Ones    60.7% Medium 
 72 Edit Distance     48.1% Hard 
 900 RLE Iterator    56.5% Medium 
+1008 Construct Binary Search Tree from Preorder Traversal    79.5%	Medium
 
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 

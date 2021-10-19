@@ -1,45 +1,96 @@
+
+# see more at: https://leetcode.com/explore/learn/card/binary-search/136/template-analysis/935/
+
 import timeit
 import bisect
 class BS(object):
-    # we wanna find max m s.t. L[m] <= tgt
-    def bs(self, L, tgt):
-        t = timeit.Timer()
-
-        cd = [0,2,3,4,5,6,7,12]
-        # print("L, tgt", L, tgt)
-
-        l, r, m = 0, len(L)-1, 0
-        cnt = 10
-
-        while l < r and cnt > 0:
+    def bs_finder(self, A, tgt):
+        # all elements have to be unique
+        l, r, m = 0, len(A)-1, 0
+        while l <= r:                   # termination criteria l == r
             m = (r+l)//2
-            if L[m] >= tgt:
+            if A[m] == tgt:             # directly return m
+                return m
+            elif A[m] > tgt:            # avoid repeatly handling m
+                r = m-1
+            else:
+                l = m+1
+        # assert(l == bisect.bisect_left(A, tgt))    
+        return -1                       # no need post-processing
+
+    def bs_left(self, A, tgt):
+        # we wanna find max m s.t. A[m] <= tgt
+        l, r, m = 0, len(A), 0
+        while l < r:
+            m = (r+l)//2
+            if A[m] >= tgt:
                 r = m
             else:
                 l = m+1
-            # print(l, r, m)
-            cnt -= 1
-        # print("l, m, r",l, m, r)
-        # print("t1:", t.timeit())
-
-        # t2 = timeit.Timer()
-        # i = bisect.bisect_left(L, tgt)
-        # print("t2", t2.timeit())
-
+        assert(l == bisect.bisect_left(A, tgt))         # binary search index left
         return l
 
-print(BS().bs([0,2,4,6,8,10,12],0))
-print(BS().bs([0,2,4,6,8,10,12],1))
-print(BS().bs([0,2,4,6,8,10,12],2))
-print(BS().bs([0,2,4,6,8,10,12],3))
-print(BS().bs([0,2,4,6,8,10,12],4))
-print(BS().bs([0,2,4,6,8,10,12],5))
+    def bs_right(self, A, tgt):
+        l, r, m = 0, len(A), 0
+        while l < r:
+            m = (r+l)//2
+            if A[m] > tgt:
+                r = m
+            else:
+                l = m+1
+        assert(l == bisect.bisect_right(A, tgt))        # binary search index right
+        return l
 
-print('---')
+print('bs finder ---')
 
-print(BS().bs([0,2,2,2,2,2,2],0))
-print(BS().bs([0,2,2,2,2,2,2],1))
-print(BS().bs([0,2,2,2,2,2,2],2))
-print(BS().bs([0,2,2,2,2,2,2],3))
-print(BS().bs([0,2,2,2,2,2,2],4))
-print(BS().bs([0,2,2,2,2,2,2],5))
+print(BS().bs_finder([0,2,4,6,8,10,12],0))
+print(BS().bs_finder([0,2,4,6,8,10,12],1))
+print(BS().bs_finder([0,2,4,6,8,10,12],2))
+print(BS().bs_finder([0,2,4,6,8,10,12],3))
+print(BS().bs_finder([0,2,4,6,8,10,12],4))
+print(BS().bs_finder([0,2,4,6,8,10,12],5))
+
+# print('---')
+
+# print(BS().bs_finder([0,2,2,2,2,2,2],0))
+# print(BS().bs_finder([0,2,2,2,2,2,2],1))
+# print(BS().bs_finder([0,2,2,2,2,2,2],2))
+# print(BS().bs_finder([0,2,2,2,2,2,2],3))
+# print(BS().bs_finder([0,2,2,2,2,2,2],4))
+# print(BS().bs_finder([0,2,2,2,2,2,2],5))
+
+print('bs left ---')
+
+print(BS().bs_left([0,2,4,6,8,10,12],0))
+print(BS().bs_left([0,2,4,6,8,10,12],1))
+print(BS().bs_left([0,2,4,6,8,10,12],2))
+print(BS().bs_left([0,2,4,6,8,10,12],3))
+print(BS().bs_left([0,2,4,6,8,10,12],4))
+print(BS().bs_left([0,2,4,6,8,10,12],5))
+
+# print('---')
+
+# print(BS().bs_left([0,2,2,2,2,2,2],0))
+# print(BS().bs_left([0,2,2,2,2,2,2],1))
+# print(BS().bs_left([0,2,2,2,2,2,2],2))
+# print(BS().bs_left([0,2,2,2,2,2,2],3))
+# print(BS().bs_left([0,2,2,2,2,2,2],4))
+# print(BS().bs_left([0,2,2,2,2,2,2],5))
+
+print('bs right ---')
+
+print(BS().bs_right([0,2,4,6,8,10,12],0))
+print(BS().bs_right([0,2,4,6,8,10,12],1))
+print(BS().bs_right([0,2,4,6,8,10,12],2))
+print(BS().bs_right([0,2,4,6,8,10,12],3))
+print(BS().bs_right([0,2,4,6,8,10,12],4))
+print(BS().bs_right([0,2,4,6,8,10,12],5))
+
+# print('---')
+
+# print(BS().bs_right([0,2,2,2,2,2,2],0))
+# print(BS().bs_right([0,2,2,2,2,2,2],1))
+# print(BS().bs_right([0,2,2,2,2,2,2],2))
+# print(BS().bs_right([0,2,2,2,2,2,2],3))
+# print(BS().bs_right([0,2,2,2,2,2,2],4))
+# print(BS().bs_right([0,2,2,2,2,2,2],5))

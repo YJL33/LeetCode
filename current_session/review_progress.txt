@@ -247,6 +247,7 @@
 1008 Construct Binary Search Tree from Preorder Traversal    79.5%	Medium
 1531 String Compression II    36.0%	Hard
 1694 Reformat Phone Number    64.9%	Easy
+1326 Minimum Number of Taps to Open to Water a Garden    48.0%	Hard
 
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 

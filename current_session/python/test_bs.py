@@ -41,56 +41,125 @@ class BS(object):
         assert(l == bisect.bisect_right(A, tgt))        # binary search index right
         return l
 
+    # while finding the last element <= target
+    def bs_lee(self, A, tgt):
+        l, r, m = 0, len(A)-1, 0
+        while l < r:
+            m = (r+l+1)//2                              # add +1 due to l = m
+            if A[m] > tgt:
+                r = m-1
+            else:
+                l = m
+        return l
+
+    # while finding the last element < target
+    def bs_lee2(self, A, tgt):
+        l, r, m = 0, len(A)-1, 0
+        while l < r:
+            m = (r+l+1)//2                              # add +1 due to l = m
+            if A[m] >= tgt:
+                r = m-1
+            else:
+                l = m
+        return l
+
 print('bs finder ---')
 
-print(BS().bs_finder([0,2,4,6,8,10,12],0))
-print(BS().bs_finder([0,2,4,6,8,10,12],1))
-print(BS().bs_finder([0,2,4,6,8,10,12],2))
-print(BS().bs_finder([0,2,4,6,8,10,12],3))
-print(BS().bs_finder([0,2,4,6,8,10,12],4))
-print(BS().bs_finder([0,2,4,6,8,10,12],5))
+print('given [0,2,4,6,8,10,12]-1:', BS().bs_finder([0,2,4,6,8,10,12],-1))
+print('given [0,2,4,6,8,10,12] 0:', BS().bs_finder([0,2,4,6,8,10,12],0))
+print('given [0,2,4,6,8,10,12] 1:', BS().bs_finder([0,2,4,6,8,10,12],1))
+print('given [0,2,4,6,8,10,12] 2:', BS().bs_finder([0,2,4,6,8,10,12],2))
+print('given [0,2,4,6,8,10,12] 3:', BS().bs_finder([0,2,4,6,8,10,12],3))
+print('given [0,2,4,6,8,10,12] 4:', BS().bs_finder([0,2,4,6,8,10,12],4))
+print('given [0,2,4,6,8,10,12] 5:', BS().bs_finder([0,2,4,6,8,10,12],5))
 
-# print('---')
+print('---')
 
-# print(BS().bs_finder([0,2,2,2,2,2,2],0))
-# print(BS().bs_finder([0,2,2,2,2,2,2],1))
-# print(BS().bs_finder([0,2,2,2,2,2,2],2))
-# print(BS().bs_finder([0,2,2,2,2,2,2],3))
-# print(BS().bs_finder([0,2,2,2,2,2,2],4))
-# print(BS().bs_finder([0,2,2,2,2,2,2],5))
+print('given [0,2,2,2,2,2,2] -1:',BS().bs_finder([0,2,2,2,2,2,2],-1))
+print('given [0,2,2,2,2,2,2] 0:', BS().bs_finder([0,2,2,2,2,2,2],0))
+print('given [0,2,2,2,2,2,2] 1:', BS().bs_finder([0,2,2,2,2,2,2],1))
+print('given [0,2,2,2,2,2,2] 2:', BS().bs_finder([0,2,2,2,2,2,2],2))
+print('given [0,2,2,2,2,2,2] 3:', BS().bs_finder([0,2,2,2,2,2,2],3))
+print('given [0,2,2,2,2,2,2] 4:', BS().bs_finder([0,2,2,2,2,2,2],4))
+print('given [0,2,2,2,2,2,2] 5:', BS().bs_finder([0,2,2,2,2,2,2],5))
 
 print('bs left ---')
 
-print(BS().bs_left([0,2,4,6,8,10,12],0))
-print(BS().bs_left([0,2,4,6,8,10,12],1))
-print(BS().bs_left([0,2,4,6,8,10,12],2))
-print(BS().bs_left([0,2,4,6,8,10,12],3))
-print(BS().bs_left([0,2,4,6,8,10,12],4))
-print(BS().bs_left([0,2,4,6,8,10,12],5))
+print('given [0,2,4,6,8,10,12]-1:', BS().bs_left([0,2,4,6,8,10,12],-1))
+print('given [0,2,4,6,8,10,12] 0:', BS().bs_left([0,2,4,6,8,10,12],0))
+print('given [0,2,4,6,8,10,12] 1:', BS().bs_left([0,2,4,6,8,10,12],1))
+print('given [0,2,4,6,8,10,12] 2:', BS().bs_left([0,2,4,6,8,10,12],2))
+print('given [0,2,4,6,8,10,12] 3:', BS().bs_left([0,2,4,6,8,10,12],3))
+print('given [0,2,4,6,8,10,12] 4:', BS().bs_left([0,2,4,6,8,10,12],4))
+print('given [0,2,4,6,8,10,12] 5:', BS().bs_left([0,2,4,6,8,10,12],5))
 
-# print('---')
+print('---')
 
-# print(BS().bs_left([0,2,2,2,2,2,2],0))
-# print(BS().bs_left([0,2,2,2,2,2,2],1))
-# print(BS().bs_left([0,2,2,2,2,2,2],2))
-# print(BS().bs_left([0,2,2,2,2,2,2],3))
-# print(BS().bs_left([0,2,2,2,2,2,2],4))
-# print(BS().bs_left([0,2,2,2,2,2,2],5))
+print('given [0,2,2,2,2,2,2] -1:',BS().bs_left([0,2,2,2,2,2,2],-1))
+print('given [0,2,2,2,2,2,2] 0:', BS().bs_left([0,2,2,2,2,2,2],0))
+print('given [0,2,2,2,2,2,2] 1:', BS().bs_left([0,2,2,2,2,2,2],1))
+print('given [0,2,2,2,2,2,2] 2:', BS().bs_left([0,2,2,2,2,2,2],2))
+print('given [0,2,2,2,2,2,2] 3:', BS().bs_left([0,2,2,2,2,2,2],3))
+print('given [0,2,2,2,2,2,2] 4:', BS().bs_left([0,2,2,2,2,2,2],4))
+print('given [0,2,2,2,2,2,2] 5:', BS().bs_left([0,2,2,2,2,2,2],5))
 
 print('bs right ---')
 
-print(BS().bs_right([0,2,4,6,8,10,12],0))
-print(BS().bs_right([0,2,4,6,8,10,12],1))
-print(BS().bs_right([0,2,4,6,8,10,12],2))
-print(BS().bs_right([0,2,4,6,8,10,12],3))
-print(BS().bs_right([0,2,4,6,8,10,12],4))
-print(BS().bs_right([0,2,4,6,8,10,12],5))
+print('given [0,2,4,6,8,10,12]-1:', BS().bs_right([0,2,4,6,8,10,12],-1))
+print('given [0,2,4,6,8,10,12] 0:', BS().bs_right([0,2,4,6,8,10,12],0))
+print('given [0,2,4,6,8,10,12] 1:', BS().bs_right([0,2,4,6,8,10,12],1))
+print('given [0,2,4,6,8,10,12] 2:', BS().bs_right([0,2,4,6,8,10,12],2))
+print('given [0,2,4,6,8,10,12] 3:', BS().bs_right([0,2,4,6,8,10,12],3))
+print('given [0,2,4,6,8,10,12] 4:', BS().bs_right([0,2,4,6,8,10,12],4))
+print('given [0,2,4,6,8,10,12] 5:', BS().bs_right([0,2,4,6,8,10,12],5))
 
-# print('---')
+print('---')
 
-# print(BS().bs_right([0,2,2,2,2,2,2],0))
-# print(BS().bs_right([0,2,2,2,2,2,2],1))
-# print(BS().bs_right([0,2,2,2,2,2,2],2))
-# print(BS().bs_right([0,2,2,2,2,2,2],3))
-# print(BS().bs_right([0,2,2,2,2,2,2],4))
-# print(BS().bs_right([0,2,2,2,2,2,2],5))
+print('given [0,2,2,2,2,2,2] -1:', BS().bs_right([0,2,2,2,2,2,2],-1))
+print('given [0,2,2,2,2,2,2] 0:', BS().bs_right([0,2,2,2,2,2,2],0))
+print('given [0,2,2,2,2,2,2] 1:', BS().bs_right([0,2,2,2,2,2,2],1))
+print('given [0,2,2,2,2,2,2] 2:', BS().bs_right([0,2,2,2,2,2,2],2))
+print('given [0,2,2,2,2,2,2] 3:', BS().bs_right([0,2,2,2,2,2,2],3))
+print('given [0,2,2,2,2,2,2] 4:', BS().bs_right([0,2,2,2,2,2,2],4))
+print('given [0,2,2,2,2,2,2] 5:', BS().bs_right([0,2,2,2,2,2,2],5))
+
+print('bs lee ---')
+
+print('given [0,2,4,6,8,10,12]-1:', BS().bs_lee([0,2,4,6,8,10,12],-1))
+print('given [0,2,4,6,8,10,12] 0:', BS().bs_lee([0,2,4,6,8,10,12],0))
+print('given [0,2,4,6,8,10,12] 1:', BS().bs_lee([0,2,4,6,8,10,12],1))
+print('given [0,2,4,6,8,10,12] 2:', BS().bs_lee([0,2,4,6,8,10,12],2))
+print('given [0,2,4,6,8,10,12] 3:', BS().bs_lee([0,2,4,6,8,10,12],3))
+print('given [0,2,4,6,8,10,12] 4:', BS().bs_lee([0,2,4,6,8,10,12],4))
+print('given [0,2,4,6,8,10,12] 5:', BS().bs_lee([0,2,4,6,8,10,12],5))
+
+print('---')
+
+print('given [0,2,2,2,2,2,2] -1:',BS().bs_lee([0,2,2,2,2,2,2],-1))
+print('given [0,2,2,2,2,2,2] 0:', BS().bs_lee([0,2,2,2,2,2,2],0))
+print('given [0,2,2,2,2,2,2] 1:', BS().bs_lee([0,2,2,2,2,2,2],1))
+print('given [0,2,2,2,2,2,2] 2:', BS().bs_lee([0,2,2,2,2,2,2],2))
+print('given [0,2,2,2,2,2,2] 3:', BS().bs_lee([0,2,2,2,2,2,2],3))
+print('given [0,2,2,2,2,2,2] 4:', BS().bs_lee([0,2,2,2,2,2,2],4))
+print('given [0,2,2,2,2,2,2] 5:', BS().bs_lee([0,2,2,2,2,2,2],5))
+
+
+print('bs lee 2---')
+
+print('given [0,2,4,6,8,10,12]-1:', BS().bs_lee2([0,2,4,6,8,10,12],-1))
+print('given [0,2,4,6,8,10,12] 0:', BS().bs_lee2([0,2,4,6,8,10,12],0))
+print('given [0,2,4,6,8,10,12] 1:', BS().bs_lee2([0,2,4,6,8,10,12],1))
+print('given [0,2,4,6,8,10,12] 2:', BS().bs_lee2([0,2,4,6,8,10,12],2))
+print('given [0,2,4,6,8,10,12] 3:', BS().bs_lee2([0,2,4,6,8,10,12],3))
+print('given [0,2,4,6,8,10,12] 4:', BS().bs_lee2([0,2,4,6,8,10,12],4))
+print('given [0,2,4,6,8,10,12] 5:', BS().bs_lee2([0,2,4,6,8,10,12],5))
+
+print('---')
+
+print('given [0,2,2,2,2,2,2] -1:',BS().bs_lee2([0,2,2,2,2,2,2],-1))
+print('given [0,2,2,2,2,2,2] 0:', BS().bs_lee2([0,2,2,2,2,2,2],0))
+print('given [0,2,2,2,2,2,2] 1:', BS().bs_lee2([0,2,2,2,2,2,2],1))
+print('given [0,2,2,2,2,2,2] 2:', BS().bs_lee2([0,2,2,2,2,2,2],2))
+print('given [0,2,2,2,2,2,2] 3:', BS().bs_lee2([0,2,2,2,2,2,2],3))
+print('given [0,2,2,2,2,2,2] 4:', BS().bs_lee2([0,2,2,2,2,2,2],4))
+print('given [0,2,2,2,2,2,2] 5:', BS().bs_lee2([0,2,2,2,2,2,2],5))

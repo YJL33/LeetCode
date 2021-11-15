@@ -251,6 +251,10 @@
 222	Count Complete Tree Nodes    52.7%	Medium
 154	Find Minimum in Rotated Sorted Array II     43.1%	Hard
 
+510	Inorder Successor in BST II    61.5%	Medium
+285 Inorder Successor in BST     44.5% Medium 
+1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
+
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
 9 Palindrome Number     50.9% Easy 
@@ -338,8 +342,7 @@
 59 Spiral Matrix II     59.2% Medium 
 658 Find K Closest Elements     43.3% Medium 
 1793 Maximum Score of a Good Subarray    48.5% Hard 
-285 Inorder Successor in BST     44.5% Medium 
-1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
+
 135 Candy     35.3% Hard 
 846 Hand of Straights    55.7% Medium 
 904 Fruit Into Baskets    43.2% Medium 

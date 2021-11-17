@@ -9,7 +9,7 @@ class Solution:
         # we want to find m such that minimize the sum of (A[m]-x) & (A[m+k]-x)
         l, r = 0, len(A)-k
         while l < r:
-            m = (l+r)/2
+            m = (l+r)//2
             if x-A[m] > A[m+k]-x:
                 l = m+1
             else:

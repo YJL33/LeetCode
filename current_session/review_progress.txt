@@ -250,7 +250,9 @@
 1326 Minimum Number of Taps to Open to Water a Garden    48.0%	Hard
 222	Count Complete Tree Nodes    52.7%	Medium
 154	Find Minimum in Rotated Sorted Array II     43.1%	Hard
-
+1793 Maximum Score of a Good Subarray    48.5% Hard 
+59 Spiral Matrix II     59.2% Medium 
+658 Find K Closest Elements     43.3% Medium 
 510	Inorder Successor in BST II    61.5%	Medium
 285 Inorder Successor in BST     44.5% Medium 
 1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
@@ -338,10 +340,6 @@
 844 Backspace String Compare     47.2% Easy 
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
-
-59 Spiral Matrix II     59.2% Medium 
-658 Find K Closest Elements     43.3% Medium 
-1793 Maximum Score of a Good Subarray    48.5% Hard 
 
 135 Candy     35.3% Hard 
 846 Hand of Straights    55.7% Medium 

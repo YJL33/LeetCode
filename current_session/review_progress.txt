@@ -257,6 +257,11 @@
 285 Inorder Successor in BST     44.5% Medium 
 1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
 
+846 Hand of Straights    55.7% Medium 
+904 Fruit Into Baskets    43.2% Medium 
+1376 Time Needed to Inform All Employees    57.4% Medium 
+77 Combinations      59.3% Medium 
+
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
 9 Palindrome Number     50.9% Easy 
@@ -342,10 +347,7 @@
 1615 Maximal Network Rank    54.3% Medium 
 
 135 Candy     35.3% Hard 
-846 Hand of Straights    55.7% Medium 
-904 Fruit Into Baskets    43.2% Medium 
-1376 Time Needed to Inform All Employees    57.4% Medium 
-77 Combinations      59.3% Medium 
+
 659 Split Array into Consecutive Subsequences    44.7% Medium 
 1473 Paint House III    49.1% Hard 
 1254 Number of Closed Islands    62.3% Medium 

@@ -256,7 +256,7 @@
 510	Inorder Successor in BST II    61.5%	Medium
 285 Inorder Successor in BST     44.5% Medium 
 1576 Replace All ?'s to Avoid Consecutive Repeating Characters    50.5% Easy 
-
+135 Candy     35.3% Hard 
 846 Hand of Straights    55.7% Medium 
 904 Fruit Into Baskets    43.2% Medium 
 1376 Time Needed to Inform All Employees    57.4% Medium 
@@ -345,8 +345,6 @@
 844 Backspace String Compare     47.2% Easy 
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
-
-135 Candy     35.3% Hard 
 
 659 Split Array into Consecutive Subsequences    44.7% Medium 
 1473 Paint House III    49.1% Hard 

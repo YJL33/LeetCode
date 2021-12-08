@@ -261,6 +261,10 @@
 904 Fruit Into Baskets    43.2% Medium 
 1376 Time Needed to Inform All Employees    57.4% Medium 
 77 Combinations      59.3% Medium 
+659 Split Array into Consecutive Subsequences    44.7% Medium 
+1254 Number of Closed Islands    62.3% Medium 
+562 Longest Line of Consecutive One in Matrix     47.3% Medium 
+1438 Longest Continuous Subarray With Absolute Diff Less Than or Equal toLimit    44.9% Medium 
 
 8 String to Integer (atoi)    15.9% Medium 
 909 Snakes and Ladders    39.3% Medium 
@@ -346,11 +350,7 @@
 299 Bulls and Cows     45.4% Medium 
 1615 Maximal Network Rank    54.3% Medium 
 
-659 Split Array into Consecutive Subsequences    44.7% Medium 
 1473 Paint House III    49.1% Hard 
-1254 Number of Closed Islands    62.3% Medium 
-562 Longest Line of Consecutive One in Matrix     47.3% Medium 
-1438 Longest Continuous Subarray With Absolute Diff Less Than or Equal toLimit    44.9% Medium 
 951 Flip Equivalent Binary Trees     66.1% Medium 
 674 Longest Continuous Increasing Subsequence     46.7% Easy 
 1482 Minimum Number of Days to Make m Bouquets    52.6% Medium 

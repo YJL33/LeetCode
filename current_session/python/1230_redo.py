@@ -1,22 +1,22 @@
 from typing import List
+import collections
 class Solution:
-    # simply iterate all p, and count the probabilities
-    # e.g. [0.5,0.5,0.5]
-    # 1st [0.5, 0.5]
-    # 2nd [0.25, 0.25+0.25=0.5, 0.25]
-    # 3rd [0.125, 0.125+0.25, 0.25+0.125, 0.125]
     def probabilityOfHeads(self, prob: List[float], target: int) -> float:
-        cnt = [1]
-        for i in range(len(prob)):
+        # target is the desired number of heads
+        # use DP
+        # list of dict: key = number of heads, val = probability
+        dp = []
+        initial = {0: 1-prob[0], 1: prob[0]}
+        dp.append(initial)
+        for i in range(1, len(prob)):
             p = prob[i]
-            tmp = [cnt[0]*(1-p)]
-            for j in range(min(target+1,i+1)):           # only count till target
-                a, b = cnt[j]*p, cnt[j+1]*(1-p) if j+1 < len(cnt) else 0
-                # print('j:', j)
-                tmp.append(a+b)
-            cnt = tmp
-        # print('cnt:',cnt)
-        return cnt[target]
+            tmp = collections.defaultdict(int)
+            for k, v in dp[-1].items():
+                if k <= target: tmp[k] += v*(1-p)
+                if k+1 <= target: tmp[k+1] += v*p
+            dp.append(tmp)
+        
+        return dp[-1][target]
 
 print(Solution().probabilityOfHeads([0.4],1))
 print(Solution().probabilityOfHeads([0.5,0.5,0.5,0.5,0.5],0))

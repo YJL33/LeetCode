@@ -20,15 +20,13 @@ class Solution:
     def longestIncreasingPath_redo(self, matrix: List[List[int]]) -> int:
         # DFS
         self.visited = {}
-        def dfs(i, j, path=set()):
+        def dfs(i, j):
             # update the maxSeen while no more moves
             if (i,j) in self.visited: return self.visited[(i,j)]
             road_ahead = []
             for a, b in [(i+1, j), (i-1, j), (i,j+1), (i,j-1)]:
-                if 0<=a<len(matrix) and 0<=b<len(matrix[0]) and (a,b) not in path and matrix[a][b] > matrix[i][j]:
-                    path.add((a,b))
-                    road_ahead.append(dfs(a, b, path))
-                    path.remove((a,b))
+                if 0<=a<len(matrix) and 0<=b<len(matrix[0]) and matrix[a][b] > matrix[i][j]:
+                    road_ahead.append(dfs(a, b))
             if len(road_ahead) == 0:
                 self.visited[(i,j)] = 1
             else:
@@ -37,9 +35,7 @@ class Solution:
 
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
-                path = set()
-                path.add((i,j))
-                dfs(i, j, path)
+                dfs(i, j)
         
         return max(self.visited.values())
 

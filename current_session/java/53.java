@@ -1,5 +1,5 @@
 /*
-cp 53.java Solution.java | javac Solution.java | java Solution
+cp 53.java Solution.java && javac Solution.java && java Solution
 */
 class Solution {
     public int maxSubArray(int[] nums) {

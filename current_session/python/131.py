@@ -1,48 +1,17 @@
-"""
-131. Palindrome Partitioning
+from typing import List
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        # use DP
+        # start searching from backward
+        # dp[0] is the solution
+        dp = [[] for _ in range(len(s)+1)]
+        dp[-1] = [[]]
+        for i in range(len(s)-1,-1,-1):
+            for j in range(i+1,len(s)+1):
+                if s[i:j] == s[i:j][::-1]:
+                    for each in dp[j]:
+                        dp[i].append([s[i:j]] + each)
+        return dp[0]
 
-Given a string s, partition s such that every substring of the partition is a palindrome.
-
-Return all possible palindrome partitioning of s.
-
-Example:
-
-Input: "aab"
-Output:
-[
-  ["aa","b"],
-  ["a","a","b"]
-]
-
-"""
-class Solution(object):
-
-    # partition all gap and check both side
-    def partition(self, s):
-        """
-        :type s: str
-        :rtype: List[List[str]]
-        """
-        res = []
-        self.helper(s, res)
-        return res
-
-    def helper(self, substring, res, temp=[]):
-        if substring == '':
-            res.append(temp)
-            return
-
-        for i in xrange(1, len(substring)+1):
-            left, right = substring[:i], substring[i:]
-            print "L:", left, "R:", right
-            if self.isPalindrome(left):
-                self.helper(right, res, temp+[left])
-
-    def isPalindrome(self, substring):
-        for i in xrange(len(substring)/2):
-            if (substring[i] != substring[-i-1]):
-                return False
-        return True
-
-# print Solution().partition("aab")
-print Solution().partition("aabaa")
+# print(Solution().partition("aab"))
+print(Solution().partition("aabaa"))

@@ -10,7 +10,7 @@ class Solution(object):
         :rtype: int
         """
         
-        # naive approach, use bfs and remember the previous state
+        # naive approach, use BFS and remember the previous state
         # maxStep: 9*4*2
 
         dd = {}
@@ -37,12 +37,11 @@ class Solution(object):
         return -1
 
     def generator(self, pw, visited):
-        cd = {0:[1,9], 1:[0,2], 2:[1,3], 3:[2,4], 4:[3,5], 5:[4,6], 6:[5,7], 7:[6,8], 8:[7,9], 9:[8,0]}
         res = []
         for i in range(len(pw)):
             ch = pw[i]
-            a = pw[:i] + str(cd[int(ch)][0])+ pw[i+1:]
-            b = pw[:i] + str(cd[int(ch)][1])+ pw[i+1:]
+            a = pw[:i] + str((int(ch)-1)%10) + pw[i+1:]
+            b = pw[:i] + str((int(ch)+1)%10) + pw[i+1:]
             if a not in visited:
                 res += a,
             if b not in visited:

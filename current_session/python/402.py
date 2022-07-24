@@ -5,6 +5,7 @@ class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
         # observation: n=143, k=1: remove 4, which is the first n[i]>n[i+1]
         # handle corner case: 0
+        # maintain a monotonic increasing stack (as returned number)
         if k == len(num): return 0
         
         stack = []
@@ -13,7 +14,6 @@ class Solution:
                 stack.pop()
                 k -= 1
             stack.append(num[i])
-            # print('stack:', ''.join(stack))
 
         # handle corner case: 1111
         while k:

@@ -1,40 +1,35 @@
-"""
-see https://leetcode.com/problems/my-calendar-i/
-"""
-import bisect
-class MyCalendar(object):
+import sortedcontainers as sc
+class MyCalendar:
+    # clarification
+    # inclusive? exclusive?
+    # input validity? (e.g. start >= end)
+    # upperbound/lowerbound of start/end time value? any negative? type?
+    #
+    # use sorted container
+    # dummy case
+    # e.g. [(10,20),(30,40),(2,5),(15,25),(16,36)]
+    #
+    # tc: O(logn) per book, O(nlogn) for n books
+    # sc: O(n) for n books
+
     def __init__(self):
-        self.meetings = []
+        self.starts = sc.SortedList()
+        self.ends = sc.SortedList()
 
-    def book(self, start, end):
-        """
-        :type start: int
-        :type end: int
-        :rtype: bool
-        """
-        if self.checkOverlap(start, end):
-            self.meetings += (start, end),
-            self.meetings.sort()
-            return True
-        else:
-            return False
+    def book(self, start: int, end: int) -> bool:
+        # check whether it's valid to book
+        # check the 'gap'
+        # use bisect_left to find out the previous meeting span
+        # idx-1 is the previous meeting span
+        # idx is the next meeting span
+        # make sure that previous_end <= start and end <= next_start
+        idx = self.starts.bisect_left(start)
+        # print('case: ', idx, self.starts, self.ends)
+        if (idx-1 >= 0 and self.ends[idx-1] > start) or (idx < len(self.starts) and end > self.starts[idx]): return False
 
-    def checkOverlap(self, s, e):
-        # search whether the incoming start time (s) is behind which end time
-        # and see if the next start time happens earlier than the incoming end time (e)
-        if not self.meetings:
-            return True
-
-        # search - can be optimized by bisect
-        # self.meetings[o] will be the first meeting ends after s
-        o = 0
-        while o < len(self.meetings) and self.meetings[o][-1] <= s:
-            o += 1
-
-        if o < len(self.meetings):
-            return self.meetings[o][0] >= e
-        else:
-            return True
+        self.starts.add(start)
+        self.ends.add(end)
+        return True
 
 # Your MyCalendar object will be instantiated and called as such:
 # obj = MyCalendar()

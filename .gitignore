@@ -1,0 +1,5 @@
+.DS_Store
+*.class
+*.tmp
+*.code-workspace
+current_session/.vscode/

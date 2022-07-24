@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <queue>
 
 using namespace std;
 
@@ -21,26 +22,33 @@ public:
     buildConnections(NULL, root);
 
     // BFS
-    vector<int> stack{target->val};
-    vector<int>* stackPtr = &stack;
-    set<int> visited{target->val};
+    queue<int> queue;
+    queue.push(target->val);
+    set<int> visited;
+    visited.insert(target->val);
     int dist = 0;
-    while (dist < k) {
-      vector<int> tmp{};
-      // while ((*stackPtr).size() > 0) {
-      for (int j =0; j<(*stackPtr).size(); j++) {
-        for (int i = 0; i < connections[(*stackPtr)[j]].size(); i++) {
-          if (visited.count(connections[(*stackPtr)[j]][i]) != 0) {
-            tmp.push_back(connections[(*stackPtr)[j]][i]);
-            visited.insert(connections[(*stackPtr)[j]][i]);
+    vector<int> res;
+    while (dist<k) {
+      int numOfNodesInLayer = queue.size();
+      // check the map, pop all nodes in this layer, and push all unvisited nb into queue.
+      // for each node in this layer
+      while (numOfNodesInLayer--) {
+        int cur = queue.front(); queue.pop();
+        for (int i = 0; i<connections[cur].size(); i++) {
+          int neighbor = connections[cur][i];
+          if (visited.find(neighbor) == visited.end()) {
+            visited.insert(neighbor);
+            queue.push(neighbor);
           }
         }
-        (*stackPtr).pop_back();
       }
-      stackPtr = &tmp;
       dist += 1;
     }
-    return stack;
+    while (!queue.empty()) {
+      res.push_back(queue.front());
+      queue.pop();
+    }
+    return res;
   }
 private:
   void buildConnections(TreeNode* parent, TreeNode* child) {

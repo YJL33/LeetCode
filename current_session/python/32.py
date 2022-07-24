@@ -1,50 +1,33 @@
-"""
-32. Longest Valid Parentheses
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:     
+        # clarification:
+        #
+        # thoguhts:
+        # use a stack
+        # append all lefts into the stack
+        # when there's a right,
+        # check if stack is empty or not
+        # if not empty, pop one and calculate the length,
+        # and update the longest_parentheses_seen
+        # if parentheses closed earlier, add it back later if possible/needed
+        #
+        # e.g. [()()()())()()]
+        #      [0204060800204]       local length
+        #      [0224466888888]       longest seen
 
-Given a string containing just the characters '(' and ')',
-find the length of the longest valid (well-formed) parentheses substring.
+        left = []       # stack of lefts, store index
+        max_seen = 0
 
-Example 1:
-
-Input: "(()"
-Output: 2
-Explanation: The longest valid parentheses substring is "()"
-Example 2:
-
-Input: ")()())"
-Output: 4
-Explanation: The longest valid parentheses substring is "()()"
-
-Accepted 275.1K
-Submissions 985.6K
-"""
-class Solution(object):
-    def longestValidParentheses(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        if len(s) <= 1: return 0
-
-        res = 0
-
-        stack, lastLeft = [], None
-
-        for i in xrange(len(s)):
-            # print "i: ", i, lastLeft
+        add = [0 for _ in s]
+        for i in range(len(s)):
             if s[i] == '(':
-                if lastLeft != None:
-                    stack.append(lastLeft)
-                    lastLeft = None
-                else:
-                    stack.append(i)
-            else:                               # s[i] == ')'
-                if stack:
-                    lastLeft = stack.pop()
-                    res = max(res, i-lastLeft+1)
-                else:
-                    lastLeft = None
+                left.append(i)
+            else:
+                if len(left) > 0:
+                    prev = left.pop()
+                    local_seen = add[prev-1]+i-prev+1
+                    max_seen = max(max_seen, local_seen)
+                    add[i] = local_seen
+        return max_seen
 
-        return res
-
-print Solution().longestValidParentheses(")()())()()(")
+print(Solution().longestValidParentheses(")()())()()("))

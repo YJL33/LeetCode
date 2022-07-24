@@ -1,51 +1,46 @@
 """
 see https://leetcode.com/problems/count-of-smaller-numbers-after-self/
 """
+# clarification:
+# any restrictions on time/space?
+# upper/lower bound of nums[i]: -10000 <= nums[i] <= 10000
+# upper/lower bound of len(nums): 1 <= nums.length <= 100000
+# 
+# brute force: O(n^2)
+#
+# heap 
+# maintain 2 heaps, min heap H1 and max heap H2
+# where all a in H1 > nums[i] and all b in H2 < nums[i]
+# simply store the size of H2 while propagating the whole arrays
+# O(n * (x * logn)), where x is the avg moves needed to adjust both heap per each n,
+# x will near n if the heap is too big
+# 
+# binary search
+# use an array to replace 2 heaps above, and maintain the array as sorted
+# for each n, use binary search to find the index, and insert
+# we can leverage data structure that has insert better than O(n) s.t. sortedlist, insert: O(logn)
+# overall: O(nlogn), O(n) to visit whole array, for each element O(logn) binary search, O(logn) insert
+# 
+# merge Sort
+# split, if any element crossed (from right to left while merging), i+=1
+# O(n*logn)
+#
+from sortedcontainers import SortedList
+from typing import List
 import heapq
-import bisect
-class Solution(object):
+class Solution:
+    # sorted list
+    def countSmaller(self, nums:List[int]) -> List[int]:
+        sl = SortedList()
+        res = []
+        for n in nums[::-1]:
+            i = sl.bisect_left(n)       # sl[i] >= n
+            res.append(i)
+            sl.add(n)
+        return res[::-1]
 
-        # the naive approach: count each point
-        # time complexity: O(n^2)
-
-        # DP:
-        # start from the right and fill each spot.
-        #
-        # psuedo code:
-        # smaller, bigger   stores seen elements that are either smaller or bigger than current element
-        # smaller: the biggest one is the root of the heap (maxHeap)
-        # bigger: the smallest one is the root of the heap (minHeap)
-        # for r in nums[::-1]:
-        #   if smaller and smaller[0] >= r:
-        #       bigger.push(smaller.pop(0))
-        #   if bigger and bigger[0] < r:
-        #       smaller.push(bigger.pop(0))
-        #   dp[r] = len(smaller)
-        #   smaller += r,
-
-    def countSmaller_DP(self, nums):                # (TLE!!)
-        if not nums: return []
-
-        dp = [i for i in range(len(nums)-1,-1,-1)]  # max number of count
-        # print(dp)
-        minHeap, maxHeap = [], []                   # make maxHeap always slightly bigger
-        for r in range(len(nums)-1, -1, -1):
-            while maxHeap and (-1)*maxHeap[0] >= nums[r]:
-                heapq.heappush(minHeap, (-1)*heapq.heappop(maxHeap))
-            while minHeap and minHeap[0] < r:
-                heapq.heappush(minHeap, (-1)*heapq.heappop(minHeap))
-            print("r:", nums[r], "maxH", [-1*x for x in maxHeap], "minH", minHeap)
-            dp[r] = len(maxHeap)
-            heapq.heappush(maxHeap, (-1)*nums[r])
-        return dp
-
-
-        # count jumps while doing merge sort
-    def countSmaller_MS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+    # merge sort
+    def countSmaller_MS(self, nums:List[int]) -> List[int]:
         ans = [0 for _ in nums]
         print([(nums[i], i) for i in range(len(nums))])
 
@@ -55,7 +50,7 @@ class Solution(object):
             l, r = mSort(arr[:(len(arr)/2)]), mSort(arr[(len(arr)/2):])
             res, i, j = [], 0, 0
             while i < len(l) or j < len(r):
-                print l, r, i, j
+                print(l, r, i, j)
                 if j == len(r) or (i < len(l) and l[i][0] <= r[j][0]):
                     ans[l[i][1]] += j
                     res = res + [l[i]]
@@ -70,24 +65,35 @@ class Solution(object):
         mSort([(nums[i], i) for i in range(len(nums))])
         return ans
 
-        # prepare an empty array (which will put the sorted nums inside)
-        # pick from backward and use bisect to find the index to insert
-        # the length before the insert position is the count
-        # time comlexity: O(n*logn)
-    def countSmaller(self, nums):
-        tmp = []
-        ans = [0 for _ in nums]
-        for i in range(len(nums)-1, -1, -1):
-            pos = bisect.bisect(tmp, nums[i])
-            tmp.insert(pos, nums[i])
-            # print(res)
-            while pos > 0 and tmp[pos] == tmp[pos-1]:
-                pos -= 1
-            ans[i] = pos
-            # print(ans)
-        return ans
+    # heap
+    def countSmaller_TLE(self, nums:List[int]) -> List[int]:
+        minH, maxH = [nums[-1]], []
+        res = [0]*len(nums)
+        for i in range(1,len(nums)):
+            n = nums[~i]
+            # append n into heap, and adjust the size
+            minH, maxH = self.adjustHeap(minH, maxH, n)
+            res[~i] = len(maxH)
+            heapq.heappush(minH, n)  
+        return res
+    
+    def adjustHeap(self, minH, maxH, target):
+        # print('befor:', minH, maxH)
+        while minH and minH[0] < target:
+            x = heapq.heappop(minH)
+            heapq.heappush(maxH, -1*x)
+        while maxH and -1*maxH[0] >= target:
+            x = heapq.heappop(maxH)
+            heapq.heappush(minH, -1*x)
+        # print('after:', minH, maxH)
+        return minH, maxH
 
 # print(Solution().countSmaller([1,2,3,4,5,4,3,2,1]) == Solution().countSmaller_DP([1,2,3,4,5,4,3,2,1]))
 # print(Solution().countSmaller([1,2,3,4,5,4,3,2,1]))
 # print(Solution().countSmaller([1,2,3,4,5,6,7,8,9]))
 print(Solution().countSmaller([1,2,3,4,5,6,7,8,9][::-1]))
+print(Solution().countSmaller([5,2,6,1]))
+print(Solution().countSmaller([1,1,1]))
+print(Solution().countSmaller([1]))
+print(Solution().countSmaller([1,2,3,4,5,4,3,2,1]))
+print(Solution().countSmaller([1,2,3,4,5,6,7,8,9]))

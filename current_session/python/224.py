@@ -1,20 +1,31 @@
-"""
-see https://leetcode.com/problems/basic-calculator/
-"""
-class Solution(object):
-    def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
+class Solution:
+    def calculate(self, s: str) -> int:
+        # clairification
+        # validity?
+        # upperbound/lowerbound of digit?
+        # 
+        # idea
+        # go through the string
+        # maintain the number
+        # if see +-, complete the calculations before the operator, and reset sign and number
+        # if see '(', stash the previous sign and calculations and reset sign and number
+        # if see ')', merge the current result with the previous stash
+        #
+        # tc: O(n) to go through whole array.
+        # sc: O(h), h is the height of stack, worst case O(n)
+        # 
+        # dummy cases
+        # (1+(4+5+2)-3)+(6+8)
+        # 1+(4+5*2)-3
+        # 1+(4*5-2)-3
+        # 1+(4+5*(3+3)+2)+3
         res, num, sign, stack = 0, 0, 1, []
         for c in s:
             if c.isdigit():
                 num = 10*num + int(c)
             elif c in '+-':
                 res += sign*num
-                num = 0
-                sign = [-1, 1][c == '+']
+                sign, num = [-1, 1][c == '+'], 0
             elif c == '(':
                 stack += (res,sign),
                 sign, res = 1, 0

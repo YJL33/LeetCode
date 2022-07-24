@@ -1,38 +1,59 @@
-# DFS: TLE
-# solve by observation: pick out the unique characters in each word
-# 
+import collections
 class Solution:
     def originalDigits(self, s: str) -> str:
-        charCount = [0 for _ in range(26)]
-        for c in s: 
-            if c in 'zwuxgforsi': charCount[ord(c)-ord('a')] += 1
-        self.res = [0]*10
+        # clarification:
+        # time/space restrictions?
+        # is the given string valid?
+        # upper/lower bound of s?
+        
+        # idea:
+        # by observation, some words has unique characters, leverage that
+        # words: ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        # even = {z:0 w:2 u:4 x:6 g:8}
+        # odd = {o:1 r:3 f:5 s:7}
+        
+        # 3-pass: handle even numbers -> odd numbers -> 9
+        # in each pass, prepare dicts (of even/odd) of unique char -> digit (as above, key: unique character, value: even/odd digit)
+        # count the unique char occurances, we'll know the digit occurances
+        # update the counter (by removal of seen/handled digits), and then output the numbers
+        
+        # time analysis:
+        # O(1) for preparation
+        # O(N) to count all character occurances
+        # O(1) to output as ascending order
+        # for handling:
+        #     O(1) to make query on dict
+        #     O(1) to 'correct' the counter (9 times), where L is the avg length of words, in this case ~4
+        # overall: O(N)
 
-        def helper(pd, dd, cnt):
-            for k, v in pd.items():
-                if cnt[ord(k)-ord('a')] != 0:
-                    reduce = cnt[ord(k)-ord('a')]
-                    for c in v:
-                        cnt[ord(c)-ord('a')] -= reduce
-                    self.res[dd[k]] += reduce
-            return charCount
+        # space analysis:
+        # O(N) for counter
+        
+        # dummy case walk through
+        
+        # preparation
+        word = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        counter = collections.Counter(s)
+        self.res = [0 for _ in range(10)]
+        
+        def handle(numdict):
+            for k,v in numdict.items():
+                self.res[k] += counter[v]
+                for c in word[k]:
+                    counter[c] -= self.res[k]
+            return
+        
+        
+        even = {0:'z',2:'w',4:'u',6:'x',8:'g'}
+        handle(even)                    # 1st pass: handle even numbers
+        
+        odd = {1:'o',3:'r',5:'f',7:'s'}
+        handle(odd)                     # 2nd pass: handle odd numbers
 
-        preDict = {'z':'zro','w':'wo','u':'four','x':'six', 'g':'ig'}
-        digitDict = {'z':0,'w':2,'u':4,'x':6,'g':8}
-        charCount = helper(preDict, digitDict, charCount)
-        # print('pre-process:', self.res)
-
-        preDict2 = {'f':'fi'}
-        digitDict2 = {'f':5}
-        charCount = helper(preDict2, digitDict2, charCount)
-        # print('pre-process 2:', self.res)
-
-        self.res[1] = charCount[ord('o')-ord('a')]
-        self.res[3] = charCount[ord('r')-ord('a')]
-        self.res[7] = charCount[ord('s')-ord('a')]
-        self.res[9] = charCount[ord('i')-ord('a')]
-
+        self.res[9] += counter['i']      # 3rd pass
+        
         return "".join([str(i)*self.res[i] for i in range(10)])
+
 print(Solution().originalDigits('owoztneoer'))
 print(Solution().originalDigits('fivefour'))
 print(Solution().originalDigits("zeroonetwothreefourfivesixseveneightnine"))

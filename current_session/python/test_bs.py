@@ -43,24 +43,26 @@ class BS(object):
 
     # while finding the last element <= target
     def bs_lee(self, A, tgt):
-        l, r, m = 0, len(A)-1, 0
+        l, r, m = -1, len(A)-1, 0
         while l < r:
             m = (r+l+1)//2                              # add +1 due to l = m
             if A[m] > tgt:
                 r = m-1
             else:
                 l = m
+        assert(l == -1 or (A[l]<=tgt and (l+1 == len(A) or A[l+1]>tgt)))
         return l
 
     # while finding the last element < target
     def bs_lee2(self, A, tgt):
-        l, r, m = 0, len(A)-1, 0
+        l, r, m = -1, len(A)-1, 0
         while l < r:
             m = (r+l+1)//2                              # add +1 due to l = m
             if A[m] >= tgt:
                 r = m-1
             else:
                 l = m
+        assert(l == -1 or (A[l]<tgt and (l+1 == len(A) or A[l+1]>=tgt)))
         return l
 
 print('bs finder ---')

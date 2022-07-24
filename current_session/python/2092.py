@@ -2,8 +2,69 @@ from typing import List
 import heapq
 import collections
 class Solution:
+    # thoughts:
+    # at t0, only 0 and firstPerson know the secret
+    # can not use union-find because people may have meeting before secret spread into them
+    
+    # idea:
+    # simulate the process
+    # sort all meetings based on time,                                      O(nlogn)
+    # and at each time, check the secret spread status:                     O(t), where t is the number of unique time
+    # for all meetings held at ti, dfs check the participants know or not   O(dfs)
+    # (can also do union-find, right? simply do nothing while no secret spread)
+    # return those has unioned with 0
+    
+    # tc: O(nlogn) + O(t)*O(dfs) to simulate the process
+    # simulation analysis: worst case: O(n^2), best case: O(n)
+    # sc: O(n) to store the order of meeting time, O(p) to store the participants (worst case O(n))
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
-        # use a minHeap of time
+        self.who = [i for i in range(n)]
+        self.who[firstPerson] = 0
+        
+        meetings.sort(key = lambda m: m[-1])
+        
+        # build the adjancy list from all meetings held at certain time
+        def build_adj(i, j):
+            adj, startFrom = collections.defaultdict(list), []
+            for k in range(i, j):
+                a, b, _ = meetings[k]
+                if self.who[a] == self.who[b] == 0: continue
+                adj[a].append(b)
+                adj[b].append(a)
+                for p in (a,b):
+                    if self.who[p] == 0: startFrom.append(p)
+            return adj, startFrom
+
+        def dfs(starts, adj):
+            visited = set()
+            while starts:
+                x = starts.pop()
+                if x in visited: continue
+                visited.add(x)
+                if self.who[x] != 0: self.who[x] = 0
+                for nb in adj[x]:
+                    starts.append(nb)
+            return
+
+        i = 0        
+        while i < len(meetings):
+            j, t = i, meetings[i][-1]
+            # print('i, t', i, t)
+            while j < len(meetings) and meetings[j][-1] == t:
+                j += 1
+            # build a adjancy list here (undirected bi-direction graph)
+            # start from those who already know the secret
+            adj, startFrom = build_adj(i, j)
+            # print('adj', adj)
+
+            dfs(startFrom, adj)
+            # print('i, who', i, self.who)
+            i = j
+        return [p for p in range(n) if self.who[p] == 0]
+
+
+    # use a minHeap of time
+    def findAllPeople_heap(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
         hp = []
         for i in range(len(meetings)):
             t = meetings[i][-1]

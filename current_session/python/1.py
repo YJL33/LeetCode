@@ -1,40 +1,25 @@
 """
-1. Two Sum
-
-Given an array of integers,
-return indices of the two numbers such that they add up to a specific target.
-
-You may assume that each input would have exactly one solution,
-and you may not use the same element twice.
-
-Example:
-
-Given nums = [2, 7, 11, 15], target = 9,
-
-Because nums[0] + nums[1] = 2 + 7 = 9,
-return [0, 1].
-
-Accepted 2.9M
-Submissions 6.5M
+see https://leetcode.com/problems/two-sum/
 """
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        # brute force: time O(n^2)
-        # memorize seen numbers: time O(n), space O(n)
+from typing import List
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # brute force:
+        # simply try all i, j for 0<=i,j<len(nums); see if there's nums[i]+nums[j] == target
+        # time analysis: O(n^2)
 
-        numsDict = {}           # key: number, value: index
+        # better approach:
+        # visit whole array and use hashmap (python dictionary) to store seen elements
+        # key: number itself, value: index
+        # time analysis: O(n) to visit the array, O(1) to store/check the dictionary (worst case O(n) if there's a hash collision)
+        # space analysis: O(n) (worst case O(n))
         
-        for i in xrange(len(nums)):
-            counterPart = target - nums[i]
-            if counterPart in numsDict:
-                return [numsDict[counterPart], i]
-            numsDict[nums[i]] = i
+        seen = {}
+        for i,n in enumerate(nums):
+            if target-n in seen:                    # we've seen the counter-part of n, get the index by value
+                return [i, seen[target-n]]
+            else:
+                seen[n] = i                         # it'll be fine to replace it
+        return []                                   # shouldn't reach this line
 
-        return
-
-print Solution().twoSum([4, 6, 7, 11, 5], 12)
+print(Solution().twoSum([4, 6, 7, 11, 5], 12))

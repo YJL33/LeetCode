@@ -10,23 +10,27 @@ class Solution:
             return False
 
         H, W = len(board), len(board[0])
-
-        # visited = [[False for _ in range(len(board[0]))] for _ in range(len(board))]
-
-        def dfs(i, j, c):
-            if c == len(word): return True
-            if board[i][j] == word[c]:
-                board[i][j] = ''
-                for a, b in [(i+1,j),(i-1,j),(i,j+1),(i,j-1)]:
-                    if 0<=a<H and 0<=b<W and dfs(a,b,c+1):
-                        return True
-                board[i][j] = word[c]
+        
+        # instead of modify the board, we use visited to track the path
+        # (we can also use a 2D array to store visited)
+        def dfs(i, j, k, visited):
+            if word[k] != board[i][j]:
+                return False
+            if k+1 == len(word):
+                return True
+            
+            visited.add((i,j))
+            for a, b in [(i+1,j), (i-1,j), (i,j+1), (i,j-1)]:
+                if 0<=a<H and 0<=b<W and (a,b) not in visited:
+                    if dfs(a,b,k+1,visited): return True
+            visited.remove((i,j))
             return False
         
-        c = 0
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if dfs(i, j, c): return True
+        for i in range(H):
+            for j in range(W):
+                if dfs(i, j, 0, set((i,j))):
+                    return True
+        
         return False
 
 print(Solution().exist([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], "ABCCED"))

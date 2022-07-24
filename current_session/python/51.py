@@ -1,7 +1,26 @@
 # use DFS
-
 from typing import List
 class Solution:
+    # concise approach
+    def solveNQueens_dfs(self, n: int) -> List[List[str]]:
+        
+        self.res = []
+
+        def dfs(queens, diffs, sums):
+            p = len(queens)
+            if p == n:
+                self.res.append(queens)
+                return
+            for q in range(n):
+                if q not in queens and p-q not in diffs and p+q not in sums: 
+                    dfs(queens+[q], diffs+[p-q], sums+[p+q])
+            return
+        
+        dfs([],[],[])
+        # print('res', result)
+        return [ ["."*i + "Q" + "."*(n-i-1) for i in sol] for sol in self.res]
+
+    # standard approach
     def solveNQueens(self, n: int) -> List[List[str]]:
         board = self.craftEmptyBoard(n)
         res = []
@@ -44,4 +63,7 @@ class Solution:
     def craftEmptyBoard(self, n):
         return [["."]*n for _ in range(n)]
 
+print(Solution().solveNQueens(1))
 print(Solution().solveNQueens(4))
+print(Solution().solveNQueens(5))
+print(Solution().solveNQueens(9))

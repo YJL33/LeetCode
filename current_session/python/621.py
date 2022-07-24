@@ -1,44 +1,62 @@
-"""
-https://leetcode.com/problems/task-scheduler/
-"""
+from typing import List
 import collections
+import heapq
 class Solution(object):
-    def leastInterval(self, tasks, n):
-        """
-        :type tasks: List[str]
-        :type n: int
-        :rtype: int
-        """
-        if n == 0: return len(tasks)
-        mx = 0
-        cd = collections.defaultdict(int)
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        # idea:
+        # simulate the process
+        # count the occurance
+        # use heap to decide which one we should put into the result
+        # (we need 2 heaps for both frequency and last occurance)
+        # put each element into the heap and based on frequency and last_index
+        #
+        # time complexity: count the occurance O(n), heap operation O(nlogn), for each element, each one at most 3 push/pop
+        # space complexity: counter O(n), heap O(T), where T is the number of unique tasks
+        cnt = collections.Counter(tasks)
+        hp = []
+        for task, count in cnt.items():
+            heapq.heappush(hp, (-count, task))                  # frequency is negative (due to built-in python heap)
+        last_index = {t:float('-inf') for t in task}
+
+        res, tmp = 0, []
+        while hp or tmp:
+            current_idx = res                                   # current_idx is where we want to put the task
+            if hp:
+                _, task = heapq.heappop(hp)
+                last_index[task], cnt[task] = current_idx, cnt[task]-1
+                if cnt[task] != 0:                              # if freq == 0 don't put it back
+                    heapq.heappush(tmp, (current_idx, task))
+            res += 1
+            
+            while tmp and last_index[tmp[0][1]]+n < res:
+                _, task = heapq.heappop(tmp)
+                heapq.heappush(hp, (-cnt[task], task))
+            
+        return res
+
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        # math
+        # ["A","A","A","B","B","B"], n = 2
+        # A -> B -> idle -> A -> B -> idle -> A -> B
+        # A and B both has maxCount=3
+        # observe that in "one round", there's (n+1) in the round
+        # in the last round, only elements has the maxCount are in the round
+        # we got: (n+1)*(maxCount-1)+numOfElementsHasMaxCount
+
+        taskCnt = collections.defaultdict(int)
+        maxSeen = 0
         for t in tasks:
-            cd[t] += 1
-            mx = max(cd[t], mx)
+            taskCnt[t] += 1
+            if taskCnt[t] >= maxSeen:
+                maxSeen = taskCnt[t]
 
-        # one round
-        rnd = n
+        maxCnt = 0
+        for k, v in taskCnt.items():
+            if taskCnt[k] == maxSeen:
+                maxCnt += 1
 
-        ans = (rnd+1)*(mx-1)
-        for k in cd.keys():
-            if cd[k] == mx:
-                ans += 1
-        return max(len(tasks),ans)
-
-    def leastInterval_2(self, tasks, n):
-        """
-        :type tasks: List[str]
-        :type n: int
-        :rtype: int
-        """
-        if n == 0: return len(tasks)
-        cnts = collections.Counter(tasks).values()
-        mx = max(cnts)
-        mxcnt = cnts.count(mx)
-
-        ans = (n+1)*(mx-1)+mxcnt
-        
-        return max(len(tasks),ans)
+        ans = (n+1)*(maxSeen-1)+maxCnt
+        return max(len(tasks),ans)      # in case maxSeen = 1
 
 print(Solution().leastInterval(["A","A","A","A","A","A","B","C","D","E","F","G"],2), 'should be 16')
 print(Solution().leastInterval(["A","A","A","B","B","B"],50), 'should be 104')

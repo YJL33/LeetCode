@@ -1,34 +1,56 @@
-"""
-see https://leetcode.com/problems/missing-element-in-sorted-array/
-"""
 class Solution(object):
-    def missingElement(self, A, k):
-        """
-        :type A: List[int]
-        :type k: int
-        :rtype: int
-        """
-        x = A[0]+k
 
-        # implement (or simply import) bisect, to simply find the position of x if inserted into A
-        l, r = 0, len(A)-1
-        while l <= r:
-            m = l + (r-l)/2
-            if A[m] > x:
-                r = m-1
-            else:               # slightly modified here
-                l = m+1
+    def missingElement(self, nums, k):
+        # naive approach: keep fill the array
+        # time complexity: O(k), where k could be big
 
-        if A[m] <= x:           # add one to count all elements in A[1:m]
-            m += 1
-
-        add = len(A[1:m])
-
-        while m < len(A) and A[m] <= x+add:     # add one until desired output not in A
-            m += 1
-            add += 1
-
-        return x+add
+        # one-pass: check the gap, and fill the number directly
+        # time complexity: O(N)
+        
+        # edge case: k+nums[0] >> nums[-1]
+        # there's no way answer falls within [nums[0], nums[-1]]
+        if k+nums[0] > nums[-1]:
+            return k+nums[0]+len(nums)-1
+        
+        prev = nums[0]
+        for i in range(1,len(nums)):
+            n = nums[i]
+            missing = n-prev-1      # number of missing ones in the gap
+            if missing < k:
+                k -= missing
+                prev = n
+            else:
+                return prev+k
+        
+        return prev+k               # still missing, simply add k
+                
+                
+    def missingElement(self, nums, k):
+        # since given array is sorted: use binary search
+        # time complexity: O(logN)
+        # Return how many numbers are missing until nums[idx]
+        missing = lambda idx: nums[idx] - nums[0] - idx
+            
+        n = len(nums)
+        # If kth missing number is larger than 
+        # the last element of the array
+        if k > missing(n - 1):
+            return nums[-1] + k - missing(n - 1) 
+        
+        left, right = 0, n - 1
+        # find left = right index such that 
+        # missing(left - 1) < k <= missing(left)
+        while left != right:
+            pivot = left + (right - left) // 2
+            
+            if missing(pivot) < k:
+                left = pivot + 1
+            else:
+                right = pivot 
+        
+        # kth missing number is greater than nums[left - 1]
+        # and less than nums[left]
+        return nums[left - 1] + k - missing(left - 1) 
 
 print(Solution().missingElement([4,7,9,10], 1) == 5)
 print(Solution().missingElement([4,7,9,10], 3) == 8)

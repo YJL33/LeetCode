@@ -1,56 +1,49 @@
 """
 see https://leetcode.com/problems/partition-labels/
 """
-class Solution(object):
-    def partitionLabels(self, S):
-        """
-        :type S: str
-        :rtype: List[int]
-        """
+from typing import List
+import collections
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        # each letter can only appear in one part
+        # as many as possible
+
+        # (naive approach) brute force
+        # consider each letter has its own span
+        # some are overlapped so they couldn't separate from each other
+
+        # use sliding window
+        # first, collect span (occurances)
+        # expand r until all elements within won't appear in other places
+        # start a new window, so on and so forth 
+        # time analysis: O(N) to collect span, O(N) to slide window carefully
+        # memory: O(N) for the span information, O(N) for the set used in findR
         
-        # 1. find the "span" of each character.
-        # 2. check the span character(x) in S:
-        #       for each character(y) within the span(X),
-        #       check each span(Y) and update the major one(X)
-        #       add len(X) into the result
-
-        cd = {}
-        for i in range(len(S)):
-            c = S[i]
-            if c in cd:
-                l, r = cd[c]
-                cd[c] = (l, i)
-            else:
-                cd[c] = (i, i)
-
-        spans = []
+        span = collections.defaultdict(list)
+        for i, c in enumerate(s):
+            if len(span[c]) == 2:
+                span[c].pop()
+            span[c].append(i)
+               
+        def findR(start):
+            r = span[s[start]][-1]
+            cur = start
+            visited = set()
+            while cur < r:
+                if s[cur] not in visited:
+                    r = max(r, span[s[cur]][-1])
+                    visited.add(s[cur])
+                cur += 1
+            return r
+        
+        res = []
         i = 0
-
-        while i < len(S):
-            l, r = cd[S[i]]
-            tmpStk = []
-            for c in S[l:r]:
-                if c not in tmpStk:
-                    tmpStk += c,
-
-            while tmpStk:
-                c = tmpStk.pop()
-                cl, cr = cd[c]
-                if cl < l:
-                    for x in S[cl:l]:
-                        if x not in tmpStk:
-                            tmpStk += x,
-                    l = cl
-                if cr > r:
-                    for x in S[r:cr]:
-                        if x not in tmpStk:
-                            tmpStk += x,
-                    r = cr
-            spans += len(S[l:r+1]),
-            i = r+1
-
-        # print(spans)
-        return spans
+        while i != len(s):
+            r = findR(i)
+            res.append(r-i+1)           # window size
+            i = r+1                     # start a new window
+        
+        return res
 
 
 print(Solution().partitionLabels("ababcbacadefegdehijhklij"))

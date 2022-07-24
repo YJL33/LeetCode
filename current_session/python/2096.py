@@ -9,17 +9,21 @@ from typing import Optional
 import collections
 class Solution:
     def getDirections(self, root: Optional[TreeNode], startValue: int, destValue: int) -> str:
-        # use a dict to store all its nbs
+        # craft adjancy list and then use bfs to search the shortest path
+        #
+        # use a dict to store all its nbs, visit all nodes first to craft the dict
         # key: node, val: list of list [up] [left] [right]
-        # visit all nodes first
         # nd = collections.defaultdict(list)
+        # 
+        # tc: O(n) to craft adj list, O(s) (worst case n) for the shortest path
+        # sc: O(n) for adj list, O(h) (worst case n) for the height of deque used in bfs
         self.nd = {}
 
-        def addToND(node, parentVal=None):
+        def addToND(node, parent=None):
             if node.val not in self.nd:
                 self.nd[node.val] = [-1, -1, -1]
-            if parentVal:
-                self.nd[node.val][0] = parentVal
+            if parent:
+                self.nd[node.val][0] = parent
             if node.left:
                 self.nd[node.val][1] = node.left.val
                 addToND(node.left, node.val)
@@ -31,28 +35,18 @@ class Solution:
         # print(self.nd)
 
         dq = collections.deque()
-        if self.nd[startValue][0] != -1:
-            dq.append(('U', self.nd[startValue][0]))
-        if self.nd[startValue][1] != -1:
-            dq.append(('L', self.nd[startValue][1]))
-        if self.nd[startValue][2] != -1:
-            dq.append(('R', self.nd[startValue][2]))
+        dq.append(("", startValue))
         
-        visited = set()
-        visited.add(startValue)
+        visited, direction = set(), "ULR"
+        visited.add(-1)
         while dq:
             path, val = dq.popleft()
             if val == destValue: return path
             visited.add(val)
-            up = self.nd[val][0]
-            if up not in visited and up != -1:
-                dq.append((path+'U', up))
-            left = self.nd[val][1]
-            if left not in visited and left != -1:
-                dq.append((path+'L', left))
-            right = self.nd[val][2]
-            if right not in visited and right != -1:
-                dq.append((path+'R', right))
+            for i in range(3):
+                d, node = direction[i], self.nd[val][i]
+                if node not in visited:
+                    dq.append((path+d, node))
         
         return -1
 

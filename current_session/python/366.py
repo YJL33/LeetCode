@@ -4,56 +4,45 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+        self.depth = -1             # tweak the data structure
 
 from typing import Optional, List
-import collections
 
 class Solution:
-    def findLeaves_recursive(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # recursive
-        res = []
-        def helper(node, leaves, parent=None):   # remove leave and put it into result
+
+    # 2-pass solution
+    # 1. post-order traverse to find the depth of all nodes.
+    # 2. fill the result array (implement with pre-order, can use any traverse)
+    #
+    # if not allowed to tweak the data structure,
+    # additional O(n) space for a dictionary (key: node, value: depth) will be needed
+    #
+    # tc: O(n)
+    # sc: O(h), where h is the height of recursion stack
+    def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
+        
+        # tc: O(n)
+        # sc: O(h), where h is the height of recursion stack
+        def find_depth(node):
+            if not node: return
             if not node.left and not node.right:
-                leaves.append(node.val)
-                if parent.left == node:
-                    parent.left = None
-                elif parent.right == node:
-                    parent.right = None
+                node.depth = 0
                 return
-            if node.left:
-                helper(node.left, leaves, node)
-            if node.right:
-                helper(node.right, leaves, node)
+            find_depth(node.left)
+            find_depth(node.right)
+            node.depth = 1+max(node.left.depth if node.left else -1, node.right.depth if node.right else -1)
             return
 
-        dh = TreeNode(0)
-        dh.left = root
-        while dh.left:
-            leaves = []
-            helper(root, leaves, dh)
-            res.append(leaves)
-        return res
-
-    def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # O(n)
-        self.nodeDict = collections.defaultdict(list)
-        def mark(node):
-            if not node.left and node.right:
-                self.nodeDict[0].append(node)
-                return 1
-            vals = []
-            if node.left:
-                vals.append(mark(node.left))
-            if node.right:
-                vals.append(mark(node.right))
-            val = 1+max(vals)
-            self.nodeDict[val].append(node)
-            return val
-
-        mark(root)
-        keys = [k for k in self.nodeDict.keys()]
-        keys.sort()
-        res = []
-        for k in keys:
-            res.append(self.nodeDict[k])
+        find_depth(root)
+        res = [[] for _ in range(root.depth+1)]
+        
+        def fill(node):
+            if not node: return
+            res[node.depth].append(node.val)
+            fill(node.left)
+            fill(node.right)
+            return
+        
+        fill(root)
+        
         return res

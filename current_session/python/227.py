@@ -1,30 +1,53 @@
-"""
-https://leetcode.com/problems/basic-calculator-ii/
-"""
-class Solution(object):
-    def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        # use stack
-        if not s: return 0
-        stack, num, sign = [], 0, '+'
-
-        for i in range(len(s)):
-            if s[i] in '0123456789':                    # see the number
-                num = num*10 + int(s[i])
-            if s[i] in '+-*/' or i == len(s)-1:         # meet the next operator
-                if sign == "-":
-                    stack.append(-num)
-                elif sign == "+":
-                    stack.append(num)
-                elif sign == "*":
-                    stack.append(stack.pop()*num)
+class Solution:
+    def calculate(self, s: str) -> int:
+        # clairification
+        # validity?
+        # upperbound/lowerbound of digit?
+        # no brackets but only "+-*/"
+        # 
+        # idea
+        # 
+        # use an additional stack to store temperary calculations, and return sum(arr) at the end
+        #
+        # go through the string
+        # maintain the number
+        # if see +-, complete the calculations before the operator, put it into stack, and reset sign and number
+        # if see */,
+        #
+        # tc: O(n) to go through whole array.
+        # sc: O(h), h is the height of stack, worst case O(n)
+        # 
+        # dummy cases
+        # (1+(4+5+2)-3)+(6+8)
+        # 1+(4+5*2)-3
+        # 1+(4*5-2)-3
+        # 1+(4+5*(3+3)+2)+3
+        num, sign, div, st = 0, 1, False, []      # in the end, sum the stack
+                                        
+        for c in s:
+            if c.isdigit():
+                num = 10*num+int(c)
+            elif c in '+-*/':
+                prev = sign*num
+                if div:
+                    prev, div = int(st.pop()/prev), False
+                if c in '+-':
+                    st.append(prev)
+                    sign, num = [-1,1][c =='+'], 0
+                elif c == '*':                  # put it with sign
+                    sign, num = prev, 0
                 else:
-                    tmp = stack.pop()
-                    ss = (-1) if tmp < 0 else 1
-                    stack.append(ss* (abs(tmp)/num))
-                sign = s[i]
-                num = 0
-        return sum(stack)
+                    div = True
+                    st.append(prev)
+                    sign, num = 1, 0
+        
+        prev = sign*num
+        if div: prev, div = int(st.pop()/prev), False
+        st.append(prev)
+
+        return sum(st)
+
+print(Solution().calculate("3+2*2"))
+print(Solution().calculate(" 3/2 "))
+print(Solution().calculate(" 3+5 / 2 "))
+print(Solution().calculate("0/1"))

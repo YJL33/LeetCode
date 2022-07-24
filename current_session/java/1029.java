@@ -20,7 +20,7 @@ class Solution {
 
     public static void main(String[] args)
     {
-        int[][] input = {{10,20},{30,200},{400,50},{30,20}};;
+        int[][] input = {{10,20},{30,200},{400,50},{30,20}};
         System.out.println(twoCitySchedCost(input) + ", shoudl be 110");
     }
 }

@@ -9,9 +9,12 @@ def mergeSort(arr):
     3. merge L and R: use 2 pointers, add each of these elements one by one
     4. add the remaining parts from L (or R)
     """
+    print('arr before merge', id(arr), arr)
     if len(arr) > 1:
         mid = len(arr)//2
         L, R = mergeSort(arr[:mid]), mergeSort(arr[mid:])
+
+        print('L', id(L), L)
 
         # mergeSort(L)
         # mergeSort(R)
@@ -30,7 +33,8 @@ def mergeSort(arr):
         while j<len(R):
             arr[k], j, k = R[j], j+1, k+1
 
+    print('arr after merge', id(arr), arr)
     return arr
 
-# print mergeSort([1,9,2,8,3,7,4,6,5])
-# print mergeSort([1,2,3,6,9,8,7,5,4])
+print(mergeSort([1,9,2,8,3,7,4,6,5]))
+print(mergeSort([1,2,3,6,9,8,7,5,4]))

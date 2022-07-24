@@ -1,71 +1,86 @@
 """
 see https://leetcode.com/problems/lru-cache/
 """
+import collections
 class Node:
-    def __init__(self, k, v):
-        self.key = k
-        self.val = v
-        self.prev = None
+    def __init__(self, key, val):
+        self.key = key
+        self.val = val
         self.next = None
+        self.prev = None
 
-class LRUCache(object):
+class LRUCache:
+    # idea: linked-list + dictionary
+    # dictionary: key = key, value = Node (in order to update the linked-list)
+    # linked-list Node: key, value, prev, next
 
-    def __init__(self, capacity):
-        """
-        :type capacity: int
-        """
-        # store key and value in both dict and doubly linked list
-        self.size = capacity
-        self.dict = {}
+    # get: query dictionary, and update linked list
+    # put: query dictionary, and update linked list (create/remove if needed)
+    # time analysis: O(1) to update/add/remove hashMap (worst case O(N) if serious hash collision), O(1) for linkedlist insert/remove
+    # space analysis: O(N) for both dictionary and linked-list
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.dict = collections.defaultdict()
+        self.root = Node(-1, -1)
+        self.tail = Node(-1, -1)
+        self.root.next = self.tail
+        self.tail.prev = self.root
+        self.count = 0
+    
+    # check the dictionary to see if exist or not.
+    # if exist, go to the node, keep the value, and update the linked-list, and then return the value at the end
+    # time analysis: O(1) to query key-pair in dict, O(1) to remove/add node in linked-list
+    def get(self, key: int) -> int:
+        # requirement: avg time O(1)
+        if key in self.dict:
+            node = self.dict[key]
+            self._remove(node)
+            self._add(node)
+            return node.val
+        else:
+            return -1
 
-        # all values are stored between head and tail
-        # head and tail are simply dummy nodes
-        self.head = Node(0, 0)
-        self.tail = Node(0, 0)
-        self.head.next = self.tail
-        self.tail.prev = self.head
+    # check the dictionary to see if exist or not.
+    # if exist, go to the node, update the value, and update the linked-list
+    # if not, then we have a new pair to add.
+    # First check the size of linked-list. if reached the capacity remove lru then and add the new pair
+    # time analysis: O(1) to query/removal key-pair in dict, O(1) to remove/add node in linked-list
+    def put(self, key: int, value: int) -> None:
+        # requirement: avg time O(1)
+        if key in self.dict:
+            node = self.dict[key]
+            node.val = value
+            self._remove(node)
+            self._add(node)
+            return
+        else:
+            if self.count == self.capacity:
+                node = self.root.next
+                del self.dict[node.key]
+                self._remove(node)
+            else:
+                self.count += 1
 
-    def get(self, key):
-        """
-        :type key: int
-        :rtype: int
-        """
-        if key in self.dict.keys():
-            n = self.dict[key]
-            self._remove(n)
-            self._add(n)
-            return n.val
-        return -1
-
-    def put(self, key, value):
-        """
-        :type key: int
-        :type value: int
-        :rtype: None
-        """
-        if key in self.dict.keys():
-            self._remove(self.dict[key])
-        recent = Node(key, value)
-        self._add(recent)
-        self.dict[key] = recent
-        if len(self.dict.keys()) > self.size:
-            least = self.head.next
-            self._remove(least)
-            del self.dict[least.key]
-
+            new_node = Node(key, value)
+            self.dict[key] = new_node
+            self._add(new_node)
+            return
+    
+    # remove the given node from linked-list (node itself could still be useful)
     def _remove(self, node):
-        p = node.prev
-        n = node.next
+        p, n = node.prev, node.next
         p.next = n
         n.prev = p
-
+        node.prev, node.next = None, None
+        return
+    
+    # add a node at the tail of linked-list.
     def _add(self, node):
-        p = self.tail.prev
+        p, n = self.tail.prev, self.tail
         p.next = node
-        self.tail.prev = node
-        node.prev = p
-        node.next = self.tail
-
+        n.prev = node
+        node.prev, node.next = p, n
+        return
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)

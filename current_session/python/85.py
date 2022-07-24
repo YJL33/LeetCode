@@ -1,99 +1,58 @@
-"""
-85. Maximal Rectangle
+from typing import List
+class Solution:
+    def maximalRectangle(self, mat: List[List[str]]) -> int:
+        # leverage monotonic increasing stack
 
-Given a 2D binary matrix filled with 0's and 1's,
-find the largest rectangle containing only 1's and return its area.
+        # convert the original matrix into accumulate matrix (histogram, accumulate along y axis)
+        # for each row, accumulate the grid(s) above and change into a histogram
+        # find max rectangle for each row
+        # 
+        # time analysis:
+        # O(mn) to traverse whole matrix
 
-Example:
-
-Input:
-[
-  ["1","0","1","0","0"],
-  ["1","0","1","1","1"],
-  ["1","1","1","1","1"],
-  ["1","0","0","1","0"]
-]
-Output: 6
-
-Accepted 170.3K
-Submissions 460.5K
-"""
-class Solution(object):
-    def maximalRectangle(self, matrix):
-        """
-        :type matrix: List[List[str]]
-        :rtype: int
-        """
-        if matrix == []: return 0
-        h, w = len(matrix), len(matrix[0])
-        
-        dp = {}         # key: coordination, value: height, width
-        # dp = [[(0, 0) for _ in xrange(w)] for _ in xrange(h)]
-        # dp[0][0] = (1 if matrix[0][0] == "1" else 0, 1 if matrix[0][0] == "1" else 0)
-        if matrix[0][0] == "1":
-            dp[(0,0)] = (1,1)
-        else:
-            dp[(0,0)] = (0,0)
-
-        maxSeen = dp[(0,0)][0] * dp[(0,0)][1]
-        # craft the 1st row
-        for j in xrange(1, w):
-            if matrix[0][j] == "1":
-                dp[(0,j)] = (1, dp[(0,j-1)][1] + 1)
-            else:
-                dp[(0,j)] = (0, 0)
-            maxSeen = max(maxSeen, dp[(0,j)][0] * dp[(0,j)][1])
-
-        # craft the 1st column
-        for i in xrange(1, h):
-            if matrix[i][0] == "1":
-                dp[(i,0)] = (dp[(i-1,0)][0] + 1, 1)
-            else:
-                dp[(i,0)] = (0, 0)
-            maxSeen = max(maxSeen, dp[(i,0)][0] * dp[(i,0)][1])
-
-        # craft the rest
-        # consider all (16) possibilities for 2x2 square:
-        # (a) 1 1       (b) x 0  or x 1       (c) x 0        (d) x x
-        #     1 1           1 1     0 1           0 1            x 0
-        for i in xrange(1, h):
-            for j in xrange(1, w):
-                if matrix[i][j] == "1":
-                    if matrix[i-1][j-1] == "1" and matrix[i-1][j] == "1" and matrix[i][j-1] == "1":     # case (a)
-                        height = min(dp[(i-1,j-1)][0], dp[(i-1,j)][0])+1    # use the min height from upper row
-                        width = min(dp[(i-1,j-1)][1], dp[(i,j-1)][1])+1
-
-                        dp[(i,j)] = (dp[(i-1,j)][0] + 1, dp[(i,j-1)][1] + 1)
-
-                        vw = min([dp[(y,j)][1] for y in xrange(i-height+1, i+1)])    # verify the width
-                        vh = min([dp[(i,x)][0] for x in xrange(j-width+1, j+1)])    # verify the height
-
-                        # print "rw: ", [dp[(y,j)][1] for y in xrange(i-height+1, i+1)]
-                        # print "rh: ", [dp[(i,x)][0] for x in xrange(j-width+1, j+1)]
-                        # print i, j, height, width, vh, vw
-                        # print "checkout: ", maxSeen, i, j
-
-                        maxSeen = max(maxSeen, height * vw, width * vh, vh * vw)
-                    elif matrix[i-1][j] == "1" or matrix[i][j-1] == "1":                                # case (b)
-                        height = dp[(i-1,j)][0] + 1
-                        width = dp[(i,j-1)][1] + 1
-                        dp[(i,j)] = (dp[(i-1,j)][0] + 1, dp[(i,j-1)][1] + 1)
-                        # print "checkout: ", maxSeen, i, j
-                        maxSeen = max(maxSeen, height, width)
-                    else:                                                                               # case (c)
-                        dp[(i,j)] = (1,1)
-                        # print "checkout: ", maxSeen, i, j
-                        maxSeen = max(maxSeen, 1)
+        if not mat: return 0
+        H, W = len(mat), len(mat[0])
+        acc = [[0 for _ in range(W)] for _ in range(H)]
+        for j in range(W):
+            prev = 0
+            for i in range(H):
+                if mat[i][j] == "1":
+                    prev += 1
+                    acc[i][j] = prev
                 else:
-                    dp[(i,j)] = (0,0)                                                                   # case (d)
-
-        # print matrix
-        # print maxSeen
+                    prev = 0
         
-        return maxSeen
+        # for each accumulated row, use monotonic increasing stack to find the max rectangle
+        # use index instead of height to fill into the stack for easier width calculation
+        # while maintaining the stack
+        # if incoming h > stack[-1]: append into stack
+        # else: POP the stack until the incoming h is the maximum.
+        # while poping, calculate the rec
+        # h = h[i1] (i1 = popped index), and w = i1-i2 (i2 = stack[-1])
+        # 
+        # time analysis:
+        # overall O(mn) - O(n) to find biggest rectangle in single row, and we have m rows.
 
-print Solution().maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]), "should be 6"
-print Solution().maximalRectangle([["1","0","1","1","1"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]), "should be 9"
-print Solution().maximalRectangle([["1","0","1","0","0","1","1","1","0"],["1","1","1","0","0","0","0","0","1"],["0","0","1","1","0","0","0","1","1"],["0","1","1","0","0","1","0","0","1"],["1","1","0","1","1","0","0","1","0"],["0","1","1","1","1","1","1","0","1"],["1","0","1","1","1","0","0","1","0"],["1","1","1","0","1","0","0","0","1"],["0","1","1","1","1","0","0","1","0"],["1","0","0","1","1","1","0","0","0"]])
-print Solution().maximalRectangle([["0","0","0","1","0","1","0"],["0","1","0","0","0","0","0"],["0","1","0","1","0","0","1"],["0","0","1","1","0","0","1"],["1","1","1","1","1","1","0"],["1","0","0","1","0","1","1"],["0","1","0","0","1","0","1"],["1","1","0","1","1","1","0"],["1","0","1","0","1","0","1"],["1","1","1","0","0","0","0"]]), "should be 6"
-print Solution().maximalRectangle([["0","1","1","0","1"],["1","1","0","1","0"],["0","1","1","1","0"],["1","1","1","1","0"],["1","1","1","1","1"],["0","0","0","0","0"]]), "should be 9"
+        def findMaxRec(hist):
+            hist += 0,              # to calculate ractangle with index=W as the right side
+            st = []
+            zeroIndex = -1          # to calculate rectangle with index=0 as left side
+            maxSeen = 0
+            for i in range(len(hist)):
+                while st and hist[st[-1]] > hist[i]:
+                    h = hist[st.pop()]
+                    prevI = zeroIndex if not st else st[-1]
+                    w = i-(prevI+1)
+                    maxSeen = max(maxSeen, h*w)
+                st.append(i)
+            return maxSeen
+        
+        # print('acc:', acc)
+
+        return max([findMaxRec(h) for h in acc])
+
+print(Solution().maximalRectangle([["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]))
+# print(Solution().maximalRectangle([]))
+# print(Solution().maximalRectangle([["0"]]))
+print(Solution().maximalRectangle([["1"]]), 'should be 1')
+print(Solution().maximalRectangle([["0","0"]]))

@@ -1,35 +1,31 @@
-"""
-1091
-"""
+import collections
 from typing import List
 class Solution:
+    # thoughts
+    # user DP? (hard to handle if the shortest path includes up and down, or left and right)
+    # use BFS, starting from top-left, put it into deque, and add all possible neighbors into dq
+    # optimization: modify the grid so we can save 'visited'
+    #
+    # analysis
+    # tc: O(P) where P is the length of shortest path, worst case O(H*W)
+    # sc: O(D) where D is the size of deque
+    # e.g. [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]]
+    #
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
-        # BFS
-        # start from 'end'
-        # move to nb and +1 if see neighbor = 0
-        # finish until we see 0, 0
+        if grid[0][0] == 1 or grid[-1][-1] == 1: return -1
+        H, W = len(grid), len(grid[0])
 
-        if grid[0][0] == 1 or grid[-1][-1] == 1:
-            return -1
+        dq = collections.deque([(0,0,1)])
         
-        n = len(grid)
-        self.seen = [[-1 for _ in range(n)] for _ in range(n)]
-        stack = [(n-1,n-1,1)]
-        outer = 0
-        while stack and outer < n**n:
-            tmp = []            # next layer
-            # stack.pop()
-            for i,j,cnt in stack:
-                if i==j==0:
-                    return cnt
-                for ni, nj in [(i+1,j+1),(i+1,j),(i+1,j-1),(i,j+1),(i,j-1),(i-1,j+1),(i-1,j),(i-1,j-1)]:
-                    if 0<=ni<n and 0<=nj<n and grid[ni][nj] == 0 and self.seen[ni][nj] == -1:
-                        self.seen[ni][nj] = 1
-                        tmp += (ni,nj,cnt+1),
-            stack = tmp
-            outer += 1
-
+        while dq:
+            i, j, l = dq.popleft()
+            if (i == H-1 and j == W-1): return l
+            for p, q in [(i+1,j+1), (i+1,j), (i+1,j-1), (i,j+1), (i,j-1), (i-1,j+1), (i-1,j), (i-1,j-1)]:
+                if 0<=p<H and 0<=q<H and grid[p][q] == 0 and l+1<H*W:
+                    grid[p][q] = -1
+                    dq.append((p,q,l+1))
         return -1
-                    
+
 print(Solution().shortestPathBinaryMatrix([[0,1,1,0,0,0],[0,1,0,1,1,0],[0,1,1,0,1,0],[0,0,0,1,1,0],[1,1,1,1,1,0],[1,1,1,1,1,0]]))
 print(Solution().shortestPathBinaryMatrix([[0,1,1,1,1,1,1,1],[0,1,1,0,0,0,0,0],[0,1,0,1,1,1,1,0],[0,1,0,1,1,1,1,0],[0,1,1,0,0,1,1,0],[0,1,1,1,1,0,1,0],[0,0,0,0,0,1,1,0],[1,1,1,1,1,1,1,0]]))
+print(Solution().shortestPathBinaryMatrix([[0,1,0,0,0,0],[0,1,0,1,1,0],[0,1,1,0,1,0],[0,0,0,0,1,0],[1,1,1,1,1,0],[1,1,1,1,1,0]]))

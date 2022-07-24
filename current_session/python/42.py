@@ -1,46 +1,44 @@
 """
-42. Trapping Rain Water
-
-Given n non-negative integers representing an elevation map where the width of each bar is 1,
-compute how much water it is able to trap after raining.
-
-
-The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1].
-In this case, 6 units of rain water (blue section) are being trapped.
-
-Example:
-
-Input: [0,1,0,2,1,0,1,3,2,1,2,1]
-Output: 6
-
-Accepted 491K
-Submissions 1M
+see https://leetcode.com/problems/trapping-rain-water/
 """
-class Solution(object):
-    def trap(self, height):
-        """
-        :type height: List[int]
-        :rtype: int
-        """
-        if not height: return 0
+from typing import List
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        # clarification:
+        # any restrictions on time/space complexity? e.g. timeout or memory usage
+        # upperbound/lowerbound of h?
+        # length of given heights?
+        
+        # naive approach:
+        # any trapped water is determined shorter side of its 'wall'
+        # for each point (height) see if it's local min, if so, check both side for shorter wall
+        # time complexity: O(N^2)
+        
+        # optimization:
+        # go through the array (1st time), scan from right to left, and store it's 'max-seen': from position i look at the right-side
+        # go through the array (2nd time), scan from left to right, and
+        # 1. update (store) it's 'max-seen' of left-side
+        # 2. check if there's trapped rain, if it's local min, add the trapped amount of rain
+        # time analysis: O(N) to visit through the array (2 times)
+        # space analysis: O(N) to store the height of 'wall' (right side)
+        
+        # dummy case: [0,1,2,1,0,3,1], ans = 1+2
+        
+        N = len(height)
+        right = [height[-1]]
+        for i in range(N-2, -1, -1):
+            right.append(max(right[-1], height[i]))
+        right.reverse()
+        
+        water = 0
+        left = height[0]
+        for i in range(1,N-1):
+            h = height[i]
+            wall = min(left, right[i])
+            if h < wall:
+                water += wall-h
+            left = max(left, h)
+        return water
 
-        leftMax = [height[0] for _ in xrange(len(height))]
-
-        for i in xrange(1, len(height)):
-            leftMax[i] = max(height[i], leftMax[i-1])
-
-        rightMax, ans = 0, 0
-        # rightMax = [height[-1] for _ in xrange(len(height))]
-
-        for j in xrange(len(height)-1, -1, -1):
-            # rightMax[j] = max(height[j], rightMax[j+1])
-            rightMax = max(height[j], rightMax)
-            ans += min(leftMax[j], rightMax) - height[j]
-
-        # print height
-        # print leftMax
-        # print rightMax
-        return ans
-
-# print Solution().trap([0,1,0,2,1,0,1,3,2,1,2,1])
-print Solution().trap([2,0,2])
+# print(Solution().trap([0,1,0,2,1,0,1,3,2,1,2,1]))
+print(Solution().trap([2,0,2]))

@@ -1,3 +1,10 @@
+/*
+ * @lc app=leetcode id=974 lang=cpp
+ *
+ * [974] Subarray Sums Divisible by K
+ */
+
+// @lc code=start
 #include <iostream>
 #include <vector>
 
@@ -26,3 +33,5 @@ public:
     return cnt;
   }
 };
+// @lc code=end
+

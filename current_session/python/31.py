@@ -1,61 +1,51 @@
-"""
-31. Next Permutation
+from typing import List
+class Solution:
+    def nextPermutation(self, A: List[int]) -> None:
+        # algorithm:
+        # find, swap, and reverse:
+        # find j and k
+        #   j: largest j s.t. A[j] < A[j+1]
+        #   k: largest k s.t. A[j] < A[k]
+        # swap A[j] and A[k]
+        # reverse A[j+1:]
 
-Implement next permutation,
-which rearranges numbers into the lexicographically next greater permutation of numbers.
+        # [1,2,3] -> [1,3,2]    j=1, k=2 ,swap 2 and 3, reverse A[2:]
+        # [1,3,2] -> [2,1,3]    j=0, k=2 ,swap 1 and 2, reverse A[1:]
+        # [2,1,3] -> [2,3,1]    j=1, k=2 ,swap 1 and 3, reverse A[2:]
+        # [2,3,1] -> [3,1,2]    j=0, k=1 ,swap 2 and 3, reverse A[1:]
 
-If such arrangement is not possible,
-it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+        if not A: return
 
-The replacement must be in-place and use only constant extra memory.
+        a, b = self.finder(A)
+        if a == -1:
+            A.reverse()
+            return
 
-Here are some examples.
-Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+        A[a], A[b] = A[b], A[a]
 
-1,2,3 -> 1,3,2
-3,2,1 -> 1,2,3
-1,1,5 -> 1,5,1
+        l, r = a+1, len(A)-1
+        while l < r:
+            A[l], A[r] = A[r], A[l]
+            l, r = l+1, r-1
+        return
 
-Accepted
-364,426
-Submissions
-1,127,442
-"""
-class Solution(object):
-    def nextPermutation(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
-        if not nums: return
+    def finder(self, A):
+        i = len(A)-2
+        while i >= 0:
+            if A[i] < A[i+1]: break
+            i -= 1
 
-        # find k: the largest index k such that nums[k] < nums[k + 1]
-        k = len(nums)-2
-        while nums[k] >= nums[k+1] and k >= 0:
-            k -= 1
-
-        if k == -1:
-            # nums.reverse()
-            return nums[::-1]
-
-        else:
-            l = len(nums)-1
-            while nums[l] <= nums[k]:
-                l -= 1
-            # print "k: ", k
-            # print "l: ", l 
-            nums[l], nums[k] = nums[k], nums[l]
-            i, j = k+1, len(nums)-1
-            # print "before: ", nums, i, j
-            while i < j:
-                nums[i], nums[j] = nums[j], nums[i]
-                i, j = i+1, j-1
-
-            return nums
+        if i == -1: return -1, -1
+        
+        j = len(A)-1
+        while j >= 0:
+            if A[j] > A[i]: break
+            j -= 1
+        return i, j
 
 
-print Solution().nextPermutation([3,2,1])
-print Solution().nextPermutation([1,3,2])
-print Solution().nextPermutation([1,1,5])
-print Solution().nextPermutation([6,5,4,3,2,1])
-print Solution().nextPermutation([4,5,6,3,2,1])
+print(Solution().nextPermutation([3,2,1]))
+print(Solution().nextPermutation([1,3,2]))
+print(Solution().nextPermutation([1,1,5]))
+print(Solution().nextPermutation([6,5,4,3,2,1]))
+print(Solution().nextPermutation([4,5,6,3,2,1]))

@@ -3,3 +3,4 @@
 *.tmp
 *.code-workspace
 current_session/.vscode/
+.vscode
